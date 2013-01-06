@@ -37,10 +37,7 @@ local logShow = dbg.Show
 local unit = {}
 
 ----------------------------------------
-local Macro = Macro
-if not Macro then
-  Macro = function () end
-end
+local Macro = Macro or function () end
 
 ---------------------------------------- Actions
 Macro {
@@ -720,6 +717,8 @@ function unit.ShiftNumber (Shift)
   editor.SetString(Info.EditorID, -1, s)
 end ---- ShiftNumber
 
+end -- do
+
 Macro {
   area = "Editor",
   key = "AltLeft",
@@ -758,7 +757,66 @@ Macro {
            end, ---
 } ---
 
+do
+  local srep, format = string.rep, string.format
+
+-- Make a number value with separators.
+-- Формирование значения числа с разделителями.
+--[[
+  -- @params:
+  s     (string) - a string with number.
+  sep   (string) - a separator value.
+  group (number) - a number of digits to separate as group.
+  limit (number) - a maximum number of digits to separate never.
+--]]
+function unit.toseparate (s, sep, group, limit)
+  if not s then return end
+
+  local len = s:len()
+  local group = group or 3
+  if len <= group then return end
+  if limit and len <= limit then return end
+
+  --far.Message(reverse(c), Separator)
+  local sep = sep or " "
+  s = s:reverse():gsub(srep(".", group), "%0"..sep)
+  return s:reverse():gsub(format("^[%s]+", sep), "")
+end ---- toseparate
+
+-- Insert separator to number value on current position of current line.
+-- Вставка разделителя в значение числа на текущей позиции текущей линии.
+--[[
+  -- @params:
+  Separator (string) - a separator value.
+  GroupSize (number) - a number of digits to separate as group.
+  MaxDigits (number) - a maximum number of digits to separate never.
+--]]
+function unit.SeparateNumber (Separator, GroupSize, MaxDigits)
+  local Info = editor.GetInfo()
+  local s, PosB, PosE = unit.FindNumberPos(Info, -1, Info.CurPos)
+
+  local c = s:sub(PosB, PosE)
+  if not c then return end
+  c = unit.toseparate(c, Separator, GroupSize, MaxDigits)
+  if not c then return end
+
+  s = s:sub(1, PosB - 1)..c..s:sub(PosE + 1, -1)
+
+  editor.SetString(Info.EditorID, -1, s)
+end ---- SeparateNumber
+
 end -- do
+
+Macro {
+  area = "Editor",
+  key = "AltQ",
+  flags = "DisableOutput",
+  description = "Edit: Number spacing",
+  action = function ()
+             return unit.SeparateNumber(" ", 3, 4)
+           end, ---
+} ---
+
 ---------------------------------------- Readme
 ---------------------------------------- -- Page number
 Macro {
