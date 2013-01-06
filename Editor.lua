@@ -25,6 +25,7 @@ local editor = editor
 ----------------------------------------
 --local context = context
 
+local numbers = require 'context.utils.useNumbers'
 local strings = require 'context.utils.useStrings'
 
 ----------------------------------------
@@ -535,8 +536,8 @@ Macro {
 do
   local isdigit = strings.isdigit
 
--- Find a number position on specified position of specified line.
--- Поиск положения числа на указанной позиции указанной линии.
+-- Find a number position.
+-- Поиск положения числа.
 --[[
   -- @params:
   Info   (table) - info about editor state.
@@ -783,8 +784,8 @@ function unit.toseparate (s, sep, group, limit)
   return s:reverse():gsub(format("^[%s]+", sep), "")
 end ---- toseparate
 
--- Insert separator to number value on current position of current line.
--- Вставка разделителя в значение числа на текущей позиции текущей линии.
+-- Insert separator to number value.
+-- Вставка разделителя в значение числа.
 --[[
   -- @params:
   Separator (string) - a separator value.
@@ -806,6 +807,88 @@ function unit.SeparateNumber (Separator, GroupSize, MaxDigits)
 end ---- SeparateNumber
 
 end -- do
+do
+  local format = string.format
+  local round  = numbers.round
+
+  local ByteFold = 1024
+  local BytePrefixes = {
+    { name = "B",   fold = 1 },
+    { name = "KiB", fold = ByteFold },
+    { name = "MiB", fold = ByteFold*ByteFold },
+    { name = "GiB", fold = ByteFold*ByteFold*ByteFold },
+    { name = "TiB", fold = ByteFold*ByteFold*ByteFold*ByteFold },
+  } --- BytePrefixes
+
+-- Make a size value with prefixes.
+-- Формирование значения размера с использованием префиксов.
+--[[
+  -- @params:
+  v (string|number) - a size value.
+  -- @return:
+  value    (string) - size using prefix.
+  prefix   (string) - prefix name.
+--]]
+function unit.tobytefold (v)
+  if not v then return end
+
+  local n = v
+  if type(n) == 'string' then n = tonumber(n) end
+  if not n then return end
+
+  local Prefixes = BytePrefixes
+  local k, count = 1, #Prefixes
+  while k <= count and Prefixes[k].fold <= n do k = k + 1 end
+  k = k - 1
+  local Prefix = Prefixes[k]
+  if k == 1 then return end
+  --if k == 1 then return 1, Prefix.name end
+
+  n = n / Prefix.fold
+  if n < 10 then
+    n = format("%.2f", round(n * 100) / 100)
+  elseif n < 100 then
+    n = format("%.1f", round(n * 10) / 10)
+  else
+    n = format("%.0f", round(n))
+  end
+
+  --far.Message(n, Prefix.name)
+
+  return n, Prefix.name
+end ---- tobytefold
+
+  local FoldByteFmt = "%s %s (%s B)"
+
+-- Make a size value as a byte measure.
+-- Формирование значения размера как размерности в байтах.
+--[[
+  -- @params: @see unit.SeparateNumber.
+--]]
+function unit.FoldByteSize (Separator, GroupSize, MaxDigits)
+  local Info = editor.GetInfo()
+  local s, PosB, PosE = unit.FindNumberPos(Info, -1, Info.CurPos)
+
+  local c = s:sub(PosB, PosE)
+  if not c then return end
+
+  -- Size in bytes with separators.
+  local b = unit.toseparate(c, Separator, GroupSize, MaxDigits) or c
+  --if not b then return end
+
+  -- Size in bytefolds.
+  local f, n = unit.tobytefold(c)
+  if not f then return end
+
+  c = FoldByteFmt:format(f, n, b)
+
+  s = s:sub(1, PosB - 1)..c..s:sub(PosE + 1, -1)
+
+  editor.SetString(Info.EditorID, -1, s)
+  editor.SetPosition(Info.EditorID, { CurPos = PosB + c:len() - 1 })
+end ---- FoldByteSize
+
+end -- do
 
 Macro {
   area = "Editor",
@@ -817,7 +900,18 @@ Macro {
            end, ---
 } ---
 
+Macro {
+  area = "Editor",
+  key = "AltShiftQ",
+  flags = "DisableOutput",
+  description = "Edit: Bytes folding",
+  action = function ()
+             return unit.FoldByteSize(" ", 3, 4)
+           end, ---
+} ---
+
 ---------------------------------------- Readme
+
 ---------------------------------------- -- Page number
 Macro {
   area = "Editor",
@@ -933,7 +1027,7 @@ local Bullets = {
   [":"] = { level = "Lib",  key = "AltShift2", },
   ["~"] = { level = "3",    key = "Alt3", },
   ["·"] = { level = "4",    key = "AltShift3", },
-} ---
+} --- Bullets
 
   local DescFmt = "Bullet: '%s%s' (Level %s)"
 
@@ -956,7 +1050,7 @@ local IndentBullets = {
   ["-"]     = { level = "2",    key = "CtrlAltShift1", },
   ["  ~"]   = { level = "3",    key = "CtrlAltShift2", },
   ["    ·"] = { level = "4",    key = "CtrlAltShift3", },
-} ---
+} --- IndentBullets
 
   local DescFmt = "Bullet: '%s%s' (L%s) + Next"
 
@@ -1054,7 +1148,7 @@ local Characters = {
   -- Graphic characters with Numpad:
   ["┼"] = "CtrlAltShiftAdd",        ["●"] = "CtrlAltShiftMultiply",
   ["─"] = "CtrlAltShiftSubtract",   ["╳"] = "CtrlAltShiftDivide",
-} ---
+} --- Characters
 
 ----------------------------------------
   local u8byte = strings.u8byte -- UTF-8 char to codepoint
