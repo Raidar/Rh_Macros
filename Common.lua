@@ -11,10 +11,7 @@
   -- group: Macros.
 --]]
 --------------------------------------------------------------------------------
-local Macro = Macro
-if not Macro then
-  Macro = function () end
-end
+local Macro = Macro or function () end
 
 ---------------------------------------- Escape
 Macro {
