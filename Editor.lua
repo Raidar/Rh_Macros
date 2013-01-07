@@ -205,8 +205,8 @@ Macro {
 
              local shift = Info.CurPos - Info.WindowSizeX / 4 * 3
              if shift > 0 then
-               editor.SetPosition(Info.EditorID,
-                                  { LeftPos = Info.LeftPos + shift })
+               return editor.SetPosition(Info.EditorID,
+                                         { LeftPos = Info.LeftPos + shift })
              end
            end, ---
 } ---
@@ -436,7 +436,8 @@ function unit.ShiftCurLine (Shift)
   else
     Line = math.max(Line - (Info.WindowSizeY + Shift), 0)
   end
-  editor.SetPosition(Info.EditorID, { TopScreenLine = Line })
+
+  return editor.SetPosition(Info.EditorID, { TopScreenLine = Line })
 end ---- ShiftCurLine
 
 Macro {
@@ -690,7 +691,7 @@ function unit.ShiftDigit (Shift)
   c = digit((c + Shift) % 10)
   s = s:sub(1, Pos - 1)..c..s:sub(Pos + 1, -1)
 
-  editor.SetString(Info.EditorID, -1, s)
+  return editor.SetString(Info.EditorID, -1, s)
 end ---- ShiftDigit
 
   local ssub, srep = string.sub, string.rep
@@ -715,7 +716,7 @@ function unit.ShiftNumber (Shift)
   end
   s = s:sub(1, PosB - 1)..c..s:sub(PosE + 1, -1)
 
-  editor.SetString(Info.EditorID, -1, s)
+  return editor.SetString(Info.EditorID, -1, s)
 end ---- ShiftNumber
 
 end -- do
@@ -803,7 +804,7 @@ function unit.SeparateNumber (Separator, GroupSize, MaxDigits)
 
   s = s:sub(1, PosB - 1)..c..s:sub(PosE + 1, -1)
 
-  editor.SetString(Info.EditorID, -1, s)
+  return editor.SetString(Info.EditorID, -1, s)
 end ---- SeparateNumber
 
 end -- do
@@ -885,7 +886,7 @@ function unit.FoldByteSize (Separator, GroupSize, MaxDigits)
   s = s:sub(1, PosB - 1)..c..s:sub(PosE + 1, -1)
 
   editor.SetString(Info.EditorID, -1, s)
-  editor.SetPosition(Info.EditorID, { CurPos = PosB + c:len() - 1 })
+  return editor.SetPosition(Info.EditorID, { CurPos = PosB + c:len() - 1 })
 end ---- FoldByteSize
 
 end -- do
@@ -1064,9 +1065,9 @@ for k, v in pairs(IndentBullets) do
       action = function ()
                  local Info = editor.GetInfo()
                  print(k..BulletSep)
-                 editor.SetPosition(Info.EditorID,
-                                    { CurLine = Info.CurLine + 1,
-                                      CurPos  = Info.CurPos })
+                 return editor.SetPosition(Info.EditorID,
+                                           { CurLine = Info.CurLine + 1,
+                                             CurPos  = Info.CurPos })
                end,
     } ---
   end
@@ -1074,27 +1075,138 @@ end
 
 end -- do
 
--- Autoset a previous item number incremently for list.
--- Автоустановка предыдущего номера пункта с инкрементом для списка.
+---------------------------------------- -- Section number
+
+-- Autoset a section number (incremently).
+-- Автоустановка номера раздела (с инкрементом).
+local function AutoSectionNumber ()
+  local Info = editor.GetInfo()
+  local n = unit.FindNumberStr(Info, Info.CurLine, Info.CurPos, -1, 1000)
+  -- TODO: Переделать с использованием только Lua, без Keys/print.
+  if n then
+    local Len = n:len()
+    n = tostring(tonumber(n) + 1)
+    if n:len() > Len then Keys"Left" end
+    print(n..".")
+  else
+    print("1.")
+  end
+
+  Keys"Left"
+end ---- AutoSectionNumber
+
+  local SectionPat = "[^\.]*\."
+
+-- Clear a section number from all supersections' numbers.
+-- Очистка номера раздела от всех номеров надразделов.
+--[[
+  -- @params:
+  Level (number) - a number of sections to clear (@default = all but last).
+  Subst (string) - a substitution of section number (@default = two spaces).
+  Kind  (string) - a kind of section numeration (@default: "both"):
+                   "number", "roman", "both", "all".
+--]]
+local function ClearSectionNumber (Level, Subst, Kind)
+  local Info = editor.GetInfo()
+
+  -- Пропуск пустых строк:
+  local s -- Текущая линия
+  local Line = Info.CurLine
+  local Pos = { CurLine = 0 }
+  repeat
+    if Line == Info.TotalLines - 1 then return end
+    s = editor.GetString(Info.EditorID, -1, 2)
+    -- Следующая линия:
+    Line = Line + 1
+    Pos.CurLine = Line
+    editor.SetPosition(Info.EditorID, Pos)
+  until not s:find("^%s-$")
+
+  local PosB, PosE = s:cfind("[^%s]+") -- Позиция начала и конца
+  if not PosB then return end
+  --far.Message(PosE, PosB)
+
+  -- Подстрока с номерами:
+  local c = s:sub(PosB, PosE)
+  if c == s then return end -- Только текст
+  --far.Message(c, c:len())
+
+  if c:sub(-1, -1) ~= "." then c = c.."." end
+  local _, Count = c:gsub(SectionPat, "") -- Количество номеров
+  --far.Message(c, Count)
+
+  local Level = Level or Count - 1
+  local Subst = Subst or "  "
+  local Kind  = Kind or "both"
+
+  Count = Level
+
+  local function ReplaceSection (s)
+    if s == "." then return "" end
+    if Kind == "all" then return Subst end
+
+    if Kind == "number" or Kind == "both" then
+      if s:find("^%d+\.$") then return Subst end
+    end
+    if Kind == "roman"  or Kind == "both" then
+      if s:find("^[IVXLCDMivxlcdm]+\.$") then return Subst end
+    end
+
+    Count = Count - 1 -- Без замены
+  end -- ReplaceSection
+
+  c, Count = c:gsub(SectionPat, ReplaceSection, Level)
+  --far.Message('"'..c..'"', tostring(Level - Count > 0))
+
+  --[[
+  local t = {
+    tostring(PosB),
+    tostring(PosE),
+    '"'..c..'"',
+    '"'..s..'"',
+  } ---
+  far.Message(table.concat(t, "\n"), Line)
+  --]]
+
+  if Count ~= Level then
+    s = s:sub(1, PosB - 1)..c..s:sub(PosE + 1, -1)
+    --far.Message('"'..s..'"', c:len())
+
+    Pos.CurLine = Line - 1 -- Текущая линия:
+    editor.SetPosition(Info.EditorID, Pos)
+    editor.SetString(Info.EditorID, -1, s)
+    Pos.CurLine = Line -- Следующая линия:
+    return editor.SetPosition(Info.EditorID, Pos)
+  end
+end -- ClearSectionNumber
+
 Macro {
   area = "Editor",
   key = "AltZ",
   flags = "DisableOutput",
   description = "ReadMe: 'Num. ' from up",
   action = function ()
-             local Info = editor.GetInfo()
-             local n = unit.FindNumberStr(Info, Info.CurLine,
-                                                Info.CurPos, -1, 1000)
-             if n then
-               local Len = n:len()
-               n = tostring(tonumber(n) + 1)
-               if n:len() > Len then Keys"Left" end
-               print(n..".")
-             else
-               print("1.")
-             end
+             return AutoSectionNumber()
+           end,
+} ---
 
-             Keys"Left"
+Macro {
+  area = "Editor",
+  key = "CtrlY",
+  flags = "DisableOutput",
+  description = "ReadMe: Clear first 'Num. '",
+  action = function ()
+             return ClearSectionNumber(1, nil, "both")
+           end,
+} ---
+
+Macro {
+  area = "Editor",
+  key = "CtrlShiftY",
+  flags = "DisableOutput",
+  description = "ReadMe: Clear all 'Num. ' but last",
+  action = function ()
+             return ClearSectionNumber(nil, nil, "both")
            end,
 } ---
 
