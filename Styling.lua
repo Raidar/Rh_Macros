@@ -1,9 +1,9 @@
---[[ Colorer macros ]]--
+--[[ Styling macros ]]--
 
 ----------------------------------------
 --[[ description:
-  -- Macros for FarColorer.
-  -- Макросы для FarColorer.
+  -- Macros for text styling.
+  -- Макросы для стилизации текста.
 --]]
 ----------------------------------------
 --[[ uses:
@@ -25,6 +25,9 @@ local logShow = dbg.Show
 --------------------------------------------------------------------------------
 --local unit = {}
 
+local guids, guid = {}
+--unit.guids = guids
+
 local Macro = Macro or function () end
 
 local Async = function () return mmode(3, 1) end
@@ -33,9 +36,10 @@ local PluginExist = Plugin.Exist
 local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 
 ---------------------------------------- 'C' -- Colorer
-local guid = "D2F36B62-A470-418D-83A3-ED7A3710E5B5"
+guid = "D2F36B62-A470-418D-83A3-ED7A3710E5B5"
+guids.Colorer = guid
 
-local IsExist = function () return PluginExist(guid) end
+local Exist = function () return PluginExist(guid) end
 
 -- [[
 Macro {
@@ -43,7 +47,7 @@ Macro {
   key = "CtrlAltShiftC",
   flags = "DisableOutput",
   description = "Colorer: Reload HRC",
-  condition = IsExist,
+  condition = Exist,
   action = function ()
              --return CallPlugin(guid, 12)
              if PluginMenu(guid) then Keys"R" end
@@ -54,7 +58,7 @@ Macro {
   key = "CtrlShiftL",
   flags = "DisableOutput",
   description = "Colorer: Section List",
-  condition = IsExist,
+  condition = Exist,
   action = function ()
              --return CallPlugin(guid, 5)
              if PluginMenu(guid) then Keys"5" end
@@ -65,7 +69,7 @@ Macro {
   key = "CtrlShiftNum9",
   flags = "DisableOutput",
   description = "Colorer: Prev Section",
-  condition = IsExist,
+  condition = Exist,
   action = function ()
              --Keys"F11 C 5 Up Enter"
              if PluginMenu(guid) then Keys"5 Up Enter" end
@@ -76,7 +80,7 @@ Macro {
   key = "CtrlShiftNum3",
   flags = "DisableOutput",
   description = "Colorer: Next Section",
-  condition = IsExist,
+  condition = Exist,
   action = function ()
              --Keys"F11 C 5 Down Enter"
              if PluginMenu(guid) then Keys"5 Down Enter" end
@@ -87,7 +91,7 @@ Macro {
   key = "CtrlAltL",
   flags = "DisableOutput",
   description = "Colorer: Attention List",
-  condition = IsExist,
+  condition = Exist,
   action = function ()
              --return CallPlugin(guid, 6)
              if PluginMenu(guid) then Keys"6" end

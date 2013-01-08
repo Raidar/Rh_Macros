@@ -2,8 +2,8 @@
 
 ----------------------------------------
 --[[ description:
-  -- Macros for search.
-  -- Макросы для поиска.
+  -- Macros for find and replace.
+  -- Макросы для поиска и замены.
 --]]
 ----------------------------------------
 --[[ uses:
@@ -25,9 +25,8 @@ local logShow = dbg.Show
 --------------------------------------------------------------------------------
 --local unit = {}
 
-local guids = {}
+local guids, guid = {}
 --unit.guids = guids
---guids.PluginCmds = "937F0B1C-7690-4F85-8469-AA935517F202"
 
 local Macro = Macro or function () end
 
@@ -42,18 +41,19 @@ local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 
 ---------------------------------------- -- '(' -- Brackets
 -- [[
-guids.Brackets = "B66C436D-E657-419C-86D3-6834B9ACF3D2"
+guid = "B66C436D-E657-419C-86D3-6834B9ACF3D2"
+guids.Brackets = guid
 
-local IsExist = function () return PluginExist(guids.Brackets) end
+local Exist = function () return PluginExist(guid) end
 
 Macro {
   area = "Editor",
   key = "CtrlShift9",
   flags = "DisableOutput",
   description = "Find: Paired bracket",
-  condition = IsExist,
+  condition = Exist,
   action = function ()
-             CallPlugin(guids.Brackets, 0) -- Find forward
+             return CallPlugin(guid, 0) -- Find forward
            end, ---
 } ---
 Macro {
@@ -61,9 +61,9 @@ Macro {
   key = "CtrlShift0",
   flags = "DisableOutput",
   description = "Find: Select bracket",
-  condition = IsExist,
+  condition = Exist,
   action = function ()
-             CallPlugin(guids.Brackets, 2) -- Select forward
+             return CallPlugin(guid, 2) -- Select forward
            end, ---
 } ---
 --]]
