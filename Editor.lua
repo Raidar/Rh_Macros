@@ -149,8 +149,7 @@ function unit.SaveAsUtf8noBOM (Ask)
   if Area.Dialog then Keys"Enter" end
 
   -- Восстановление текущих линии и позиции
-  return editor.SetPosition(Info.EditorID, { CurLine = Info.CurLine,
-                                             CurPos  = Info.CurPos })
+  return editor.SetPosition(Info.EditorID, Info.CurLine, Info.CurPos)
 end ---- SaveAsUtf8noBOM
 
 Macro {
@@ -205,8 +204,7 @@ Macro {
 
              local shift = Info.CurPos - Info.WindowSizeX / 4 * 3
              if shift > 0 then
-               return editor.SetPosition(Info.EditorID,
-                                         { LeftPos = Info.LeftPos + shift })
+               return editor.SetPosition(Info.EditorID, -1, Info.LeftPos + shift)
              end
            end, ---
 } ---
@@ -886,7 +884,7 @@ function unit.FoldByteSize (Separator, GroupSize, MaxDigits)
   s = s:sub(1, PosB - 1)..c..s:sub(PosE + 1, -1)
 
   editor.SetString(Info.EditorID, -1, s)
-  return editor.SetPosition(Info.EditorID, { CurPos = PosB + c:len() - 1 })
+  return editor.SetPosition(Info.EditorID, -1, PosB + c:len() - 1)
 end ---- FoldByteSize
 
 end -- do
@@ -923,7 +921,7 @@ Macro {
              Keys"End"
              print" ()"
              Keys"Left"
-           end,
+           end, ---
 } ---
 Macro {
   area = "Editor",
@@ -933,7 +931,7 @@ Macro {
   action = function ()
              print" ()"
              Keys"Left"
-           end,
+           end, ---
 } ---
 Macro {
   area = "Editor",
@@ -944,7 +942,7 @@ Macro {
              print"("
              Keys"End"
              print")"
-           end,
+           end, ---
 } ---
 Macro {
   area = "Editor",
@@ -956,7 +954,7 @@ Macro {
              Keys"End"
              print")"
              Keys"Down End CtrlLeft"
-           end,
+           end, ---
 } ---
 
 Macro {
@@ -971,7 +969,7 @@ Macro {
              Keys"Down End"
              -- TODO: Доделать: выделять только числа, текст пропускать?!
              Keys"CtrlLeft"
-           end,
+           end, ---
 } ---
 
 Macro {
@@ -984,7 +982,7 @@ Macro {
              print")"
              Keys"CtrlLeft"
              print"("
-           end,
+           end, ---
 } ---
 Macro {
   area = "Editor",
@@ -997,7 +995,7 @@ Macro {
              Keys"CtrlLeft CtrlLeft CtrlLeft"
              print"("
              Keys"Down End"
-           end,
+           end, ---
 } ---
 
 -- Autoset a previous page number.
@@ -1014,7 +1012,7 @@ Macro {
              print" ()"
              Keys"Left"
              if n then print(n) end
-           end,
+           end, ---
 } ---
 ---------------------------------------- -- List bullet
 do
@@ -1042,7 +1040,7 @@ for k, v in pairs(Bullets) do
       action = function ()
                  print(k..BulletSep)
                  --prints(k, BulletSep)
-               end,
+               end, ---
     } ---
   end
 end
@@ -1066,9 +1064,8 @@ for k, v in pairs(IndentBullets) do
                  local Info = editor.GetInfo()
                  print(k..BulletSep)
                  return editor.SetPosition(Info.EditorID,
-                                           { CurLine = Info.CurLine + 1,
-                                             CurPos  = Info.CurPos })
-               end,
+                                           Info.CurLine + 1, Info.CurPos)
+               end, ---
     } ---
   end
 end
@@ -1112,14 +1109,12 @@ local function ClearSectionNumber (Level, Subst, Kind)
   -- Пропуск пустых строк:
   local s -- Текущая линия
   local Line = Info.CurLine
-  local Pos = { CurLine = 0 }
   repeat
     if Line == Info.TotalLines - 1 then return end
     s = editor.GetString(Info.EditorID, -1, 2)
     -- Следующая линия:
     Line = Line + 1
-    Pos.CurLine = Line
-    editor.SetPosition(Info.EditorID, Pos)
+    editor.SetPosition(Info.EditorID, Line)
   until not s:find("^%s-$")
 
   local PosB, PosE = s:cfind("[^%s]+") -- Позиция начала и конца
@@ -1172,11 +1167,9 @@ local function ClearSectionNumber (Level, Subst, Kind)
     s = s:sub(1, PosB - 1)..c..s:sub(PosE + 1, -1)
     --far.Message('"'..s..'"', c:len())
 
-    Pos.CurLine = Line - 1 -- Текущая линия:
-    editor.SetPosition(Info.EditorID, Pos)
-    editor.SetString(Info.EditorID, -1, s)
-    Pos.CurLine = Line -- Следующая линия:
-    return editor.SetPosition(Info.EditorID, Pos)
+    editor.SetPosition(Info.EditorID, Line - 1)     -- Текущая линия
+    editor.SetString(Info.EditorID, -1, s)          -- Обновление линии
+    return editor.SetPosition(Info.EditorID, Line)  -- Следующая линия
   end
 end -- ClearSectionNumber
 
@@ -1187,7 +1180,7 @@ Macro {
   description = "ReadMe: 'Num. ' from up",
   action = function ()
              return AutoSectionNumber()
-           end,
+           end, ---
 } ---
 
 Macro {
@@ -1197,7 +1190,7 @@ Macro {
   description = "ReadMe: Clear first 'Num. '",
   action = function ()
              return ClearSectionNumber(1, nil, "both")
-           end,
+           end, ---
 } ---
 
 Macro {
@@ -1207,7 +1200,7 @@ Macro {
   description = "ReadMe: Clear all 'Num. ' but last",
   action = function ()
              return ClearSectionNumber(nil, nil, "both")
-           end,
+           end, ---
 } ---
 
 --[[
@@ -1277,8 +1270,7 @@ for k, v in pairs(Characters) do
       description = DescFmt:format(k, ucp2s(u8byte(k), true)),
       action = function ()
                  print(k)
-                 --far.Message(k, Object.Title)
-               end,
+               end, ---
     } ---
   end
 end
