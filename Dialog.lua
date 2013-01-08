@@ -42,6 +42,7 @@ Macro {
              end
              local t = {
                "GUID = "..Dlg.Id,
+               "CurPos = "..tostring(Dlg.CurPos),
                "ItemType = "..tostring(tp),
              } ---
              far.Message(table.concat(t, "\n"), Object.Title)
@@ -101,7 +102,6 @@ Macro {
              return ReplaceInFindFile()
            end, ---
 } ---
-
 Macro {
   area = "Dialog",
   key = "CtrlShiftR",

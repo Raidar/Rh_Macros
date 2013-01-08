@@ -8,7 +8,7 @@
 ----------------------------------------
 --[[ uses:
   nil.
-  -- group: Macros.
+  -- group: Macros/Plugins.
 --]]
 --------------------------------------------------------------------------------
 
@@ -53,6 +53,7 @@ Macro {
              if PluginMenu(guid) then Keys"R" end
            end, ---
 } ---
+
 Macro {
   area = "Editor",
   key = "CtrlShiftL",
@@ -86,6 +87,7 @@ Macro {
              if PluginMenu(guid) then Keys"5 Down Enter" end
            end, ---
 } ---
+
 Macro {
   area = "Editor",
   key = "CtrlAltL",
@@ -98,5 +100,4 @@ Macro {
            end, ---
 } ---
 --]]
-
 --------------------------------------------------------------------------------

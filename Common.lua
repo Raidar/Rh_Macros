@@ -17,11 +17,11 @@ local Macro = Macro or function () end
 Macro {
   area = "Shell Info QView Tree",
   key = "Esc",
-  flags = "DisableOutput",
+  flags = "DisableOutput|EmptyCommandLine",
   description = "All: Esc - Panels on/off",
   action = function ()
              Keys"CtrlO"
-           end,
+           end, ---
 } ---
 ---------------------------------------- XLat
 Macro {
@@ -31,7 +31,7 @@ Macro {
   description = "All: XLat",
   action = function ()
              Keys"XLat"
-           end,
+           end, ---
 } ---
 ---------------------------------------- File name
 -- "'" - Active Panel (changed from used "F").
@@ -43,7 +43,7 @@ Macro {
   description = "All: Full name on AP",
   action = function ()
              Keys"CtrlF"
-           end,
+           end, ---
 } ---
 Macro {
   area = "Shell Info QView Tree",
@@ -52,6 +52,6 @@ Macro {
   description = "All: Network name on AP",
   action = function ()
              Keys"CtrlAltF"
-           end,
+           end, ---
 } ---
 --------------------------------------------------------------------------------
