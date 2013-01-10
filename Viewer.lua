@@ -19,16 +19,13 @@
 local viewer = viewer
 
 ----------------------------------------
---local context = context
-
-----------------------------------------
 --[[
 local dbg = require "context.utils.useDebugs"
 local logShow = dbg.Show
 --]]
 
 --------------------------------------------------------------------------------
-local unit = {}
+--local unit = {}
 
 ----------------------------------------
 local Macro = Macro or function () end
