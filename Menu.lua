@@ -53,14 +53,93 @@ Macro {
              Keys"Esc"
            end, ---
 } ---
+---------------------------------------- User Menu
+Macro {
+  area = "UserMenu",
+  key = "BS",
+  flags = "DisableOutput",
+  description = "UserMenu: Back",
+  action = function ()
+             Keys"Esc"
+           end, ---
+} ---
+Macro {
+  area = "UserMenu",
+  key = "Esc",
+  flags = "DisableOutput",
+  description = "UserMenu: Hide",
+  action = function ()
+             Keys"ShiftF10"
+           end, ---
+} ---
 
+Macro { -- Ins -> Enter
+  area = "UserMenu",
+  key = "Ins NumIns",
+  flags = "DisableOutput",
+  priority = 100,
+  description = "UserMenu: Enter",
+  action = function ()
+             Keys"Enter"
+           end, ---
+} ---
+Macro { -- Del -> Escape
+  area = "UserMenu",
+  key = "Del NumDel",
+  flags = "DisableOutput",
+  priority = 100,
+  description = "UserMenu: Escape",
+  action = function ()
+             Keys"Esc"
+           end, ---
+} ---
+Macro { -- CtrlIns -> Enter
+  area = "UserMenu",
+  key = "CtrlIns CtrlNumIns",
+  flags = "DisableOutput",
+  priority = 100,
+  description = "UserMenu: Enter",
+  action = function ()
+             Keys"Enter"
+           end, ---
+} ---
+Macro { -- CtrlDel -> Escape
+  area = "UserMenu",
+  key = "CtrlDel CtrlNumDel",
+  flags = "DisableOutput",
+  priority = 100,
+  description = "UserMenu: Esc",
+  action = function ()
+             Keys"Esc"
+           end, ---
+} ---
+Macro { -- F4 -> Enter
+  area = "UserMenu",
+  key = "F4",
+  flags = "DisableOutput",
+  priority = 100,
+  description = "UserMenu: Enter",
+  action = function ()
+             Keys"Enter"
+           end, ---
+} ---
+Macro { -- CtrlF4 -> Enter
+  area = "UserMenu",
+  key = "CtrlF4",
+  flags = "DisableOutput",
+  priority = 100,
+  description = "UserMenu: Enter",
+  action = function ()
+             Keys"Enter"
+           end, ---
+} ---
 ---------------------------------------- Any Menu
 
 -- Change Ins/Del to protect from random press.
 
 Macro { -- Ins -> Up
-  area = "Menu",
-  key = "Ins",
+  area = "Menu MainMenu UserMenu",
+  key = "Ins NumIns",
   flags = "DisableOutput",
   description = "Menu: Prev item",
   action = function ()
@@ -68,8 +147,8 @@ Macro { -- Ins -> Up
            end, ---
 } ---
 Macro { -- Del -> Down
-  area = "Menu",
-  key = "Del",
+  area = "Menu MainMenu UserMenu",
+  key = "Del NumDel",
   flags = "DisableOutput",
   description = "Menu: Next item",
   action = function ()
@@ -78,8 +157,8 @@ Macro { -- Del -> Down
 } ---
 
 Macro { -- CtrlIns -> Ins
-  area = "Menu",
-  key = "CtrlIns",
+  area = "Menu MainMenu UserMenu",
+  key = "CtrlIns CtrlNumIns",
   flags = "DisableOutput",
   description = "Menu: Insert item",
   action = function ()
@@ -87,8 +166,8 @@ Macro { -- CtrlIns -> Ins
            end, ---
 } ---
 Macro { -- CtrlDel -> Del
-  area = "Menu",
-  key = "CtrlDel",
+  area = "Menu MainMenu UserMenu",
+  key = "CtrlDel CtrlNumDel",
   flags = "DisableOutput",
   description = "Menu: Delete item",
   action = function ()
