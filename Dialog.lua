@@ -23,6 +23,9 @@ local logShow = dbg.Show
 --]]
 
 --------------------------------------------------------------------------------
+--local unit = {}
+
+----------------------------------------
 local Macro = Macro or function () end
 
 ---------------------------------------- Dialog info
@@ -62,12 +65,11 @@ Macro {
            end, ---
 } ---
 ---------------------------------------- FindFile
+local FindFileResultID = "536754EB-C2D1-4626-933F-A25D1E1D110A"
 -- Проверка на диалог FindFile.
-local function IsFindFileDialog ()
-  return Dlg.Id == "00000000-0000-0000-0000-000000000000" and
-         Dlg.ItemType == F.DI_BUTTON and
-         Object.Title:cfind("Поиск файла: ", 1, true) == 1
-end -- IsFindFileDialog
+local function IsFindFileResult ()
+  return Dlg.Id == FindFileResultID
+end
 
 local function ReplaceInFindFile ()
   --far.Message(Dlg.Id, Object.Title)
@@ -95,9 +97,7 @@ Macro {
   key = "CtrlR",
   flags = "DisableOutput",
   description = "FindFile: Replace in file",
-  condition = function ()
-                return IsFindFileDialog()
-              end, ---
+  condition = IsFindFileResult,
   action = function ()
              return ReplaceInFindFile()
            end, ---
@@ -107,9 +107,7 @@ Macro {
   key = "CtrlShiftR",
   flags = "DisableOutput",
   description = "FindFile: Replace in file + Down",
-  condition = function ()
-                return IsFindFileDialog()
-              end, ---
+  condition = IsFindFileResult,
   action = function ()
              ReplaceInFindFile()
              Keys"Down" -- На следующий элемент
