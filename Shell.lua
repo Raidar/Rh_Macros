@@ -11,6 +11,17 @@
   -- group: Macros.
 --]]
 --------------------------------------------------------------------------------
+
+----------------------------------------
+--[[
+local dbg = require "context.utils.useDebugs"
+local logShow = dbg.Show
+--]]
+
+--------------------------------------------------------------------------------
+--local unit = {}
+
+----------------------------------------
 local Macro = Macro or function () end
 
 ---------------------------------------- Panels
@@ -37,6 +48,99 @@ Macro { -- Find file with clipboard namepart…
              print"**.*"
              Keys"Home Right CtrlV"
              exit()
+           end, ---
+} ---
+---------------------------------------- -- File info
+Macro { -- File name
+  area = "Shell",
+  key = "CtrlF3",
+  flags = "DisableOutput",
+  description = "Panel: File name",
+  action = function ()
+             local s = APanel.Path.."\\"
+             if APanel.Root or not APanel.Bof then
+               s = s..APanel.Current
+             end
+             return far.CopyToClipboard(s)
+           end, ---
+} ---
+Macro { -- File extension
+  area = "Shell",
+  key = "CtrlF4",
+  flags = "DisableOutput",
+  description = "Panel: File extension",
+  action = function ()
+             local s = ""
+             if APanel.Root or not APanel.Bof then
+               s = APanel.Current
+               local p = s:cfind("\.[^\.]-$")
+               if p then s = s:sub(p, -1) end
+             end
+             return far.CopyToClipboard(s)
+           end, ---
+} ---
+Macro { -- File modification time
+  area = "Shell",
+  key = "CtrlF5",
+  flags = "DisableOutput",
+  description = "Panel: File modification time",
+  action = function ()
+             return far.CopyToClipboard(Panel.Item(0, 0, 5))
+           end, ---
+} ---
+Macro { -- File size
+  area = "Shell",
+  key = "CtrlF6",
+  flags = "DisableOutput",
+  description = "Panel: File size",
+  action = function ()
+             if APanel.Folder then Keys"F3" end
+             return far.CopyToClipboard(Panel.Item(0, 0, 6))
+           end, ---
+} ---
+Macro { -- File path
+  area = "Shell",
+  key = "CtrlF7",
+  flags = "DisableOutput",
+  description = "Panel: File path",
+  action = function ()
+             return far.CopyToClipboard(APanel.Path)
+           end, ---
+} ---
+Macro { -- File creation time
+  area = "Shell",
+  key = "CtrlF8",
+  flags = "DisableOutput",
+  description = "Panel: File creation time",
+  action = function ()
+             return far.CopyToClipboard(Panel.Item(0, 0, 3))
+           end, ---
+} ---
+Macro { -- File access time
+  area = "Shell",
+  key = "CtrlF9",
+  flags = "DisableOutput",
+  description = "Panel: File access time",
+  action = function ()
+             return far.CopyToClipboard(Panel.Item(0, 0, 4))
+           end, ---
+} ---
+Macro { -- File packed size
+  area = "Shell",
+  key = "CtrlF10",
+  flags = "DisableOutput",
+  description = "Panel: File packed size",
+  action = function ()
+             return far.CopyToClipboard(Panel.Item(0, 0, 7))
+           end, ---
+} ---
+Macro { -- File CRC32
+  area = "Shell",
+  key = "CtrlF11",
+  flags = "DisableOutput",
+  description = "Panel: File CRC32",
+  action = function ()
+             return far.CopyToClipboard(Panel.Item(0, 0, 13))
            end, ---
 } ---
 ---------------------------------------- Command line
