@@ -20,7 +20,7 @@ local F = far.Flags
 --local unit = {}
 
 ----------------------------------------
-local guids, guid = {}
+local guids = {}
 --unit.guids = guids
 
 local Macro = Macro or function () end
@@ -31,12 +31,12 @@ local PluginExist = Plugin.Exist
 local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 
 ---------------------------------------- '7' -- ArcLite
-guid = "65642111-AA69-4B84-B4B8-9249579EC4FA"
-guids.ArcLite = guid
-
-local Exist = function () return PluginExist(guid) end
-
 -- [[
+guids.ArcLite = "65642111-AA69-4B84-B4B8-9249579EC4FA"
+guids.ArcLiteArchive = "CD57D7FA-552C-4E31-8FA8-73D9704F0666"
+
+local Exist = function () return PluginExist(guids.ArcLite) end
+
 Macro {
   area = "Shell",
   key = "AltShiftF1",
@@ -44,12 +44,11 @@ Macro {
   description = "Arch: Choose profile…",
   condition = Exist,
   action = function ()
-             if not PluginMenu(guid) then return end
+             if not PluginMenu(guids.ArcLite) then return end
 
              -- Окно "Создание архива"
              Keys"Down Down Enter"
-             if not Area.Dialog or
-                Dlg.Id ~= "CD57D7FA-552C-4E31-8FA8-73D9704F0666" then
+             if not Area.Dialog or Dlg.Id ~= guids.ArcLiteArchive then
                return
              end
 
@@ -81,12 +80,11 @@ Macro { -- Editor.WordDiv must be consist "."
              local Name = Panel.Current
              local ExtPos = Name:cfind("\.[^\.]-$")
 
-             if not PluginMenu(guid) then return end
+             if not PluginMenu(guids.ArcLite) then return end
 
              -- Окно "Создание архива"
              Keys"Down Down Enter"
-             if not Area.Dialog or
-                Dlg.Id ~= "CD57D7FA-552C-4E31-8FA8-73D9704F0666" then
+             if not Area.Dialog or Dlg.Id ~= guids.ArcLiteArchive then
                return
              end
 
@@ -111,7 +109,7 @@ Macro {
              Keys"ShiftF3"
              if Area.Menu then Keys"Enter" end
 
-             --if not PluginMenu(guid) then return end
+             --if not PluginMenu(guids.ArcLite) then return end
              --Keys"Up Up Enter"
              -- Окно "Результат тестирования архива"
 

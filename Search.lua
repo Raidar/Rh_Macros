@@ -26,7 +26,7 @@ local logShow = dbg.Show
 --local unit = {}
 
 ----------------------------------------
-local guids, guid = {}
+local guids = {}
 --unit.guids = guids
 
 local Macro = Macro or function () end
@@ -42,10 +42,9 @@ local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 
 ---------------------------------------- '(' -- Brackets
 -- [[
-guid = "B66C436D-E657-419C-86D3-6834B9ACF3D2"
-guids.Brackets = guid
+guids.Brackets = "B66C436D-E657-419C-86D3-6834B9ACF3D2"
 
-local Exist = function () return PluginExist(guid) end
+local Exist = function () return PluginExist(guids.Brackets) end
 
 Macro {
   area = "Editor",
@@ -54,7 +53,7 @@ Macro {
   description = "Find: Paired bracket",
   condition = Exist,
   action = function ()
-             return CallPlugin(guid, 0) -- Find forward
+             return CallPlugin(guids.Brackets, 0) -- Find forward
            end, ---
 } ---
 Macro {
@@ -64,7 +63,7 @@ Macro {
   description = "Find: Select bracket",
   condition = Exist,
   action = function ()
-             return CallPlugin(guid, 2) -- Select forward
+             return CallPlugin(guids.Brackets, 2) -- Select forward
            end, ---
 } ---
 --]]

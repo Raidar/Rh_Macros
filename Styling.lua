@@ -26,7 +26,7 @@ local logShow = dbg.Show
 --local unit = {}
 
 ----------------------------------------
-local guids, guid = {}
+local guids = {}
 --unit.guids = guids
 
 local Macro = Macro or function () end
@@ -37,12 +37,11 @@ local PluginExist = Plugin.Exist
 local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 
 ---------------------------------------- 'C' -- Colorer
-guid = "D2F36B62-A470-418D-83A3-ED7A3710E5B5"
-guids.Colorer = guid
-
-local Exist = function () return PluginExist(guid) end
-
 -- [[
+guids.Colorer = "D2F36B62-A470-418D-83A3-ED7A3710E5B5"
+
+local Exist = function () return PluginExist(guids.Colorer) end
+
 Macro {
   area = "Editor",
   key = "CtrlAltShiftC",
@@ -50,8 +49,8 @@ Macro {
   description = "Colorer: Reload HRC",
   condition = Exist,
   action = function ()
-             --return CallPlugin(guid, 12)
-             if PluginMenu(guid) then Keys"R" end
+             --return CallPlugin(guids.Colorer, 12)
+             if PluginMenu(guids.Colorer) then Keys"R" end
            end, ---
 } ---
 
@@ -62,8 +61,8 @@ Macro {
   description = "Colorer: Section List",
   condition = Exist,
   action = function ()
-             --return CallPlugin(guid, 5)
-             if PluginMenu(guid) then Keys"5" end
+             --return CallPlugin(guids.Colorer, 5)
+             if PluginMenu(guids.Colorer) then Keys"5" end
            end, ---
 } ---
 Macro {
@@ -74,7 +73,7 @@ Macro {
   condition = Exist,
   action = function ()
              --Keys"F11 C 5 Up Enter"
-             if PluginMenu(guid) then Keys"5 Up Enter" end
+             if PluginMenu(guids.Colorer) then Keys"5 Up Enter" end
            end, ---
 } ---
 Macro {
@@ -85,7 +84,7 @@ Macro {
   condition = Exist,
   action = function ()
              --Keys"F11 C 5 Down Enter"
-             if PluginMenu(guid) then Keys"5 Down Enter" end
+             if PluginMenu(guids.Colorer) then Keys"5 Down Enter" end
            end, ---
 } ---
 
@@ -96,8 +95,8 @@ Macro {
   description = "Colorer: Attention List",
   condition = Exist,
   action = function ()
-             --return CallPlugin(guid, 6)
-             if PluginMenu(guid) then Keys"6" end
+             --return CallPlugin(guids.Colorer.Colorer, 6)
+             if PluginMenu(guids.Colorer) then Keys"6" end
            end, ---
 } ---
 --]]

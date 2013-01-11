@@ -26,6 +26,9 @@ local logShow = dbg.Show
 --local unit = {}
 
 ----------------------------------------
+local guids = {}
+--unit.guids = guids
+
 local Macro = Macro or function () end
 
 ---------------------------------------- Dialog info
@@ -65,10 +68,11 @@ Macro {
            end, ---
 } ---
 ---------------------------------------- FindFile
-local FindFileResultID = "536754EB-C2D1-4626-933F-A25D1E1D110A"
+guids.FindFileResult = "536754EB-C2D1-4626-933F-A25D1E1D110A"
+
 -- Проверка на диалог FindFile.
 local function IsFindFileResult ()
-  return Dlg.Id == FindFileResultID
+  return Dlg.Id == guids.FindFileResult
 end
 
 local function ReplaceInFindFile ()

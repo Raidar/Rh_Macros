@@ -30,7 +30,7 @@ local logShow = dbg.Show
 --local unit = {}
 
 ----------------------------------------
-local guids, guid = {}
+local guids = {}
 --unit.guids = guids
 
 local Macro = Macro or function () end
@@ -41,12 +41,11 @@ local PluginExist = Plugin.Exist
 local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 
 ---------------------------------------- 'R' -- EditCase
-guid = "0E92FC81-4888-4297-A85D-31C79E0E0CEE"
-guids.EditCase = guid
-
-local Exist = function () return PluginExist(guid) end
-
 -- [[
+guids.EditCase = "0E92FC81-4888-4297-A85D-31C79E0E0CEE"
+
+local Exist = function () return PluginExist(guids.EditCase) end
+
 Macro {
   area = "Editor",
   key = "F5",
@@ -54,7 +53,7 @@ Macro {
   description = "Case: Next case",
   condition = Exist,
   action = function ()
-             return CallPlugin(guid, 4)
+             return CallPlugin(guids.EditCase, 4)
            end, ---
 } ---
 
@@ -67,7 +66,7 @@ Macro {
   action = function ()
              local Info = editor.GetInfo()
              Keys"ShiftHome CtrlShiftRight CtrlShiftLeft ShiftRight"
-             CallPlugin(guid, 0)
+             CallPlugin(guids.EditCase, 0)
              editor.Select(Info.EditorID, BlockNoneType)
              return editor.SetPosition(Info.EditorID, -1, Info.CurPos)
            end, ---
@@ -81,7 +80,7 @@ Macro {
   action = function ()
              local Info = editor.GetInfo()
              Keys"ShiftHome CtrlShiftRight CtrlShiftRight CtrlShiftLeft ShiftRight"
-             CallPlugin(guid, 0)
+             CallPlugin(guids.EditCase, 0)
              editor.Select(Info.EditorID, BlockNoneType)
              return editor.SetPosition(Info.EditorID, -1, Info.CurPos)
            end, ---

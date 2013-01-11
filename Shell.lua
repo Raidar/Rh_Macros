@@ -22,11 +22,28 @@ local logShow = dbg.Show
 --local unit = {}
 
 ----------------------------------------
+local guids = {}
+--unit.guids = guids
+
 local Macro = Macro or function () end
 
 ---------------------------------------- Panels
 
 ---------------------------------------- -- Find file
+guids.FindFile = "8C9EAD29-910F-4B24-A669-EDAFBA6ED964"
+
+Macro {
+  area = "Shell",
+  key = "CtrlF",
+  flags = "DisableOutput",
+  description = "Find: Find…",
+  action = function ()
+             Keys"AltF7"
+             if Area.Dialog and Dlg.Id == guids.FindFile then
+               exit()
+             end
+           end, ---
+} ---
 -- Find folder --> 
 Macro { -- Find file with clipboard text..
   area = "Shell",
@@ -34,8 +51,11 @@ Macro { -- Find file with clipboard text..
   flags = "DisableOutput",
   description = "Find: Find files with text…",
   action = function ()
-             Keys"AltF7 Tab CtrlV ShiftTab"
-             exit()
+             Keys"AltF7"
+             if Area.Dialog and Dlg.Id == guids.FindFile then
+               Keys"Tab CtrlV ShiftTab"
+               exit()
+             end
            end, ---
 } ---
 Macro { -- Find file with clipboard namepart…
@@ -45,9 +65,11 @@ Macro { -- Find file with clipboard namepart…
   description = "Find: Find files with namepart…",
   action = function ()
              Keys"AltF7"
-             print"**.*"
-             Keys"Home Right CtrlV"
-             exit()
+             if Area.Dialog and Dlg.Id == guids.FindFile then
+               print"**.*"
+               Keys"Home Right CtrlV"
+               exit()
+             end
            end, ---
 } ---
 ---------------------------------------- -- File info
@@ -143,6 +165,42 @@ Macro { -- File CRC32
              return far.CopyToClipboard(Panel.Item(0, 0, 13))
            end, ---
 } ---
+---------------------------------------- -- Attributes
+--[[
+guids.Attributes = "80695D20-1085-44D6-8061-F3C41AB5569C"
+
+Macro {
+  area = "Shell",
+  key = "CtrlShiftA",
+  flags = "DisableOutput",
+  description = "Panel: File - RA",
+  condition = function ()
+                return APanel.Selected or APanel.Root or not APanel.Bof
+              end, ---
+  action = function ()
+             Keys"CtrlA"
+             if Area.Dialog and Dlg.Id == guids.Attributes then
+             end
+           end, ---
+} ---
+-- [ [
+%c=0;
+$Rep(2)
+  %s=Dlg.GetValue(Dlg.CurPos,0);
+  $If(%s!=1)
+    Add
+    %c=%c+1;
+  $End
+  Down
+$End
+
+$If(%c>0)
+  Enter
+$Else
+  Esc
+  ShiftSubtract
+$End
+--]]
 ---------------------------------------- Command line
 
 ---------------------------------------- -- Text

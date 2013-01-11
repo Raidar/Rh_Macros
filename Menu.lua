@@ -26,6 +26,9 @@ local logShow = dbg.Show
 --local unit = {}
 
 ----------------------------------------
+--local guids = {}
+--unit.guids = guids
+
 local Macro = Macro or function () end
 
 ---------------------------------------- Menu info
