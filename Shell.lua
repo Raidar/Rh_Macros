@@ -13,6 +13,10 @@
 --------------------------------------------------------------------------------
 
 ----------------------------------------
+local far = far
+local F = far.Flags
+
+----------------------------------------
 --[[
 local dbg = require "context.utils.useDebugs"
 local logShow = dbg.Show
@@ -166,10 +170,11 @@ Macro { -- File CRC32
            end, ---
 } ---
 ---------------------------------------- -- Attributes
---[[
+-- [[
 guids.Attributes = "80695D20-1085-44D6-8061-F3C41AB5569C"
 
-Macro {
+-- Установка ReadOnly и Archive:
+Macro { -- для файла, каталога или выделенных элементов
   area = "Shell",
   key = "CtrlShiftA",
   flags = "DisableOutput",
@@ -178,29 +183,61 @@ Macro {
                 return APanel.Selected or APanel.Root or not APanel.Bof
               end, ---
   action = function ()
+             local Dlg = Dlg
+
              Keys"CtrlA"
-             if Area.Dialog and Dlg.Id == guids.Attributes then
+             if not Area.Dialog or Dlg.Id ~= guids.Attributes then
+               return
+             end
+
+             -- Установка ReadOnly и Archive
+             local k = 0
+             for i = 1, 2 do
+               local v = Dlg.GetValue(Dlg.CurPos, 0)
+               if v ~= 1 then
+                 Keys"Add"
+                 k = k + 1
+               end
+               Keys"Down"
+             end
+
+             if k > 0 then
+               Keys"Enter"
+             else
+               Keys"Esc"
+               if Area.Shell then Keys"ShiftSubtract" end
              end
            end, ---
 } ---
--- [ [
-%c=0;
-$Rep(2)
-  %s=Dlg.GetValue(Dlg.CurPos,0);
-  $If(%s!=1)
-    Add
-    %c=%c+1;
-  $End
-  Down
-$End
+Macro { -- для файла, каталога и его элементов
+  area = "Shell",
+  key = "CtrlAltShiftA",
+  flags = "DisableOutput",
+  description = "Panel: Folder - RA",
+  condition = function ()
+                return APanel.Selected or APanel.Root or not APanel.Bof
+              end, ---
+  action = function ()
+             local Dlg = Dlg
 
-$If(%c>0)
-  Enter
-$Else
-  Esc
-  ShiftSubtract
-$End
---]]
+             Keys"CtrlA"
+             if not Area.Dialog or Dlg.Id ~= guids.Attributes then
+               return
+             end
+
+             -- Установка ReadOnly и Archive
+             Keys"Subtract Add Down Subtract Add"
+
+             -- Установка обработки вложенного
+             Keys"Up Up" -- Переход на последнюю кнопку
+             while Dlg.ItemType ~= F.DI_CHECKBOX and Dlg.CurPos > 1 do
+               Keys"Up"
+             end
+             Keys"Add"
+
+             Keys"Enter"
+           end, ---
+} ---
 ---------------------------------------- Command line
 
 ---------------------------------------- -- Text
