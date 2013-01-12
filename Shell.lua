@@ -23,7 +23,7 @@ local logShow = dbg.Show
 --]]
 
 --------------------------------------------------------------------------------
---local unit = {}
+local unit = {}
 
 ----------------------------------------
 local guids = {}
@@ -81,7 +81,7 @@ Macro { -- File name
   area = "Shell",
   key = "CtrlF3",
   flags = "DisableOutput",
-  description = "Panel: File name",
+  description = "Panel: Full file name",
   action = function ()
              local s = APanel.Path.."\\"
              if APanel.Root or not APanel.Bof then
@@ -169,6 +169,84 @@ Macro { -- File CRC32
              return far.CopyToClipboard(Panel.Item(0, 0, 13))
            end, ---
 } ---
+---------------------------------------- -- File naming
+local AreaContentValueFmt = "%s (%s) = '%s'"
+
+-- Get content of macro area table.
+-- Получение содержимого таблицы макро-области.
+local function GetAreaContent (Area) --> (table)
+  local t = {}
+  for k, v in pairs(Area.properties) do
+    local w = Area[k]
+    t[#t+1] = AreaContentValueFmt:format(k, type(w), tostring(w))
+  end
+
+  return t
+end -- GetAreaContent
+
+-- Show content of macro area table.
+-- Показ содержимого таблицы макро-области.
+function ShowAreaContent (Area, Title) --> (dialog)
+  local Content = table.concat(GetAreaContent(Area), "\n")
+  return far.Message(Content, Title or Object.Title, ";Ok", "l")
+end ----
+
+-- Get name of current item on active panel.
+-- Получение имени текущего элемента активной панели.
+--[[
+  -- @params:
+  Panel (table) - is APanel or PPanel.
+  noext  (bool) - flag to exclude extension from file name.
+  -- @return:
+  s    (string) - panel item name.
+--]]
+function unit.GetPanelItemName (Panel, noext) --> (string)
+  local Panel = Panel or APanel
+  local Name = ""
+  if Panel.FilePanel then
+    if not Panel.Bof or
+       (Panel.Root and not APanel.Plugin) then
+      Name = Panel.Current -- File name
+      if noext and not Panel.Folder and Name:find(".", 1, true) then
+        Name = Name:match("^(.+)%.[^%.]-$") -- Exclude ext
+      end
+    else
+      -- Folder name for "..".
+      -- File/folder name for plugin.
+      Name = Panel.UNCPath:match("([^\\]-)$")
+    end
+  end
+  --if APanel.Plugin
+  return Name
+end ---- GetPanelItemName
+
+-- [[
+Macro { -- File name only
+  area = "Shell",
+  key = "CtrlP",
+  flags = "DisableOutput",
+  description = "Panel: File name only to clipboard",
+  action = function ()
+             --ShowAreaContent(APanel)
+             local s = unit.GetPanelItemName(APanel, true)
+             --far.Message(s, APanel.Current)
+             return far.CopyToClipboard(s)
+           end, ---
+} ---
+Macro { -- Full file name
+  area = "Shell",
+  key = "CtrlShiftP",
+  flags = "DisableOutput",
+  description = "Panel: Full file name to clipboard",
+  action = function ()
+             --ShowAreaContent(APanel)
+             local s = unit.GetPanelItemName(APanel, false)
+             --far.Message(s, APanel.Current)
+             return far.CopyToClipboard(s)
+           end, ---
+} ---
+--[[
+--]]
 ---------------------------------------- -- Attributes
 -- [[
 guids.Attributes = "80695D20-1085-44D6-8061-F3C41AB5569C"
