@@ -32,6 +32,7 @@ local guids = {}
 local Macro = Macro or function () end
 
 ---------------------------------------- Dialog info
+-- [[
 Macro {
   area = "Dialog",
   key = "ShiftF1",
@@ -54,7 +55,9 @@ Macro {
              far.Message(table.concat(t, "\n"), Object.Title)
            end, ---
 } ---
+--]]
 ---------------------------------------- Actions
+-- [[
 Macro {
   area = "Dialog",
   key = "AltDown",
@@ -67,7 +70,9 @@ Macro {
              Keys"CtrlDown"
            end, ---
 } ---
+--]]
 ---------------------------------------- FindFile
+-- [[
 guids.FindFileResult = "536754EB-C2D1-4626-933F-A25D1E1D110A"
 
 -- Проверка на диалог FindFile.
@@ -117,4 +122,5 @@ Macro {
              Keys"Down" -- На следующий элемент
            end, ---
 } ---
+--]]
 --------------------------------------------------------------------------------

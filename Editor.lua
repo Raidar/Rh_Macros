@@ -44,6 +44,7 @@ local unit = {}
 local Macro = Macro or function () end
 
 ---------------------------------------- Actions
+-- [[
 Macro {
   area = "Editor",
   key = "CtrlShiftG",
@@ -53,7 +54,9 @@ Macro {
              Keys"AltF8"
            end, ---
 } ---
+--]]
 ---------------------------------------- File
+-- [[
 Macro {
   area = "Editor",
   key = "CtrlAltShiftL",
@@ -73,6 +76,7 @@ Macro {
              Keys"CtrlF"
            end, ---
 } ---
+--]]
 
 --[[
 Macro {
@@ -86,6 +90,7 @@ Macro {
 } ---
 --]]
 
+-- [[
 Macro {
   area = "Editor",
   key = "CtrlS",
@@ -100,6 +105,7 @@ Macro {
              end
            end, ---
 } ---
+--]]
 
 -- Save file with codepage UTF-8 without BOM.
 -- Сохранение файла в кодировке UTF-8 без BOM.
@@ -155,6 +161,7 @@ function unit.SaveAsUtf8noBOM (Ask)
   return editor.SetPosition(Info.EditorID, Info.CurLine, Info.CurPos)
 end ---- SaveAsUtf8noBOM
 
+-- [[
 Macro {
   area = "Editor",
   key = "CtrlShiftS",
@@ -164,7 +171,9 @@ Macro {
              return SaveAsUtf8noBOM(true)
            end, ---
 } ---
+--]]
 ---------------------------------------- Search
+-- [[
 Macro {
   area = "Editor",
   key = "CtrlF",
@@ -224,7 +233,9 @@ Macro {
              end
            end, ---
 } ---
+--]]
 ---------------------------------------- Space
+-- [[
 Macro {
   area = "Editor",
   key = "AltBS",
@@ -295,7 +306,9 @@ Macro {
              end
            end, ---
 } ---
+--]]
 ---------------------------------------- Move text
+-- [[
 Macro {
   area = "Editor",
   key = "Left",
@@ -386,6 +399,7 @@ Macro {
              Keys"CtrlHome Home"
            end, ---
 } ---
+--]]
 ---------------------------------------- Move block
 --[[
 Macro {
@@ -441,6 +455,7 @@ function unit.ShiftCurLine (Shift)
   return editor.SetPosition(Info.EditorID, { TopScreenLine = Line })
 end ---- ShiftCurLine
 
+-- [[
 Macro {
   area = "Editor",
   key = "CtrlEnter",
@@ -478,7 +493,9 @@ Macro {
              return unit.ShiftCurLine(-4)
            end, ---
 } ---
+--]]
 ---------------------------------------- Clipboard
+-- [[
 Macro {
   area = "Editor",
   key = "CtrlC",
@@ -534,6 +551,7 @@ Macro {
              Keys"CtrlV Down End"
            end, ---
 } ---
+--]]
 ---------------------------------------- Numeration
 do
   local isdigit = strings.isdigit
@@ -722,6 +740,7 @@ end ---- ShiftNumber
 
 end -- do
 
+-- [[
 Macro {
   area = "Editor",
   key = "AltLeft",
@@ -740,6 +759,7 @@ Macro {
              return unit.ShiftDigit(1)
            end, ---
 } ---
+--]]
 
 Macro {
   area = "Editor",
@@ -892,6 +912,7 @@ end ---- FoldByteSize
 
 end -- do
 
+-- [[
 Macro {
   area = "Editor",
   key = "AltQ",
@@ -911,10 +932,11 @@ Macro {
              return unit.FoldByteSize(" ", 3, 4)
            end, ---
 } ---
-
+--]]
 ---------------------------------------- Readme
 
 ---------------------------------------- -- Page number
+-- [[
 Macro {
   area = "Editor",
   key = "AltP",
@@ -1017,7 +1039,9 @@ Macro {
              if n then print(n) end
            end, ---
 } ---
+--]]
 ---------------------------------------- -- List bullet
+-- [[
 do
 
 local BulletSep = ". "
@@ -1074,9 +1098,9 @@ for k, v in pairs(IndentBullets) do
 end
 
 end -- do
-
+--]]
 ---------------------------------------- -- Section number
-
+-- [[
 -- Autoset a section number (incremently).
 -- Автоустановка номера раздела (с инкрементом).
 local function AutoSectionNumber ()
@@ -1205,10 +1229,9 @@ Macro {
              return ClearSectionNumber(nil, nil, "both")
            end, ---
 } ---
-
---[[
 --]]
 ---------------------------------------- Characters
+-- [[
 do
 
 local BSh = "BackSlash"
@@ -1279,4 +1302,5 @@ for k, v in pairs(Characters) do
 end
 
 end -- do
+--]]
 --------------------------------------------------------------------------------

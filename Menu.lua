@@ -32,6 +32,7 @@ local logShow = dbg.Show
 local Macro = Macro or function () end
 
 ---------------------------------------- Menu info
+-- [[
 Macro {
   area = "Menu MainMenu UserMenu",
   key = "ShiftF2",
@@ -46,7 +47,9 @@ Macro {
              far.Message(table.concat(t, "\n"), Object.Title)
            end, ---
 } ---
+--]]
 ---------------------------------------- Main Menu
+-- [[
 Macro {
   area = "MainMenu",
   key = "F9",
@@ -56,7 +59,9 @@ Macro {
              Keys"Esc"
            end, ---
 } ---
+--]]
 ---------------------------------------- User Menu
+-- [[
 Macro {
   area = "UserMenu",
   key = "BS",
@@ -136,8 +141,9 @@ Macro { -- CtrlF4 -> Enter
              Keys"Enter"
            end, ---
 } ---
+--]]
 ---------------------------------------- Any Menu
-
+-- [[
 -- Change Ins/Del to protect from random press.
 
 Macro { -- Ins -> Up
@@ -177,4 +183,5 @@ Macro { -- CtrlDel -> Del
              Keys"Del"
            end, ---
 } ---
+--]]
 --------------------------------------------------------------------------------
