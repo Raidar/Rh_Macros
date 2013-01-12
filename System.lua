@@ -30,6 +30,30 @@ local Async = function () return mmode(3, 1) end
 local PluginExist = Plugin.Exist
 local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 
+---------------------------------------- '`' -- FarCmds
+-- [[
+--guids.FarCmds = ""
+--]]
+
+---------------------------------------- 'E' -- EMenu
+-- [[
+guids.EMenu = "742910F1-02ED-4542-851F-DEE37C2E13B2"
+
+local Exist = function () return PluginExist(guids.EMenu) end
+
+Macro {
+  area = "Shell",
+  key = "AltApps",
+  flags = "DisableOutput",
+  description = "EMenu: My Computer",
+  condition = Exist,
+  action = function ()
+             PluginMenu(guids.EMenu)
+             Keys"Down Enter"
+             exit()
+           end, ---
+} ---
+--]]
 ---------------------------------------- '7' -- ArcLite
 -- [[
 guids.ArcLite = "65642111-AA69-4B84-B4B8-9249579EC4FA"
