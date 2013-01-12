@@ -83,7 +83,8 @@ Macro {
 
 Macro { -- Ins -> Enter
   area = "UserMenu",
-  key = "Ins NumIns",
+  --key = "Ins NumIns",
+  key = "Ins NumIns CtrlIns CtrlNumIns",
   flags = "DisableOutput",
   priority = 100,
   description = "UserMenu: Enter",
@@ -93,7 +94,8 @@ Macro { -- Ins -> Enter
 } ---
 Macro { -- Del -> Escape
   area = "UserMenu",
-  key = "Del NumDel",
+  --key = "Del NumDel",
+  key = "Del NumDel CtrlDel CtrlNumDel",
   flags = "DisableOutput",
   priority = 100,
   description = "UserMenu: Escape",
@@ -101,39 +103,9 @@ Macro { -- Del -> Escape
              return Keys"Esc"
            end, ---
 } ---
-Macro { -- CtrlIns -> Enter
-  area = "UserMenu",
-  key = "CtrlIns CtrlNumIns",
-  flags = "DisableOutput",
-  priority = 100,
-  description = "UserMenu: Enter",
-  action = function ()
-             return Keys"Enter"
-           end, ---
-} ---
-Macro { -- CtrlDel -> Escape
-  area = "UserMenu",
-  key = "CtrlDel CtrlNumDel",
-  flags = "DisableOutput",
-  priority = 100,
-  description = "UserMenu: Esc",
-  action = function ()
-             return Keys"Esc"
-           end, ---
-} ---
 Macro { -- F4 -> Enter
   area = "UserMenu",
-  key = "F4",
-  flags = "DisableOutput",
-  priority = 100,
-  description = "UserMenu: Enter",
-  action = function ()
-             return Keys"Enter"
-           end, ---
-} ---
-Macro { -- CtrlF4 -> Enter
-  area = "UserMenu",
-  key = "CtrlF4",
+  key = "F4 CtrlF4",
   flags = "DisableOutput",
   priority = 100,
   description = "UserMenu: Enter",
@@ -144,8 +116,7 @@ Macro { -- CtrlF4 -> Enter
 --]]
 ---------------------------------------- Any Menu
 -- [[
--- Change Ins/Del to protect from random press.
-
+-- Change Ins/Del to protect from data loss.
 Macro { -- Ins -> Up
   area = "Menu MainMenu UserMenu",
   key = "Ins NumIns",
