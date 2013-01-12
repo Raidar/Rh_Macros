@@ -51,7 +51,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Goto…",
   action = function ()
-             Keys"AltF8"
+             return Keys"AltF8"
            end, ---
 } ---
 --]]
@@ -63,7 +63,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Lock/Unlock",
   action = function ()
-             Keys"CtrlL"
+             return Keys"CtrlL"
            end, ---
 } ---
 
@@ -73,7 +73,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Insert full filename",
   action = function ()
-             Keys"CtrlF"
+             return Keys"CtrlF"
            end, ---
 } ---
 --]]
@@ -85,7 +85,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Switch to panels",
   action = function ()
-             Keys"F12 0"
+             return Keys"F12 0"
            end, ---
 } ---
 --]]
@@ -101,7 +101,7 @@ Macro {
              --far.Message(tostring(mIsExist), Editor.FileName)
              Keys"F2" -- Сохранение
              if IsExist and Area.Dialog then
-               Keys"Enter" -- Подтверждение сохранения для ReadOnly-файла
+               return Keys"Enter" -- Подтверждение сохранения для ReadOnly-файла
              end
            end, ---
 } ---
@@ -144,8 +144,7 @@ function unit.SaveAsUtf8noBOM (Ask)
     end
     -- Элемент не найден --> Отмена
     if not sfind(value, "65001", 1, true) then
-      Keys"Esc Esc" -- Отмена списка и окна сохранения
-      return
+      return Keys"Esc Esc" -- Отмена списка и окна сохранения
     end
   end
 
@@ -180,7 +179,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Find…",
   action = function ()
-             Keys"F7"
+             return Keys"F7"
            end, ---
 } ---
 Macro {
@@ -189,7 +188,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Replace…",
   action = function ()
-             Keys"CtrlF7"
+             return Keys"CtrlF7"
            end, ---
 } ---
 Macro {
@@ -198,7 +197,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Find next",
   action = function ()
-             Keys"ShiftF7"
+             return Keys"ShiftF7"
            end, ---
 } ---
 Macro {
@@ -229,7 +228,7 @@ Macro {
              Keys"CtrlF7 Enter" -- Замена первого вхождения
 
              if Area.Dialog then
-               Keys"Right Enter" -- Замена остальных вхождений
+               return Keys"Right Enter" -- Замена остальных вхождений
              end
            end, ---
 } ---
@@ -242,7 +241,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Tabulation",
   action = function ()
-             Keys"Tab"
+             return Keys"Tab"
            end, ---
 } ---
 Macro {
@@ -251,7 +250,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Double space",
   action = function ()
-             Keys"Space Space"
+             return Keys"Space Space"
            end, ---
 } ---
 
@@ -268,7 +267,7 @@ Macro {
                --far.Message(Pos, Info.CurPos)
                for k = 1, Pos do Keys"Space" end
              else
-               Keys"AltI" -- Сдвиг выделения вправо
+               return Keys"AltI" -- Сдвиг выделения вправо
              end
            end, ---
 } ---
@@ -285,7 +284,7 @@ Macro {
                --far.Message(Pos, Info.CurPos)
                for k = 1, Pos do Keys"Space" end
              else
-               Keys"AltU" -- Сдвиг выделения влево
+               return Keys"AltU" -- Сдвиг выделения влево
              end
            end, ---
 } ---
@@ -302,7 +301,7 @@ Macro {
              Keys"Tab Left" -- Табуляция с сохранением позиции
              local Info = editor.GetInfo()
              if Info.CurLine < Info.TotalLines - 1 then
-               Keys"Down" -- Перемещение на следующую строку
+               return Keys"Down" -- Перемещение на следующую строку
              end
            end, ---
 } ---
@@ -315,7 +314,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Left within line",
   action = function ()
-             Keys"CtrlS"
+             return Keys"CtrlS"
            end, ---
 } ---
 Macro {
@@ -324,7 +323,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Left within file",
   action = function ()
-             Keys"Left"
+             return Keys"Left"
            end, ---
 } ---
 Macro {
@@ -336,9 +335,9 @@ Macro {
              local Info = editor.GetInfo()
              local s = editor.GetString(Info.EditorID, -1, 2)
              if Info.CurPos > s:len() - 1 then
-               Keys"Down Home"
+               return Keys"Down Home"
              else
-               Keys"Right"
+               return Keys"Right"
              end
            end, ---
 } ---
@@ -349,7 +348,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Left within line",
   action = function ()
-             Keys"CtrlS"
+             return Keys"CtrlS"
            end, ---
 } ---
 Macro {
@@ -358,7 +357,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Right within line",
   action = function ()
-             Keys"Right"
+             return Keys"Right"
            end, ---
 } ---
 
@@ -368,7 +367,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Start of first line",
   action = function ()
-             Keys"CtrlHome Home"
+             return Keys"CtrlHome Home"
            end, ---
 } ---
 Macro {
@@ -377,7 +376,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Start of last line",
   action = function ()
-             Keys"CtrlEnd Home"
+             return Keys"CtrlEnd Home"
            end, ---
 } ---
 
@@ -387,7 +386,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: End of last line",
   action = function ()
-             Keys"CtrlEnd End"
+             return Keys"CtrlEnd End"
            end, ---
 } ---
 Macro {
@@ -396,7 +395,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Start of first line",
   action = function ()
-             Keys"CtrlHome Home"
+             return Keys"CtrlHome Home"
            end, ---
 } ---
 --]]
@@ -408,7 +407,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Shift 4fold block right",
   action = function ()
-             Keys"AltI AltI AltI AltI"
+             return Keys"AltI AltI AltI AltI"
            end, ---
 } ---
 Macro {
@@ -417,7 +416,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Shift 4fold block left",
   action = function ()
-             Keys"AltU AltU AltU AltU"
+             return Keys"AltU AltU AltU AltU"
            end, ---
 } ---
 
@@ -427,7 +426,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Shift twice block right",
   action = function ()
-             Keys"AltI AltI"
+             return Keys"AltI AltI"
            end, ---
 } ---
 Macro {
@@ -436,7 +435,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Shift twice block left",
   action = function ()
-             Keys"AltU AltU"
+             return Keys"AltU AltU"
            end, ---
 } ---
 --]]
@@ -504,7 +503,7 @@ Macro {
   action = function ()
              local Info = editor.GetInfo()
              if Info.BlockType ~= BlockNoneType then
-               Keys"CtrlC"
+               return Keys"CtrlC"
              end
            end, ---
 } ---
@@ -516,7 +515,7 @@ Macro {
   action = function ()
              local Info = editor.GetInfo()
              if Info.BlockType ~= BlockNoneType then
-               Keys"CtrlIns"
+               return Keys"CtrlIns"
              end
            end, ---
 } ---
@@ -528,7 +527,7 @@ Macro {
   action = function ()
              local Info = editor.GetInfo()
              if Info.BlockType ~= BlockNoneType then
-               Keys"CtrlAdd"
+               return Keys"CtrlAdd"
              end
            end, ---
 } ---
@@ -539,7 +538,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Paste + Down",
   action = function ()
-             Keys"CtrlV Down"
+             return Keys"CtrlV Down"
            end, ---
 } ---
 Macro {
@@ -548,7 +547,7 @@ Macro {
   flags = "DisableOutput",
   description = "Edit: Paste + Down + End",
   action = function ()
-             Keys"CtrlV Down End"
+             return Keys"CtrlV Down End"
            end, ---
 } ---
 --]]

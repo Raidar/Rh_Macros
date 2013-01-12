@@ -50,7 +50,7 @@ Macro {
   condition = Exist,
   action = function ()
              --return CallPlugin(guids.Colorer, 12)
-             if PluginMenu(guids.Colorer) then Keys"R" end
+             if PluginMenu(guids.Colorer) then return Keys"R" end
            end, ---
 } ---
 
@@ -62,7 +62,7 @@ Macro {
   condition = Exist,
   action = function ()
              --return CallPlugin(guids.Colorer, 5)
-             if PluginMenu(guids.Colorer) then Keys"5" end
+             if PluginMenu(guids.Colorer) then return Keys"5" end
            end, ---
 } ---
 Macro {
@@ -73,7 +73,7 @@ Macro {
   condition = Exist,
   action = function ()
              --Keys"F11 C 5 Up Enter"
-             if PluginMenu(guids.Colorer) then Keys"5 Up Enter" end
+             if PluginMenu(guids.Colorer) then return Keys"5 Up Enter" end
            end, ---
 } ---
 Macro {
@@ -84,7 +84,7 @@ Macro {
   condition = Exist,
   action = function ()
              --Keys"F11 C 5 Down Enter"
-             if PluginMenu(guids.Colorer) then Keys"5 Down Enter" end
+             if PluginMenu(guids.Colorer) then return Keys"5 Down Enter" end
            end, ---
 } ---
 
@@ -96,7 +96,7 @@ Macro {
   condition = Exist,
   action = function ()
              --return CallPlugin(guids.Colorer.Colorer, 6)
-             if PluginMenu(guids.Colorer) then Keys"6" end
+             if PluginMenu(guids.Colorer) then return Keys"6" end
            end, ---
 } ---
 --]]

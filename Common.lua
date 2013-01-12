@@ -31,7 +31,7 @@ Macro {
   flags = "DisableOutput|EmptyCommandLine",
   description = "All: Esc - Panels on/off",
   action = function ()
-             Keys"CtrlO"
+             return Keys"CtrlO"
            end, ---
 } ---
 ---------------------------------------- XLat
@@ -41,7 +41,7 @@ Macro {
   flags = "DisableOutput",
   description = "All: XLat",
   action = function ()
-             Keys"XLat"
+             return Keys"XLat"
            end, ---
 } ---
 ---------------------------------------- File name
@@ -53,7 +53,7 @@ Macro {
   flags = "DisableOutput",
   description = "All: Full name on AP",
   action = function ()
-             Keys"CtrlF"
+             return Keys"CtrlF"
            end, ---
 } ---
 Macro {
@@ -62,7 +62,7 @@ Macro {
   flags = "DisableOutput",
   description = "All: Network name on AP",
   action = function ()
-             Keys"CtrlAltF"
+             return Keys"CtrlAltF"
            end, ---
 } ---
 --------------------------------------------------------------------------------

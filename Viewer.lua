@@ -43,7 +43,7 @@ Macro {
   flags = "DisableOutput",
   description = "View: Switch to panels",
   action = function ()
-             Keys"F12 0"
+             return Keys"F12 0"
            end, ---
 } ---
 --]]
@@ -56,7 +56,7 @@ Macro {
   flags = "DisableOutput",
   description = "View: Find…",
   action = function ()
-             Keys"F7"
+             return Keys"F7"
            end, ---
 } ---
 Macro {
@@ -65,7 +65,7 @@ Macro {
   flags = "DisableOutput",
   description = "View: Find next",
   action = function ()
-             Keys"ShiftF7"
+             return Keys"ShiftF7"
            end, ---
 } ---
 --]]

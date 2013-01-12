@@ -52,7 +52,7 @@ Macro {
                "CurPos = "..tostring(Dlg.CurPos),
                "ItemType = "..tostring(tp),
              } ---
-             far.Message(table.concat(t, "\n"), Object.Title)
+             return far.Message(table.concat(t, "\n"), Object.Title)
            end, ---
 } ---
 --]]
@@ -67,7 +67,7 @@ Macro {
                 return Dlg.ItemType == F.DI_EDIT
               end, ---
   action = function ()
-             Keys"CtrlDown"
+             return Keys"CtrlDown"
            end, ---
 } ---
 --]]
@@ -77,7 +77,7 @@ guids.FindFileResult = "536754EB-C2D1-4626-933F-A25D1E1D110A"
 
 -- Проверка на диалог FindFile.
 local function IsFindFileResult ()
-  return Dlg.Id == guids.FindFileResult
+  return Area.Dialog and Dlg.Id == guids.FindFileResult
 end
 
 local function ReplaceInFindFile ()
@@ -98,7 +98,7 @@ local function ReplaceInFindFile ()
     end
   end
 
-  Keys"Esc" -- Выход из редактора
+  return Keys"Esc" -- Выход из редактора
 end -- ReplaceInFindFile
 
 Macro {
@@ -119,7 +119,7 @@ Macro {
   condition = IsFindFileResult,
   action = function ()
              ReplaceInFindFile()
-             Keys"Down" -- На следующий элемент
+             return Keys"Down" -- На следующий элемент
            end, ---
 } ---
 --]]

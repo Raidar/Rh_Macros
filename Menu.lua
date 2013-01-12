@@ -56,7 +56,7 @@ Macro {
   flags = "DisableOutput",
   description = "MainMenu: Hide",
   action = function ()
-             Keys"Esc"
+             return Keys"Esc"
            end, ---
 } ---
 --]]
@@ -68,7 +68,7 @@ Macro {
   flags = "DisableOutput",
   description = "UserMenu: Back",
   action = function ()
-             Keys"Esc"
+             return Keys"Esc"
            end, ---
 } ---
 Macro {
@@ -77,7 +77,7 @@ Macro {
   flags = "DisableOutput",
   description = "UserMenu: Hide",
   action = function ()
-             Keys"ShiftF10"
+             return Keys"ShiftF10"
            end, ---
 } ---
 
@@ -88,7 +88,7 @@ Macro { -- Ins -> Enter
   priority = 100,
   description = "UserMenu: Enter",
   action = function ()
-             Keys"Enter"
+             return Keys"Enter"
            end, ---
 } ---
 Macro { -- Del -> Escape
@@ -98,7 +98,7 @@ Macro { -- Del -> Escape
   priority = 100,
   description = "UserMenu: Escape",
   action = function ()
-             Keys"Esc"
+             return Keys"Esc"
            end, ---
 } ---
 Macro { -- CtrlIns -> Enter
@@ -108,7 +108,7 @@ Macro { -- CtrlIns -> Enter
   priority = 100,
   description = "UserMenu: Enter",
   action = function ()
-             Keys"Enter"
+             return Keys"Enter"
            end, ---
 } ---
 Macro { -- CtrlDel -> Escape
@@ -118,7 +118,7 @@ Macro { -- CtrlDel -> Escape
   priority = 100,
   description = "UserMenu: Esc",
   action = function ()
-             Keys"Esc"
+             return Keys"Esc"
            end, ---
 } ---
 Macro { -- F4 -> Enter
@@ -128,7 +128,7 @@ Macro { -- F4 -> Enter
   priority = 100,
   description = "UserMenu: Enter",
   action = function ()
-             Keys"Enter"
+             return Keys"Enter"
            end, ---
 } ---
 Macro { -- CtrlF4 -> Enter
@@ -138,7 +138,7 @@ Macro { -- CtrlF4 -> Enter
   priority = 100,
   description = "UserMenu: Enter",
   action = function ()
-             Keys"Enter"
+             return Keys"Enter"
            end, ---
 } ---
 --]]
@@ -152,7 +152,7 @@ Macro { -- Ins -> Up
   flags = "DisableOutput",
   description = "Menu: Prev item",
   action = function ()
-             Keys"Up"
+             return Keys"Up"
            end, ---
 } ---
 Macro { -- Del -> Down
@@ -161,7 +161,7 @@ Macro { -- Del -> Down
   flags = "DisableOutput",
   description = "Menu: Next item",
   action = function ()
-             Keys"Down"
+             return Keys"Down"
            end, ---
 } ---
 
@@ -171,7 +171,7 @@ Macro { -- CtrlIns -> Ins
   flags = "DisableOutput",
   description = "Menu: Insert item",
   action = function ()
-             Keys"Ins"
+             return Keys"Ins"
            end, ---
 } ---
 Macro { -- CtrlDel -> Del
@@ -180,7 +180,7 @@ Macro { -- CtrlDel -> Del
   flags = "DisableOutput",
   description = "Menu: Delete item",
   action = function ()
-             Keys"Del"
+             return Keys"Del"
            end, ---
 } ---
 --]]
