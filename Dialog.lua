@@ -31,11 +31,11 @@ local guids = {}
 
 local Macro = Macro or function () end
 
----------------------------------------- Dialog info
+---------------------------------------- Info
 -- [[
 Macro {
   area = "Dialog",
-  key = "ShiftF1",
+  key = "ShiftF2",
   flags = "DisableOutput",
   description = "Dlg: Dialog Info",
   action = function ()
