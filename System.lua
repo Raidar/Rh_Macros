@@ -34,7 +34,6 @@ local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 -- [[
 --guids.FarCmds = ""
 --]]
-
 ---------------------------------------- 'E' -- EMenu
 -- [[
 guids.EMenu = "742910F1-02ED-4542-851F-DEE37C2E13B2"
@@ -50,6 +49,25 @@ Macro {
   action = function ()
              PluginMenu(guids.EMenu)
              Keys"Down Enter"
+             exit()
+           end, ---
+} ---
+--]]
+---------------------------------------- '[' -- TmpPanel
+-- [[
+guids.TmpPanel = "B77C964B-E31E-4D4C-8FE5-D6B0C6853E7C"
+
+local Exist = function () return PluginExist(guids.TmpPanel) end
+
+Macro {
+  area = "Shell",
+  key = "CtrlApps",
+  flags = "DisableOutput",
+  description = "TmpPanel: Shortcuts",
+  condition = Exist,
+  action = function ()
+             print("tmp:+menu %FarLocalProfile%\\Shortcuts.temp")
+             Keys"Enter"
              exit()
            end, ---
 } ---
