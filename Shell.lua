@@ -33,6 +33,97 @@ local Macro = Macro or function () end
 
 ---------------------------------------- Panels
 
+---------------------------------------- -- Actions
+-- [[
+Macro {
+  area = "Shell",
+  key = "CtrlShiftL",
+  flags = "DisableOutput",
+  description = "Panel: Information panel",
+  action = function ()
+             return Keys"CtrlL"
+           end, ---
+} ---
+--]]
+---------------------------------------- -- Current
+-- [[
+---------------------------------------- -- -- Drive
+Macro {
+  area = "Shell",
+  key = "CtrlLeft CtrlNum4",
+  flags = "DisableOutput|EmptyCommandLine",
+  description = "Panel: Prev drive",
+  action = function ()
+             return Keys"F9 Enter Up Enter Up Enter"
+           end, ---
+} ---
+Macro {
+  area = "Shell",
+  key = "CtrlRight CtrlNum6",
+  flags = "DisableOutput|EmptyCommandLine",
+  description = "Panel: Next drive",
+  action = function ()
+             return Keys"F9 Enter Up Enter Down Enter"
+           end, ---
+} ---
+
+---------------------------------------- -- -- Folder
+Macro {
+  area = "Shell",
+  key = "CtrlShiftPgUp",
+  flags = "DisableOutput",
+  description = "Panel: Prev folder on same level",
+  action = function ()
+             if not APanel.Root then Keys"CtrlPgUp" end
+             if not APanel.Bof then
+               Keys"Up"
+               if APanel.Folder then Keys"CtrlPgDn" end
+             end
+           end, ---
+} ---
+Macro {
+  area = "Shell",
+  key = "CtrlShiftPgDn",
+  flags = "DisableOutput",
+  description = "Panel: Next folder on same level",
+  action = function ()
+             if not APanel.Root then Keys"CtrlPgUp" end
+             if not APanel.Eof then
+               Keys"Down"
+               if APanel.Folder then Keys"CtrlPgDn" end
+             end
+           end, ---
+} ---
+
+Macro {
+  area = "Shell",
+  key = "CtrlShiftBS",
+  flags = "DisableOutput",
+  description = "Panel: Early visited folder",
+  action = function ()
+             return Keys"AltF12 Up ShiftEnter"
+           end, ---
+} ---
+---------------------------------------- -- -- File
+Macro {
+  area = "Shell",
+  key = "CtrlUp CtrlNum8",
+  flags = "DisableOutput|EmptyCommandLine",
+  description = "Panel: Name sorted Prev file",
+  action = function ()
+             return Keys"CtrlF3 Up CtrlF4"
+           end, ---
+} ---
+Macro {
+  area = "Shell",
+  key = "CtrlDown CtrlNum2",
+  flags = "DisableOutput|EmptyCommandLine",
+  description = "Panel: Name sorted Next file",
+  action = function ()
+             return Keys"CtrlF3 Down CtrlF4"
+           end, ---
+} ---
+--]]
 ---------------------------------------- -- Selection
 -- [[
 Macro {
