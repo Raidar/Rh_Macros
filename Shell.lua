@@ -33,6 +33,42 @@ local Macro = Macro or function () end
 
 ---------------------------------------- Panels
 
+---------------------------------------- -- Info
+do
+  local AreaContentValueFmt = "%s (%s) = '%s'"
+
+-- Get content of macro area table.
+-- Получение содержимого таблицы макро-области.
+function unit.GetAreaContent (Area) --> (table)
+  local t = {}
+  for k, v in pairs(Area.properties) do
+    local w = Area[k]
+    t[#t+1] = AreaContentValueFmt:format(k, type(w), tostring(w))
+  end
+
+  return t
+end -- GetAreaContent
+
+end -- do
+
+-- Show content of macro area table.
+-- Показ содержимого таблицы макро-области.
+function ShowAreaContent (Area, Title) --> (dialog)
+  local Content = table.concat(unit.GetAreaContent(Area), "\n")
+  return far.Message(Content, Title or Object.Title, ";Ok", "l")
+end ----
+
+-- [[
+Macro {
+  area = "Shell",
+  key = "ShiftF2",
+  flags = "DisableOutput",
+  description = "Panel: Panel Info",
+  action = function ()
+             return ShowAreaContent(APanel)
+           end, ---
+} ---
+--]]
 ---------------------------------------- -- Actions
 -- [[
 Macro {
@@ -42,6 +78,25 @@ Macro {
   description = "Panel: Information panel",
   action = function ()
              return Keys"CtrlL"
+           end, ---
+} ---
+Macro {
+  area = "Shell",
+  key = "AltBS",
+  flags = "DisableOutput",
+  description = "Panel: Same folder/file",
+  condition = function ()
+                return PPanel.FilePanel
+              end, ---
+  action = function ()
+             if not PPanel.Plugin then
+               return Panel.SetPath(0, PPanel.Path, PPanel.Current)
+             end
+
+             if PPanel.HostFile ~= "" then
+               far.Message(PPanel.HostFile:match("^(.+)\\([^\\]+)$"))
+               return Panel.SetPath(0, PPanel.HostFile:match("^(.+)\\([^\\]+)$"))
+             end
            end, ---
 } ---
 --]]
@@ -250,27 +305,6 @@ Macro { -- File CRC32
 } ---
 --]]
 ---------------------------------------- -- Naming
-local AreaContentValueFmt = "%s (%s) = '%s'"
-
--- Get content of macro area table.
--- Получение содержимого таблицы макро-области.
-local function GetAreaContent (Area) --> (table)
-  local t = {}
-  for k, v in pairs(Area.properties) do
-    local w = Area[k]
-    t[#t+1] = AreaContentValueFmt:format(k, type(w), tostring(w))
-  end
-
-  return t
-end -- GetAreaContent
-
--- Show content of macro area table.
--- Показ содержимого таблицы макро-области.
-function ShowAreaContent (Area, Title) --> (dialog)
-  local Content = table.concat(GetAreaContent(Area), "\n")
-  return far.Message(Content, Title or Object.Title, ";Ok", "l")
-end ----
-
 -- Get name of current item on active panel.
 -- Получение имени текущего элемента активной панели.
 --[[
