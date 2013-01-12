@@ -33,50 +33,38 @@ local Macro = Macro or function () end
 
 ---------------------------------------- Panels
 
----------------------------------------- -- Find file
-guids.FindFile = "8C9EAD29-910F-4B24-A669-EDAFBA6ED964"
-
+---------------------------------------- -- Selection
+-- [[
 Macro {
   area = "Shell",
-  key = "CtrlF",
+  key = "CtrlDivide",
   flags = "DisableOutput",
-  description = "Find: Find…",
+  description = "Panel: Restore selection",
   action = function ()
-             Keys"AltF7"
-             if Area.Dialog and Dlg.Id == guids.FindFile then
-               exit()
-             end
+             return Keys"CtrlM"
            end, ---
 } ---
--- Find folder --> 
-Macro { -- Find file with clipboard text..
+Macro {
   area = "Shell",
-  key = "AltF8",
+  key = "CtrlShiftDivide",
   flags = "DisableOutput",
-  description = "Find: Find files with text…",
+  description = "Panel: Select files with same name+ext",
   action = function ()
-             Keys"AltF7"
-             if Area.Dialog and Dlg.Id == guids.FindFile then
-               Keys"Tab CtrlV ShiftTab"
-               exit()
-             end
+             return Keys"AltAdd CtrlAdd"
            end, ---
 } ---
-Macro { -- Find file with clipboard namepart…
+Macro {
   area = "Shell",
-  key = "CtrlAltF8",
+  key = "CtrlShiftMultiply",
   flags = "DisableOutput",
-  description = "Find: Find files with namepart…",
+  description = "Panel: Select folders only",
   action = function ()
-             Keys"AltF7"
-             if Area.Dialog and Dlg.Id == guids.FindFile then
-               print"**.*"
-               Keys"Home Right CtrlV"
-               exit()
-             end
+             return Keys"ShiftAdd CtrlMultiply"
            end, ---
 } ---
----------------------------------------- -- File info
+--]]
+---------------------------------------- -- Information
+-- [[
 Macro { -- File name
   area = "Shell",
   key = "CtrlF3",
@@ -169,7 +157,8 @@ Macro { -- File CRC32
              return far.CopyToClipboard(Panel.Item(0, 0, 13))
            end, ---
 } ---
----------------------------------------- -- File naming
+--]]
+---------------------------------------- -- Naming
 local AreaContentValueFmt = "%s (%s) = '%s'"
 
 -- Get content of macro area table.
@@ -216,7 +205,7 @@ function unit.GetPanelItemName (Panel, noext) --> (string)
       Name = Panel.UNCPath:match("([^\\]-)$")
     end
   end
-  --if APanel.Plugin
+  --elseif APanel.Plugin then end
   return Name
 end ---- GetPanelItemName
 
@@ -245,7 +234,143 @@ Macro { -- Full file name
              return far.CopyToClipboard(s)
            end, ---
 } ---
---[[
+--]]
+---------------------------------------- -- Copy / Move
+-- [[
+guids.CopyFile = "FCEF11C4-5490-451D-8B4A-62FA03F52759"
+guids.MoveFile = "431A2F37-AC01-4ECD-BB6F-8CDE584E5A03"
+
+Macro { -- Rename
+  area = "Shell",
+  key = "CtrlT",
+  flags = "DisableOutput",
+  description = "Panel: Rename preserving extension",
+  condition = function ()
+                return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
+              end, ---
+  action = function ()
+             if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
+             Keys"ShiftF6"
+             if Area.Dialog and Dlg.Id == guids.MoveFile then
+               Keys"CtrlLeft Left ShiftHome"
+               exit()
+             end
+           end, ---
+} ---
+Macro { -- Recopy
+  area = "Shell",
+  key = "CtrlShiftT",
+  flags = "DisableOutput",
+  description = "Panel: Recopy preserving extension",
+  condition = function ()
+                return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
+              end, ---
+  action = function ()
+             if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
+             Keys"ShiftF5"
+             if Area.Dialog and Dlg.Id == guids.CopyFile then
+               Keys"CtrlLeft Left ShiftHome"
+               exit()
+             end
+           end, ---
+} ---
+Macro { -- Copy
+  area = "Shell",
+  key = "AltShiftF5",
+  flags = "DisableOutput",
+  description = "Panel: Copy to… preserving extension",
+  condition = function ()
+                return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
+              end, ---
+  action = function ()
+             if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
+             local Name = APanel.Current
+
+             Keys"F5"
+             if not Area.Dialog or Dlg.Id ~= guids.CopyFile then
+               return
+             end
+
+             local Ext = Name:match("%.([^%.]-)$") -- Extension
+             Keys"End"
+             if Ext then
+               print("."..Ext)
+               Keys"CtrlLeft Left"
+             end
+             exit()
+           end, ---
+} ---
+Macro { -- Move
+  area = "Shell",
+  key = "AltShiftF6",
+  flags = "DisableOutput",
+  description = "Panel: Move to… preserving extension",
+  condition = function ()
+                return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
+              end, ---
+  action = function ()
+             if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
+             local Name = APanel.Current
+
+             Keys"F6"
+             if not Area.Dialog or Dlg.Id ~= guids.MoveFile then
+               return
+             end
+
+             local Ext = Name:match("%.([^%.]-)$") -- Extension
+             Keys"End"
+             if Ext then
+               print("."..Ext)
+               Keys"CtrlLeft Left"
+             end
+             exit()
+           end, ---
+} ---
+--]]
+---------------------------------------- -- Find
+-- [[
+guids.FindFile = "8C9EAD29-910F-4B24-A669-EDAFBA6ED964"
+
+Macro {
+  area = "Shell",
+  key = "CtrlF",
+  flags = "DisableOutput",
+  description = "Find: Find…",
+  action = function ()
+             Keys"AltF7"
+             if Area.Dialog and Dlg.Id == guids.FindFile then
+               exit()
+             end
+           end, ---
+} ---
+-- Find folder -->
+Macro { -- Find file with clipboard text..
+  area = "Shell",
+  key = "AltF8",
+  flags = "DisableOutput",
+  description = "Find: Find files with text…",
+  action = function ()
+             Keys"AltF7"
+             if Area.Dialog and Dlg.Id == guids.FindFile then
+               Keys"Tab CtrlV ShiftTab"
+               exit()
+             end
+           end, ---
+} ---
+Macro { -- Find file with clipboard namepart…
+  area = "Shell",
+  key = "CtrlAltF8",
+  flags = "DisableOutput",
+  description = "Find: Find files with namepart…",
+  action = function ()
+             Keys"AltF7"
+             if Area.Dialog and Dlg.Id == guids.FindFile then
+               print"**.*"
+               Keys"Home Right CtrlV"
+               exit()
+             end
+           end, ---
+} ---
 --]]
 ---------------------------------------- -- Attributes
 -- [[
@@ -316,9 +441,11 @@ Macro { -- для файла, каталога и его элементов
              Keys"Enter"
            end, ---
 } ---
+--]]
 ---------------------------------------- Command line
 
 ---------------------------------------- -- Text
+-- [[
 Macro {
   area = "Shell Info QView Tree",
   key = "Esc",
@@ -364,7 +491,9 @@ Macro {
              print"/"
            end, ---
 } ---
+--]]
 ---------------------------------------- -- Move
+-- [[
 Macro {
   area = "Shell",
   key = "Home",
@@ -383,7 +512,9 @@ Macro {
              Keys"CtrlEnd"
            end, ---
 } ---
+--]]
 ---------------------------------------- -- Select
+-- [[
 Macro {
   area = "Shell",
   key = "ShiftHome",
@@ -422,7 +553,9 @@ Macro {
              Keys"ShiftRight"
            end, ---
 } ---
+--]]
 ---------------------------------------- -- Commands
+-- [[
 Macro {
   area = "Shell",
   key = "ShiftPgUp",
@@ -441,6 +574,7 @@ Macro {
              Keys"CtrlX"
            end, ---
 } ---
+--]]
 ---------------------------------------- Clipboard
 --[[
 Macro {
@@ -462,6 +596,7 @@ Macro {
            end, ---
 } ---
 --]]
+-- [[
 Macro {
   area = "Shell",
   key = "ShiftDel",
@@ -501,4 +636,5 @@ Macro {
              Keys"CtrlIns Del"
            end, ---
 } ---
+--]]
 --------------------------------------------------------------------------------
