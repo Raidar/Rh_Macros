@@ -24,6 +24,16 @@ local logShow = dbg.Show
 ----------------------------------------
 local Macro = Macro or function () end
 
+---------------------------------------- Common
+Macro {
+  area = "Common",
+  key = "CtrlAltShiftF9",
+  flags = "DisableOutput",
+  description = "All: Video mode",
+  action = function ()
+             return Keys"AltF9"
+           end, ---
+} ---
 ---------------------------------------- Escape
 Macro {
   area = "Shell Info QView Tree",
