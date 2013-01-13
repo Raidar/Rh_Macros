@@ -47,6 +47,23 @@ local Macro = Macro or function () end
 -- [[
 Macro {
   area = "Editor",
+  key = "AltF9",
+  flags = "DisableOutput",
+  description = "Edit: Next codepage",
+  action = function ()
+             Keys"ShiftF8"
+             if not Area.Menu then return end
+
+             --far.Message(("%#08x"):format(Menu.ItemStatus()))
+             repeat
+               Keys"Down"
+             until band(Menu.ItemStatus(), 0x0000003C) == 0
+
+             return Keys"Enter"
+           end, ---
+} ---
+Macro {
+  area = "Editor",
   key = "CtrlShiftG",
   flags = "DisableOutput",
   description = "Edit: Goto…",
