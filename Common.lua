@@ -40,9 +40,7 @@ Macro {
   key = "Esc",
   flags = "DisableOutput|EmptyCommandLine",
   description = "All: Esc - Panels on/off",
-  action = function ()
-             return Keys"CtrlO"
-           end, ---
+  action = function () return Keys"CtrlO" end, ---
 } ---
 ---------------------------------------- XLat
 Macro {
@@ -50,9 +48,7 @@ Macro {
   key = "CtrlAltX",
   flags = "DisableOutput",
   description = "All: XLat",
-  action = function ()
-             return Keys"XLat"
-           end, ---
+  action = function () return Keys"XLat" end, ---
 } ---
 ---------------------------------------- File name
 -- "'" - Active Panel (changed from used "F").
@@ -62,17 +58,13 @@ Macro {
   key = "Ctrl'",
   flags = "DisableOutput",
   description = "All: Full name on AP",
-  action = function ()
-             return Keys"CtrlF"
-           end, ---
+  action = function () return Keys"CtrlF" end, ---
 } ---
 Macro {
   area = "Shell Info QView Tree",
   key = "CtrlAlt'",
   flags = "DisableOutput",
   description = "All: Network name on AP",
-  action = function ()
-             return Keys"CtrlAltF"
-           end, ---
+  action = function () return Keys"CtrlAltF" end, ---
 } ---
 --------------------------------------------------------------------------------

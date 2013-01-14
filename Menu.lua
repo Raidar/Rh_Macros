@@ -39,13 +39,13 @@ Macro {
   flags = "DisableOutput",
   description = "Menu: Menu Info",
   action = function ()
-             local sfind = string.find
-             local t = {
-               "GUID = "..Menu.Id,
-               "Value = "..Menu.Value,
-             } ---
-             far.Message(table.concat(t, "\n"), Object.Title)
-           end, ---
+    local sfind = string.find
+    local t = {
+      "GUID = "..Menu.Id,
+      "Value = "..Menu.Value,
+    } ---
+    far.Message(table.concat(t, "\n"), Object.Title)
+  end, ---
 } ---
 --]]
 ---------------------------------------- Main Menu
@@ -55,9 +55,7 @@ Macro {
   key = "F9",
   flags = "DisableOutput",
   description = "MainMenu: Hide",
-  action = function ()
-             return Keys"Esc"
-           end, ---
+  action = function () return Keys"Esc" end, ---
 } ---
 --]]
 ---------------------------------------- User Menu
@@ -67,18 +65,14 @@ Macro {
   key = "BS",
   flags = "DisableOutput",
   description = "UserMenu: Back",
-  action = function ()
-             return Keys"Esc"
-           end, ---
+  action = function () return Keys"Esc" end, ---
 } ---
 Macro {
   area = "UserMenu",
   key = "Esc",
   flags = "DisableOutput",
   description = "UserMenu: Hide",
-  action = function ()
-             return Keys"ShiftF10"
-           end, ---
+  action = function () return Keys"ShiftF10" end, ---
 } ---
 
 Macro { -- Ins -> Enter
@@ -88,9 +82,7 @@ Macro { -- Ins -> Enter
   flags = "DisableOutput",
   priority = 100,
   description = "UserMenu: Enter",
-  action = function ()
-             return Keys"Enter"
-           end, ---
+  action = function () return Keys"Enter" end, ---
 } ---
 Macro { -- Del -> Escape
   area = "UserMenu",
@@ -99,9 +91,7 @@ Macro { -- Del -> Escape
   flags = "DisableOutput",
   priority = 100,
   description = "UserMenu: Escape",
-  action = function ()
-             return Keys"Esc"
-           end, ---
+  action = function () return Keys"Esc" end, ---
 } ---
 Macro { -- F4 -> Enter
   area = "UserMenu",
@@ -109,9 +99,7 @@ Macro { -- F4 -> Enter
   flags = "DisableOutput",
   priority = 100,
   description = "UserMenu: Enter",
-  action = function ()
-             return Keys"Enter"
-           end, ---
+  action = function () return Keys"Enter" end, ---
 } ---
 --]]
 ---------------------------------------- Any Menu
@@ -122,18 +110,14 @@ Macro { -- Ins -> Up
   key = "Ins NumIns",
   flags = "DisableOutput",
   description = "Menu: Prev item",
-  action = function ()
-             return Keys"Up"
-           end, ---
+  action = function () return Keys"Up" end, ---
 } ---
 Macro { -- Del -> Down
   area = "Menu MainMenu UserMenu",
   key = "Del NumDel",
   flags = "DisableOutput",
   description = "Menu: Next item",
-  action = function ()
-             return Keys"Down"
-           end, ---
+  action = function () return Keys"Down" end, ---
 } ---
 
 Macro { -- CtrlIns -> Ins
@@ -141,18 +125,14 @@ Macro { -- CtrlIns -> Ins
   key = "CtrlIns CtrlNumIns",
   flags = "DisableOutput",
   description = "Menu: Insert item",
-  action = function ()
-             return Keys"Ins"
-           end, ---
+  action = function () return Keys"Ins" end, ---
 } ---
 Macro { -- CtrlDel -> Del
   area = "Menu MainMenu UserMenu",
   key = "CtrlDel CtrlNumDel",
   flags = "DisableOutput",
   description = "Menu: Delete item",
-  action = function ()
-             return Keys"Del"
-           end, ---
+  action = function () return Keys"Del" end, ---
 } ---
 --]]
 --------------------------------------------------------------------------------

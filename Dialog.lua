@@ -39,21 +39,21 @@ Macro {
   flags = "DisableOutput",
   description = "Dlg: Dialog Info",
   action = function ()
-             local sfind = string.find
-             local tp = Dlg.ItemType
-             for k, v in pairs(F) do
-               if sfind(k, "DI_", 1, true) == 1 and v == tp then
-                 tp = k
-                 break
-               end
-             end
-             local t = {
-               "GUID = "..Dlg.Id,
-               "CurPos = "..tostring(Dlg.CurPos),
-               "ItemType = "..tostring(tp),
-             } ---
-             return far.Message(table.concat(t, "\n"), Object.Title)
-           end, ---
+    local sfind = string.find
+    local tp = Dlg.ItemType
+    for k, v in pairs(F) do
+      if sfind(k, "DI_", 1, true) == 1 and v == tp then
+        tp = k
+        break
+      end
+    end
+    local t = {
+      "GUID = "..Dlg.Id,
+      "CurPos = "..tostring(Dlg.CurPos),
+      "ItemType = "..tostring(tp),
+    } ---
+    return far.Message(table.concat(t, "\n"), Object.Title)
+  end, ---
 } ---
 --]]
 ---------------------------------------- Actions
@@ -64,11 +64,9 @@ Macro {
   flags = "DisableOutput",
   description = "Dlg: Open history box",
   condition = function ()
-                return Dlg.ItemType == F.DI_EDIT
-              end, ---
-  action = function ()
-             return Keys"CtrlDown"
-           end, ---
+    return Dlg.ItemType == F.DI_EDIT
+  end, ---
+  action = function () return Keys"CtrlDown" end, ---
 } ---
 --]]
 ---------------------------------------- FindFile
@@ -107,9 +105,9 @@ Macro {
   flags = "DisableOutput",
   description = "FindFile: Replace in file",
   condition = IsFindFileResult,
-  action = function ()
-             return ReplaceInFindFile()
-           end, ---
+  action = function () 
+    return ReplaceInFindFile()
+  end, ---
 } ---
 Macro {
   area = "Dialog",
@@ -118,9 +116,9 @@ Macro {
   description = "FindFile: Replace in file + Down",
   condition = IsFindFileResult,
   action = function ()
-             ReplaceInFindFile()
-             return Keys"Down" -- На следующий элемент
-           end, ---
+    ReplaceInFindFile()
+    return Keys"Down" -- На следующий элемент
+  end, ---
 } ---
 --]]
 --------------------------------------------------------------------------------

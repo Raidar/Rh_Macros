@@ -49,9 +49,9 @@ Macro {
   description = "Colorer: Reload HRC",
   condition = Exist,
   action = function ()
-             --return CallPlugin(guids.Colorer, 12)
-             if PluginMenu(guids.Colorer) then return Keys"R" end
-           end, ---
+    --return CallPlugin(guids.Colorer, 12)
+    if PluginMenu(guids.Colorer) then return Keys"R" end
+  end, ---
 } ---
 
 Macro {
@@ -61,9 +61,9 @@ Macro {
   description = "Colorer: Section List",
   condition = Exist,
   action = function ()
-             --return CallPlugin(guids.Colorer, 5)
-             if PluginMenu(guids.Colorer) then return Keys"5" end
-           end, ---
+    --return CallPlugin(guids.Colorer, 5)
+    if PluginMenu(guids.Colorer) then return Keys"5" end
+  end, ---
 } ---
 Macro {
   area = "Editor",
@@ -72,9 +72,9 @@ Macro {
   description = "Colorer: Prev Section",
   condition = Exist,
   action = function ()
-             --Keys"F11 C 5 Up Enter"
-             if PluginMenu(guids.Colorer) then return Keys"5 Up Enter" end
-           end, ---
+    --Keys"F11 C 5 Up Enter"
+    if PluginMenu(guids.Colorer) then return Keys"5 Up Enter" end
+  end, ---
 } ---
 Macro {
   area = "Editor",
@@ -83,9 +83,9 @@ Macro {
   description = "Colorer: Next Section",
   condition = Exist,
   action = function ()
-             --Keys"F11 C 5 Down Enter"
-             if PluginMenu(guids.Colorer) then return Keys"5 Down Enter" end
-           end, ---
+    --Keys"F11 C 5 Down Enter"
+    if PluginMenu(guids.Colorer) then return Keys"5 Down Enter" end
+  end, ---
 } ---
 
 Macro {
@@ -95,9 +95,9 @@ Macro {
   description = "Colorer: Attention List",
   condition = Exist,
   action = function ()
-             --return CallPlugin(guids.Colorer.Colorer, 6)
-             if PluginMenu(guids.Colorer) then return Keys"6" end
-           end, ---
+    --return CallPlugin(guids.Colorer.Colorer, 6)
+    if PluginMenu(guids.Colorer) then return Keys"6" end
+  end, ---
 } ---
 --]]
 --------------------------------------------------------------------------------

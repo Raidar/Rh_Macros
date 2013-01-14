@@ -53,8 +53,8 @@ Macro {
   description = "Find: Paired bracket",
   condition = Exist,
   action = function ()
-             return CallPlugin(guids.Brackets, 0) -- Find forward
-           end, ---
+    return CallPlugin(guids.Brackets, 0) -- Find forward
+  end, ---
 } ---
 Macro {
   area = "Editor",
@@ -63,8 +63,8 @@ Macro {
   description = "Find: Select bracket",
   condition = Exist,
   action = function ()
-             return CallPlugin(guids.Brackets, 2) -- Select forward
-           end, ---
+    return CallPlugin(guids.Brackets, 2) -- Select forward
+  end, ---
 } ---
 --]]
 --------------------------------------------------------------------------------

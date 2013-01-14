@@ -47,10 +47,10 @@ Macro {
   description = "EMenu: My Computer",
   condition = Exist,
   action = function ()
-             PluginMenu(guids.EMenu)
-             Keys"Down Enter"
-             exit()
-           end, ---
+    PluginMenu(guids.EMenu)
+    Keys"Down Enter"
+    exit()
+  end, ---
 } ---
 --]]
 ---------------------------------------- '[' -- TmpPanel
@@ -66,10 +66,10 @@ Macro {
   description = "TmpPanel: Shortcuts",
   condition = Exist,
   action = function ()
-             print("tmp:+menu %FarLocalProfile%\\Shortcuts.temp")
-             Keys"Enter"
-             exit()
-           end, ---
+    print("tmp:+menu %FarLocalProfile%\\Shortcuts.temp")
+    Keys"Enter"
+    exit()
+  end, ---
 } ---
 --]]
 ---------------------------------------- '7' -- ArcLite
@@ -86,25 +86,25 @@ Macro {
   description = "Arch: Choose profile…",
   condition = Exist,
   action = function ()
-             if not PluginMenu(guids.ArcLite) then return end
+    if not PluginMenu(guids.ArcLite) then return end
 
-             -- Окно "Создание архива"
-             Keys"Down Down Enter"
-             if not Area.Dialog or Dlg.Id ~= guids.ArcLiteArchive then
-               return
-             end
+    -- Окно "Создание архива"
+    Keys"Down Down Enter"
+    if not Area.Dialog or Dlg.Id ~= guids.ArcLiteArchive then
+      return
+    end
 
-             -- Поиск поля "Профиль"
-             local k, Count = 0, Dlg.ItemCount
-             repeat
-               k = k + 1
-               Dlg.SetFocus(k)
-             until k > Count or Dlg.ItemType == F.DI_COMBOBOX
-             if k > Count then return end
+    -- Поиск поля "Профиль"
+    local k, Count = 0, Dlg.ItemCount
+    repeat
+      k = k + 1
+      Dlg.SetFocus(k)
+    until k > Count or Dlg.ItemType == F.DI_COMBOBOX
+    if k > Count then return end
 
-             Keys"CtrlDown"
-             exit()
-           end, ---
+    Keys"CtrlDown"
+    exit()
+  end, ---
 } ---
 
 Macro { -- Editor.WordDiv must be consist "."
@@ -113,32 +113,32 @@ Macro { -- Editor.WordDiv must be consist "."
   flags = "DisableOutput",
   description = "Arch: Make archive…",
   condition = function ()
-                return Exist() and APanel.FilePanel
-              end, ---
+    return PluginExist(guids.ArcLite) and APanel.FilePanel
+  end, ---
   action = function ()
-             local Panel = APanel
-             local IsFile = not Panel.Folder
-             local Selected = Panel.Selected
-             local Name = Panel.Current
-             local ExtPos = Name:cfind("\.[^\.]-$")
+    local Panel = APanel
+    local IsFile = not Panel.Folder
+    local Selected = Panel.Selected
+    local Name = Panel.Current
+    local ExtPos = Name:cfind("\.[^\.]-$")
 
-             if not PluginMenu(guids.ArcLite) then return end
+    if not PluginMenu(guids.ArcLite) then return end
 
-             -- Окно "Создание архива"
-             Keys"Down Down Enter"
-             if not Area.Dialog or Dlg.Id ~= guids.ArcLiteArchive then
-               return
-             end
+    -- Окно "Создание архива"
+    Keys"Down Down Enter"
+    if not Area.Dialog or Dlg.Id ~= guids.ArcLiteArchive then
+      return
+    end
 
-             if not Selected and IsFile and
-                ExtPos and ExtPos > Name:len() - 7 then
-               Keys"CtrlLeft CtrlBS"
-             end
+    if not Selected and IsFile and
+       ExtPos and ExtPos > Name:len() - 7 then
+      Keys"CtrlLeft CtrlBS"
+    end
 
-             Keys"Home ShiftEnd CtrlShiftLeft ShiftLeft"
+    Keys"Home ShiftEnd CtrlShiftLeft ShiftLeft"
 
-             exit()
-           end, ---
+    exit()
+  end, ---
 } ---
 
 Macro {
@@ -148,15 +148,15 @@ Macro {
   description = "Arch: Test archive",
   condition = Exist,
   action = function ()
-             Keys"ShiftF3"
-             if Area.Menu then Keys"Enter" end
+    Keys"ShiftF3"
+    if Area.Menu then Keys"Enter" end
 
-             --if not PluginMenu(guids.ArcLite) then return end
-             --Keys"Up Up Enter"
-             -- Окно "Результат тестирования архива"
+    --if not PluginMenu(guids.ArcLite) then return end
+    --Keys"Up Up Enter"
+    -- Окно "Результат тестирования архива"
 
-             exit()
-           end, ---
+    exit()
+  end, ---
 } ---
 --]]
 --------------------------------------------------------------------------------

@@ -53,8 +53,8 @@ Macro {
   description = "Case: Next case",
   condition = Exist,
   action = function ()
-             return CallPlugin(guids.EditCase, 4)
-           end, ---
+    return CallPlugin(guids.EditCase, 4)
+  end, ---
 } ---
 
 Macro {
@@ -64,12 +64,12 @@ Macro {
   description = "Case: Sentence case for Bulleted line",
   condition = Exist,
   action = function ()
-             local Info = editor.GetInfo()
-             Keys"ShiftHome CtrlShiftRight CtrlShiftLeft ShiftRight"
-             CallPlugin(guids.EditCase, 0)
-             editor.Select(Info.EditorID, BlockNoneType)
-             return editor.SetPosition(Info.EditorID, -1, Info.CurPos)
-           end, ---
+    local Info = editor.GetInfo()
+    Keys"ShiftHome CtrlShiftRight CtrlShiftLeft ShiftRight"
+    CallPlugin(guids.EditCase, 0)
+    editor.Select(Info.EditorID, BlockNoneType)
+    return editor.SetPosition(Info.EditorID, -1, Info.CurPos)
+  end, ---
 } ---
 Macro {
   area = "Editor",
@@ -78,12 +78,12 @@ Macro {
   description = "Case: Sentence case for Numbered line",
   condition = Exist,
   action = function ()
-             local Info = editor.GetInfo()
-             Keys"ShiftHome CtrlShiftRight CtrlShiftRight CtrlShiftLeft ShiftRight"
-             CallPlugin(guids.EditCase, 0)
-             editor.Select(Info.EditorID, BlockNoneType)
-             return editor.SetPosition(Info.EditorID, -1, Info.CurPos)
-           end, ---
+    local Info = editor.GetInfo()
+    Keys"ShiftHome CtrlShiftRight CtrlShiftRight CtrlShiftLeft ShiftRight"
+    CallPlugin(guids.EditCase, 0)
+    editor.Select(Info.EditorID, BlockNoneType)
+    return editor.SetPosition(Info.EditorID, -1, Info.CurPos)
+  end, ---
 } ---
 --]]
 --------------------------------------------------------------------------------

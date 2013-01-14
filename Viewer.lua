@@ -41,16 +41,16 @@ Macro {
   flags = "DisableOutput",
   description = "View: Next codepage",
   action = function ()
-             Keys"ShiftF8"
-             if not Area.Menu then return end
+    Keys"ShiftF8"
+    if not Area.Menu then return end
 
-             --far.Message(("%#08x"):format(Menu.ItemStatus()))
-             repeat
-               Keys"Down"
-             until band(Menu.ItemStatus(), 0x0000003C) == 0
+    --far.Message(("%#08x"):format(Menu.ItemStatus()))
+    repeat
+      Keys"Down"
+    until band(Menu.ItemStatus(), 0x0000003C) == 0
 
-             return Keys"Enter"
-           end, ---
+    return Keys"Enter"
+  end, ---
 } ---
 --]]
 ---------------------------------------- File
@@ -60,9 +60,7 @@ Macro {
   key = "CtrlO",
   flags = "DisableOutput",
   description = "View: Switch to panels",
-  action = function ()
-             return Keys"F12 0"
-           end, ---
+  action = function () return Keys"F12 0" end, ---
 } ---
 --]]
 
@@ -73,18 +71,14 @@ Macro {
   key = "CtrlF",
   flags = "DisableOutput",
   description = "View: Find…",
-  action = function ()
-             return Keys"F7"
-           end, ---
+  action = function () return Keys"F7" end, ---
 } ---
 Macro {
   area = "Viewer",
   key = "F3",
   flags = "DisableOutput",
   description = "View: Find next",
-  action = function ()
-             return Keys"ShiftF7"
-           end, ---
+  action = function () return Keys"ShiftF7" end, ---
 } ---
 --]]
 --------------------------------------------------------------------------------
