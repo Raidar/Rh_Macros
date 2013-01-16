@@ -534,25 +534,27 @@ function unit.FindNumberPos (Info, Line, Pos)
   local Info = Info or editor.GetInfo()
 
   local s = editor.GetString(Info.EditorID, Line or -1, 2)
-  --far.Message(s:len(), Pos)
+  --far.Message(s, s:len())
   if not s then return end
   local Len = s:len()
   if Len == 0 then return end
 
   local Pos = Pos or Info.CurPos
-  if Pos < 0 then Pos = Len + Pos + 1 end
+  if Pos < 0 then
+    Pos = Len + Pos + 1
+  end
 
   local PosB, PosE -- begin/end pos
 
-  local atEnd = Len == Pos
+  local atEnd = Len <= Pos
   if atEnd then
-    PosE = Pos
+    PosE = Len
   else
     Pos = Pos + 1
   end
 
   local f = isdigit(s:sub(Pos, Pos))
-  --far.Message(c, Pos)
+  --far.Message(f, Pos)
   if not f then
     if atEnd or Pos == 1 then return end
     Pos = Pos - 1
@@ -582,7 +584,7 @@ function unit.FindNumberPos (Info, Line, Pos)
     tostring(PosE),
     '"'..s:sub(PosB, PosE)..'"',
   } ---
-  far.Message(table.concat(t, "\n"), "ShiftNumber")
+  far.Message(table.concat(t, "\n"), "FindNumberPos")
   --]]
 
   return s, PosB, PosE
@@ -622,6 +624,17 @@ function unit.FindNumberStr (Info, Line, Pos, Shift, Limit)
         (k >= 0 and k < Count) do
     k = k + Shift
     s, PosB, PosE = FindNumberPos(Info, k, Pos)
+    --[[
+    if s then
+      local t = {
+        tostring(PosB),
+        tostring(PosE),
+        '"'..(s and s:sub(PosB, PosE) or "")..'"',
+        '"'..(s or "")..'"',
+      } ---
+      far.Message(table.concat(t, "\n"), "FindNumberStr")
+    end
+    --]]
   end
 
   --[[
@@ -630,7 +643,7 @@ function unit.FindNumberStr (Info, Line, Pos, Shift, Limit)
     tostring(PosE),
     '"'..(s and s:sub(PosB, PosE) or "")..'"',
   } ---
-  far.Message(table.concat(t, "\n"), "ShiftNumber")
+  far.Message(table.concat(t, "\n"), "FindNumberStr")
   --]]
 
   editor.SetPosition(Info.EditorID, Info)
