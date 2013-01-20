@@ -1,4 +1,4 @@
---[[ Search macros ]]--
+--[[ Search macros with plugins ]]--
 
 ----------------------------------------
 --[[ description:
