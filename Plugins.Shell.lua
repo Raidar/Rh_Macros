@@ -1,4 +1,4 @@
---[[ System macros ]]--
+--[[ Shell macros with plugins ]]--
 
 ----------------------------------------
 --[[ description:
@@ -53,6 +53,23 @@ Macro {
   end, ---
 } ---
 --]]
+---------------------------------------- 'H' -- LuaFAR History
+--[[
+guids.LFHistory = "A745761D-42B5-4E67-83DA-F07AF367AE86"
+
+local Exist = function () return PluginExist(guids.LFHistory) end
+
+Macro {
+  area = "Common",
+  key = "AltF10",
+  flags = "DisableOutput",
+  description = "History: Commands",
+  condition = Exist,
+  action = function ()
+    Keys"Down Enter"
+    exit()
+  end, ---
+} ---
 ---------------------------------------- '[' -- TmpPanel
 -- [[
 guids.TmpPanel = "B77C964B-E31E-4D4C-8FE5-D6B0C6853E7C"

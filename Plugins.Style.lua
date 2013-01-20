@@ -1,4 +1,4 @@
---[[ Styling macros ]]--
+--[[ Style macros with plugins ]]--
 
 ----------------------------------------
 --[[ description:

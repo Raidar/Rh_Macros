@@ -1,4 +1,4 @@
---[[ Editing macros ]]--
+--[[ Editor macros with plugins ]]--
 
 ----------------------------------------
 --[[ description:
