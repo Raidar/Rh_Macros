@@ -1,0 +1,51 @@
+--[[ Some macros with plugins ]]--
+
+----------------------------------------
+--[[ description:
+  -- Macros for some area with plugins.
+  -- Макросы для некоторой области с плагинами.
+--]]
+----------------------------------------
+--[[ uses:
+  nil.
+  -- group: Macros/Plugins.
+--]]
+--------------------------------------------------------------------------------
+
+----------------------------------------
+local far = far
+local F = far.Flags
+
+--------------------------------------------------------------------------------
+--local unit = {}
+
+----------------------------------------
+local guids = {}
+--unit.guids = guids
+
+local Macro = Macro or function () end
+
+local Async = function () return mmode(3, 1) end
+
+local PluginExist = Plugin.Exist
+local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
+
+---------------------------------------- '' -- Name
+--[[
+guids.Name = ""
+
+local Exist = function () return PluginExist(guids.Name) end
+
+Macro {
+  area = "Common",
+  key = "",
+  flags = "DisableOutput",
+  description = "Name: Action",
+  condition = Exist,
+  action = function ()
+    --return CallPlugin(guids.Name, 1)
+    if PluginMenu(guids.Name) then return Keys"" end
+  end, ---
+} ---
+--]]
+--------------------------------------------------------------------------------
