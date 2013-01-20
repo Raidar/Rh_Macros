@@ -1039,6 +1039,8 @@ for k, v in pairs(Bullets) do
   end
 end
 
+--[=[
+-- WARN: Закомментировано, т.к. занято на Quote-макросы.
 local IndentBullets = {
   ["-"]     = { level = "2",    key = "CtrlAltShift1", },
   ["  ~"]   = { level = "3",    key = "CtrlAltShift2", },
@@ -1063,7 +1065,7 @@ for k, v in pairs(IndentBullets) do
     } ---
   end
 end
-
+--]=]
 end -- do
 --]]
 ---------------------------------------- -- Section number
@@ -1225,6 +1227,9 @@ local Characters = {
   ["°"] = "Ctrl"..BSh,
   [""] = "CtrlShift"..BSh,
   ["―"] = "CtrlAlt"..BSh,
+
+  ["≤"] = "CtrlShift,",
+  ["≥"] = "CtrlShift.",
 
   -- Math/Lang characters with Numpad:
   -- Num+ — Add --                  -- Num* — Multiply --
