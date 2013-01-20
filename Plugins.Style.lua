@@ -30,6 +30,7 @@ local guids = {}
 --unit.guids = guids
 
 local Macro = Macro or function () end
+local Plugin = Plugin or {}
 
 local Async = function () return mmode(3, 1) end
 
