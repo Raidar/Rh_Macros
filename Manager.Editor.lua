@@ -1228,8 +1228,8 @@ local Characters = {
   [""] = "CtrlShift"..BSh,
   ["―"] = "CtrlAlt"..BSh,
 
-  ["≤"] = "CtrlShift,",
-  ["≥"] = "CtrlShift.",
+  ["≤"] = "CtrlAlt,",
+  ["≥"] = "CtrlAlt.",
 
   -- Math/Lang characters with Numpad:
   -- Num+ — Add --                  -- Num* — Multiply --

@@ -42,6 +42,8 @@ local PluginExist = Plugin.Exist
 local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 
 ---------------------------------------- 'L' -- LuaFAR for Editor
+
+----------------------------------------     -- -- Lua User Menu
 -- [[
 guids.LF4Ed = "6F332978-08B8-4919-847A-EFBB6154C99A"
 
@@ -71,6 +73,19 @@ Macro {
   end, ---
 } ---
 
+Macro {
+  area = "Shell Editor Viewer",
+  key = "CtrlAltShiftF2",
+  flags = "DisableOutput",
+  description = "LUM: Tortoise SVN",
+  condition = Exist,
+  action = function ()
+    if not PluginMenu(guids.LF4Ed) then return end
+    return Keys"S"
+    --return Keys"S T"
+  end, ---
+} ---
+
 --[=[
 Macro {
   area = "Editor",
@@ -85,5 +100,85 @@ Macro {
   end, ---
 } ---
 --]=]
+--]]
+----------------------------------------     -- -- Editor
+-- [[
+do
+
+local Quotes = {
+  -- Quotes:
+  ["'"] = { key = "Ctrl'",      note = "'|'" },
+  ['"'] = { key = "CtrlShift'", note = '"|"' },
+  [";"] = { key = "Ctrl;",      note = "‹|›" },
+  [":"] = { key = "CtrlShift;", note = "«|»" },
+  -- --
+  -- ‘|’
+  -- “|”
+  -- „|“
+
+  -- Brackets:
+  ["["] = { key = "Ctrl[",          note = "[|]" },
+  ["{"] = { key = "CtrlShift[",     note = "{|}" },
+  ["("] = { key = "Ctrl]",          note = "(|)" },
+  -- --
+  ["<"] = { key = "Ctrl,",          note = "<|>" },
+  [">"] = { key = "CtrlShift,",     note = "⟨|⟩" },
+  ["/"] = { key = "Ctrl/",          note = "/|/" },
+ ["\\"] = { key = "CtrlShift/",     note = "\\|\\" },
+
+  -- Comments:
+  ["d"] = { key = "CtrlAltShift[",  note = "{ | }" },
+  ["p"] = { key = "CtrlShift]",     note = "(*|*)" },
+  ["c"] = { key = "CtrlAltShift]",  note = "/* | */" },
+  -- --
+  -- <!-- | -->
+  -- --[[ | ]]--
+  -- --
+  -- --
+
+  -- Markers:
+  ["|"] = { key = "CtrlAltShift1",  note = "|||" },
+  -- --
+  ["#"] = { key = "CtrlAltShift3",  note = "#|#" },
+  ["$"] = { key = "CtrlAltShift4",  note = "$|$" },
+  ["%"] = { key = "CtrlAltShift5",  note = "%|%" },
+  ["^"] = { key = "CtrlAltShift6",  note = "^|^" },
+  -- --
+  ["*"] = { key = "CtrlAltShift8",  note = "*|*" },
+
+  ["`"] = { key = "CtrlAlt`",       note = "`|`" },
+  ["~"] = { key = "CtrlAltShift`",  note = "~|~" },
+  -- -|-
+  -- _|_
+  -- +|+
+  -- ‾|‾
+  -- --
+  ["o"] = { key = "CtrlAltShift0",  note = "¤|¤" },
+
+  -- Specials:
+  ["q"] = { key = "CtrlAlt'",       note = 'cleared "|"' },
+} ---
+
+  local DescFmt = "Quote: %s"
+
+for k, v in pairs(Quotes) do
+  if k ~= "" then
+    Macro {
+      area = "Editor",
+      key = v.key,
+      flags = "DisableOutput",
+      description = DescFmt:format(v.note),
+      condition = Exist,
+      action = function ()
+        if not PluginMenu(guids.LF4Ed) then return end
+        -- TODO: Добавить проверку наличия окна LUM.
+        Keys"M S Q"
+        return Keys(k)
+      end, ---
+    } ---
+  end
+end
+
+end -- do
 --]]
 --------------------------------------------------------------------------------
