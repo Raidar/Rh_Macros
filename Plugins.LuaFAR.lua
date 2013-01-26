@@ -43,12 +43,11 @@ local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 
 ---------------------------------------- 'L' -- LuaFAR for Editor
 
-----------------------------------------     -- -- Lua User Menu
--- [[
 guids.LF4Ed = "6F332978-08B8-4919-847A-EFBB6154C99A"
 
 local Exist = function () return PluginExist(guids.LF4Ed) end
 
+-- [[
 Macro {
   area = "Shell Editor Viewer",
   key = "CtrlL",
@@ -60,7 +59,12 @@ Macro {
     return PluginMenu(guids.LF4Ed)
   end, ---
 } ---
+--]]
+---------------------------------------- 'M' -- -- Lua User Menu
+guids.LUM = "00B06FBA-0BB7-4333-8025-BA48B6077435"
+--guids.CustomMenu = "3700ABE9-C460-42B2-9F2E-1FE705B2942A"
 
+-- [[
 Macro {
   area = "Shell Editor Viewer",
   key = "AltShiftF2",
@@ -69,7 +73,8 @@ Macro {
   condition = Exist,
   action = function ()
     if not PluginMenu(guids.LF4Ed) then return end
-    return Keys"M"
+    Keys"M"
+    return Menu.Id == guids.LUM
   end, ---
 } ---
 
@@ -81,8 +86,9 @@ Macro {
   condition = Exist,
   action = function ()
     if not PluginMenu(guids.LF4Ed) then return end
-    return Keys"S"
-    --return Keys"S T"
+    Keys"S"
+    return Area.Menu and Menu.Id == guids.LUM
+    --if Area.Menu and Menu.Id == guids.LUM then return Keys"T" end
   end, ---
 } ---
 
@@ -95,8 +101,8 @@ Macro {
   condition = Exist,
   action = function ()
     if not PluginMenu(guids.LF4Ed) then return end
-    -- TODO: Добавить проверку наличия окна LUM.
-    return Keys"M J"
+    Keys"M"
+    if Area.Menu and Menu.Id == guids.LUM then return Keys"J" end
   end, ---
 } ---
 --]=]
@@ -176,8 +182,10 @@ for k, v in pairs(QuoteMarks) do
       condition = Exist,
       action = function ()
         if not PluginMenu(guids.LF4Ed) then return end
-        -- TODO: Добавить проверку наличия окна LUM.
-        Keys"M Q Q"
+        Keys"M"
+        --far.Message(Menu.Id, tostring(Area.Menu))
+        if not Area.Menu or Menu.Id ~= guids.LUM then return end
+        Keys"Q Q"
         return Keys(k)
       end, ---
     } ---
