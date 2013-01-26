@@ -177,7 +177,7 @@ for k, v in pairs(QuoteMarks) do
       action = function ()
         if not PluginMenu(guids.LF4Ed) then return end
         -- TODO: Добавить проверку наличия окна LUM.
-        Keys"M S Q"
+        Keys"M Q Q"
         return Keys(k)
       end, ---
     } ---
