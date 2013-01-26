@@ -64,6 +64,12 @@ Macro {
 guids.LUM = "00B06FBA-0BB7-4333-8025-BA48B6077435"
 --guids.CustomMenu = "3700ABE9-C460-42B2-9F2E-1FE705B2942A"
 
+local function ShowLUM (key, guid) --> (bool)
+  if not PluginMenu(guids.LF4Ed) then return end
+  Keys(key or "M")
+  return Menu.Id == (guid or guids.LUM)
+end -- ShowLUM
+
 -- [[
 Macro {
   area = "Shell Editor Viewer",
@@ -71,11 +77,7 @@ Macro {
   flags = "DisableOutput",
   description = "LUM: Lua User Menu",
   condition = Exist,
-  action = function ()
-    if not PluginMenu(guids.LF4Ed) then return end
-    Keys"M"
-    return Menu.Id == guids.LUM
-  end, ---
+  action = ShowLUM,
 } ---
 
 Macro {
@@ -85,10 +87,8 @@ Macro {
   description = "LUM: Tortoise SVN",
   condition = Exist,
   action = function ()
-    if not PluginMenu(guids.LF4Ed) then return end
-    Keys"S"
-    return Area.Menu and Menu.Id == guids.LUM
-    --if Area.Menu and Menu.Id == guids.LUM then return Keys"T" end
+    return ShowLUM("S")
+    --if ShowLUM("S") then return Keys"T" end
   end, ---
 } ---
 
@@ -100,14 +100,45 @@ Macro {
   description = "LUM: Binding Insert",
   condition = Exist,
   action = function ()
-    if not PluginMenu(guids.LF4Ed) then return end
-    Keys"M"
-    if Area.Menu and Menu.Id == guids.LUM then return Keys"J" end
+    if ShowLUM"M" then return Keys"J" end
   end, ---
 } ---
 --]=]
 --]]
-----------------------------------------     -- -- Editor
+----------------------------------------     -- -- LUM Items
+-- [[
+Macro {
+  area = "Editor",
+  key = "CtrlShiftH",
+  flags = "DisableOutput",
+  description = "LUM: Characters",
+  condition = Exist,
+  action = function ()
+    if ShowLUM() then return Keys"H" end
+  end, ---
+} ---
+Macro {
+  area = "Editor",
+  key = "CtrlShiftQ",
+  flags = "DisableOutput",
+  description = "LUM: Quote text",
+  condition = Exist,
+  action = function ()
+    if ShowLUM() then return Keys"Q Q" end
+  end, ---
+} ---
+Macro {
+  area = "Editor",
+  key = "CtrlShiftT",
+  flags = "DisableOutput",
+  description = "LUM: Clear text",
+  condition = Exist,
+  action = function ()
+    if ShowLUM() then return Keys"S C" end
+  end, ---
+} ---
+--]]
+----------------------------------------     -- -- QuoteMarks
 -- [[
 do
 
