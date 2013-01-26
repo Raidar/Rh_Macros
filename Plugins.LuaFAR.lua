@@ -107,29 +107,29 @@ do
 
 local Quotes = {
   -- Quotes:
-  ["'"] = { key = "Ctrl'",      note = "'|'" },
-  ['"'] = { key = "CtrlShift'", note = '"|"' },
-  [";"] = { key = "Ctrl;",      note = "‹|›" },
-  [":"] = { key = "CtrlShift;", note = "«|»" },
+  ["'"] = { key = "Ctrl'",      note = "'|'", },
+  ['"'] = { key = "CtrlShift'", note = '"|"', },
+  [";"] = { key = "Ctrl;",      note = "‹|›", },
+  [":"] = { key = "CtrlShift;", note = "«|»", },
   -- --
   -- ‘|’
   -- “|”
   -- „|“
 
   -- Brackets:
-  ["["] = { key = "Ctrl[",          note = "[|]" },
-  ["{"] = { key = "CtrlShift[",     note = "{|}" },
-  ["("] = { key = "Ctrl]",          note = "(|)" },
+  ["["] = { key = "Ctrl[",          note = "[|]", },
+  ["{"] = { key = "CtrlShift[",     note = "{|}", },
+  ["("] = { key = "Ctrl]",          note = "(|)", },
   -- --
-  ["<"] = { key = "Ctrl,",          note = "<|>" },
-  [">"] = { key = "CtrlShift,",     note = "⟨|⟩" },
+  ["<"] = { key = "Ctrl,",          note = "<|>", },
+  [">"] = { key = "CtrlShift,",     note = "⟨|⟩", },
   ["/"] = { key = "Ctrl/",          note = "/|/" },
- ["\\"] = { key = "CtrlShift/",     note = "\\|\\" },
+ ["\\"] = { key = "CtrlShift/",     note = "\\|\\", },
 
   -- Comments:
-  ["d"] = { key = "CtrlAltShift[",  note = "{ | }" },
-  ["p"] = { key = "CtrlShift]",     note = "(*|*)" },
-  ["c"] = { key = "CtrlAltShift]",  note = "/* | */" },
+  ["d"] = { key = "CtrlAltShift[",  note = "{ | }", },
+  ["p"] = { key = "CtrlShift]",     note = "(*|*)", },
+  ["c"] = { key = "CtrlAltShift]",  note = "/* | */", },
   -- --
   -- <!-- | -->
   -- --[[ | ]]--
@@ -137,26 +137,27 @@ local Quotes = {
   -- --
 
   -- Markers:
-  ["|"] = { key = "CtrlAltShift1",  note = "|||" },
+  ["|"] = { key = "CtrlAltShift1",  note = "|||", },
   -- --
-  ["#"] = { key = "CtrlAltShift3",  note = "#|#" },
-  ["$"] = { key = "CtrlAltShift4",  note = "$|$" },
-  ["%"] = { key = "CtrlAltShift5",  note = "%|%" },
-  ["^"] = { key = "CtrlAltShift6",  note = "^|^" },
+  ["#"] = { key = "CtrlAltShift3",  note = "#|#", },
+  ["$"] = { key = "CtrlAltShift4",  note = "$|$", },
+  ["%"] = { key = "CtrlAltShift5",  note = "%|%", },
+  ["^"] = { key = "CtrlAltShift6",  note = "^|^", },
   -- --
-  ["*"] = { key = "CtrlAltShift8",  note = "*|*" },
+  ["*"] = { key = "CtrlAltShift8",  note = "*|*", },
 
-  ["`"] = { key = "CtrlAlt`",       note = "`|`" },
-  ["~"] = { key = "CtrlAltShift`",  note = "~|~" },
+  ["`"] = { key = "CtrlAlt`",       note = "`|`", },
+  ["~"] = { key = "CtrlAltShift`",  note = "~|~", },
   -- -|-
   -- _|_
   -- +|+
   -- ‾|‾
   -- --
-  ["o"] = { key = "CtrlAltShift0",  note = "¤|¤" },
+  ["o"] = { key = "CtrlAltShift0",  note = "¤|¤", },
 
   -- Specials:
-  ["q"] = { key = "CtrlAlt'",       note = 'cleared "|"' },
+  ["q"] = { key = "CtrlAlt'",       note = 'cleared "|"', },
+  ["w"] = { key = "CtrlAlt;",       note = 'cleared «|»', },
 } ---
 
   local DescFmt = "Quote: %s"
