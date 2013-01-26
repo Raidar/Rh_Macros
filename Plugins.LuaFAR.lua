@@ -105,15 +105,15 @@ Macro {
 -- [[
 do
 
-local Quotes = {
+local QuoteMarks = {
   -- Quotes:
   ["'"] = { key = "Ctrl'",      note = "'|'", },
   ['"'] = { key = "CtrlShift'", note = '"|"', },
   [";"] = { key = "Ctrl;",      note = "‹|›", },
   [":"] = { key = "CtrlShift;", note = "«|»", },
-  -- --
   -- ‘|’
   -- “|”
+  -- ‚|‘
   -- „|“
 
   -- Brackets:
@@ -143,7 +143,7 @@ local Quotes = {
   ["$"] = { key = "CtrlAltShift4",  note = "$|$", },
   ["%"] = { key = "CtrlAltShift5",  note = "%|%", },
   ["^"] = { key = "CtrlAltShift6",  note = "^|^", },
-  -- --
+  ["&"] = { key = "CtrlAltShift7",  note = "&|&", },
   ["*"] = { key = "CtrlAltShift8",  note = "*|*", },
 
   ["`"] = { key = "CtrlAlt`",       note = "`|`", },
@@ -153,16 +153,20 @@ local Quotes = {
   -- +|+
   -- ‾|‾
   -- --
-  ["o"] = { key = "CtrlAltShift0",  note = "¤|¤", },
+  -- --
 
   -- Specials:
+  -- ⌊|⌋
+  -- ⌈|⌉
+  -- ⟦|⟧
+  -- --
   ["q"] = { key = "CtrlAlt'",       note = 'cleared "|"', },
   ["w"] = { key = "CtrlAlt;",       note = 'cleared «|»', },
-} ---
+} --- QuoteMarks
 
   local DescFmt = "Quote: %s"
 
-for k, v in pairs(Quotes) do
+for k, v in pairs(QuoteMarks) do
   if k ~= "" then
     Macro {
       area = "Editor",
