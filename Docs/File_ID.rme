@@ -1,0 +1,32 @@
+Rh_Macros pack 3.0x
+
+[Info]
+Ver. : 3.0.4.1
+Date : 2013-01-27
+Ware : Freeware
+Lic. : Lua License
+Reqs : FAR v.3.0.3064,
+       LuaFAR v.3.1.1,
+       LuaFAR for Editor v.3.1.2,
+       LuaFAR context v.3.0.4.7,
+       Rh_Scripts pack v.3.0.4.17
+Type : Plugin for FAR Manager (Script package)
+Desc : Rh_Scripts package for LuaFAR for Editor
+
+Auth : A.I. Rakhmatullin
+       / А.И. Рахматуллин
+Addr : RF, RT, Kazan
+       / РФ, РТ, Казань
+Copy : 2012/2013+
+Mail : pmi-rai@narod.ru
+
+Home : http://pmi-rai.narod.ru/
+Link : /Programs/FarUsing.htm
+
+Repo : https://github.com/Raidar/Rh_Macros
+
+[Anons]
+  Rh_Macros is a package of scripts and macros for FAR Manager.
+  Rh_Macros pack — пакет скриптов и макросов для FAR Manager.
+
+―――――――
