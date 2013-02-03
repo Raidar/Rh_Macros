@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<farconfig version="3.0.3147">
+ <generalconfig>
+   <setting key="Macros" name="KeyRecordCtrlDot"       type="text" value="RCtrl." />
+   <setting key="Macros" name="KeyRecordCtrlShiftDot"  type="text" value="RCtrl." />
+   <setting key="Macros" name="KeyRecordRCtrlDot"      type="text" value="RCtrl." />
+   <setting key="Macros" name="KeyRecordRCtrlShiftDot" type="text" value="RCtrl." />
+ </generalconfig>
+</farconfig>

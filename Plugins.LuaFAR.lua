@@ -159,7 +159,7 @@ local QuoteMarks = {
   ["("] = { key = "Ctrl]",          note = "(|)", },
   -- --
   ["<"] = { key = "Ctrl,",          note = "<|>", },
-  [">"] = { key = "CtrlShift,",     note = "⟨|⟩", },
+  [">"] = { key = "Ctrl.",          note = "⟨|⟩", },
   ["/"] = { key = "Ctrl/",          note = "/|/" },
  ["\\"] = { key = "CtrlShift/",     note = "\\|\\", },
 
@@ -168,6 +168,8 @@ local QuoteMarks = {
   ["p"] = { key = "CtrlShift]",     note = "(*|*)", },
   ["c"] = { key = "CtrlAltShift]",  note = "/* | */", },
   -- --
+  --["h"] = { key = "CtrlShift.",     note = "<!--|-->", },
+  --["l"] = { key = "CtrlShift,",     note = "--[[ | ]]--", },
   -- <!-- | -->
   -- --[[ | ]]--
   -- --
