@@ -168,12 +168,13 @@ local QuoteMarks = {
   ["p"] = { key = "CtrlShift]",     note = "(*|*)", },
   ["c"] = { key = "CtrlAltShift]",  note = "/* | */", },
   -- --
-  --["h"] = { key = "CtrlShift.",     note = "<!--|-->", },
-  --["l"] = { key = "CtrlShift,",     note = "--[[ | ]]--", },
   -- <!-- | -->
   -- --[[ | ]]--
   -- --
   -- --
+
+  --["h"] = { key = "CtrlShift.",     note = "<!--|-->", },
+  --["l"] = { key = "CtrlShift,",     note = "--[[ | ]]--", },
 
   -- Markers:
   ["|"] = { key = "CtrlAltShift1",  note = "|||", },
