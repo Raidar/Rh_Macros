@@ -97,7 +97,7 @@ Macro {
   area = "Editor",
   key = "CtrlJ",
   flags = "DisableOutput",
-  description = "LUM: Binding Insert",
+  description = "LUM: Template Insert",
   condition = Exist,
   action = function ()
     if ShowLUM"M" then return Keys"J" end
