@@ -108,6 +108,16 @@ Macro {
 ----------------------------------------     -- -- LUM Items
 -- [[
 Macro {
+  area = "Common",
+  key = "CtrlK",
+  flags = "DisableOutput",
+  description = "LUM: Calendar",
+  condition = Exist,
+  action = function ()
+    if ShowLUM() then return Keys"A C" end
+  end, ---
+} ---
+Macro {
   area = "Editor",
   key = "CtrlShiftH",
   flags = "DisableOutput",
