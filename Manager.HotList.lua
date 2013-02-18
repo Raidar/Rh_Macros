@@ -368,32 +368,32 @@ Macro {
   action = function () return Keys"F2 H G N" end, ---
 } ---
 --]]
----------------------------------------- + -- Setup
+---------------------------------------- = -- Setup
 -- [[
 Macro {
   area = "Shell",
-  key = "Ctrl+",
+  key = "Ctrl=",
   flags = "DisableOutput",
   description = "HList: Setup",
   action = function () return Keys"F2 H I" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlShift+",
+  key = "CtrlShift=",
   flags = "DisableOutput",
   description = "HList: Setup/Install",
   action = function () return Keys"F2 H I I" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAlt+",
+  key = "CtrlAlt=",
   flags = "DisableOutput",
   description = "HList: Games/Sorteds",
   action = function () return Keys"F2 H I S" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAltShift+",
+  key = "CtrlAltShift=",
   flags = "DisableOutput",
   description = "HList: Games/Unsorted",
   action = function () return Keys"F2 H I U" end, ---
