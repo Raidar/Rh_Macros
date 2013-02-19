@@ -183,6 +183,7 @@ local QuoteMarks = {
   -- --
   -- --
 
+  ["x"] = { key = "CtrlAltM",       note = "<!--|-->", },
   --["h"] = { key = "CtrlShift.",     note = "<!--|-->", },
   --["l"] = { key = "CtrlShift,",     note = "--[[ | ]]--", },
 
@@ -235,6 +236,21 @@ for k, v in pairs(QuoteMarks) do
     } ---
   end
 end
+
+Macro {
+  area = "Editor",
+  key = "CtrlAltShiftM",
+  flags = "DisableOutput",
+  description = "Dequote: <!--|-->",
+  condition = Exist,
+  action = function ()
+    if not PluginMenu(guids.LF4Ed) then return end
+    Keys"M"
+    --far.Message(Menu.Id, tostring(Area.Menu))
+    if not Area.Menu or Menu.Id ~= guids.LUM then return end
+    return Keys"Q D X"
+  end, ---
+} ---
 
 end -- do
 --]]
