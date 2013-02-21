@@ -172,7 +172,7 @@ end ---- SaveAsUtf8noBOM
 -- [[
 Macro {
   area = "Editor",
-  key = "CtrlShiftF2",
+  key = "CtrlShiftS",
   flags = "DisableOutput",
   description = "Edit: Save as UTF-8 w/o BOM",
   action = function ()
