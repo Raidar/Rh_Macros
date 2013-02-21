@@ -11,7 +11,7 @@
 2013-02-20, v.3.0.5.3
 ―――――――
 [+] XML‑комментарии: CtrlAltM — закавычивание, CtrlAltShiftM — раскавычивание.
-[!] Manager.Editor: Исправление ошибки с вызовом SaveAsUtf8noBOM.
+[!] Manager.Editor: Исправление ошибки с вызовом SaveAsUtf8noBOM (CtrlShiftS).
 
 2013-02-17, v.3.0.5.2
 ―――――――

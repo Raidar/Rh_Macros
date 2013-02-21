@@ -1,15 +1,15 @@
 Rh_Macros pack 3.0x
 
 [Info]
-Ver. : 3.0.5.2
-Date : 2013-02-18
+Ver. : 3.0.5.3
+Date : 2013-02-21
 Ware : Freeware
 Lic. : Lua License
 Reqs : FAR v.3.0.3205,
        LuaFAR v.3.1.1,
        LuaFAR for Editor v.3.1.2,
-       LuaFAR context v.3.0.5.4,
-       Rh_Scripts pack v.3.0.5.7
+       LuaFAR context v.3.0.5.5,
+       Rh_Scripts pack v.3.0.5.8
 Type : Plugin for FAR Manager (Script package)
 Desc : Rh_Scripts package for LuaFAR for Editor
 
