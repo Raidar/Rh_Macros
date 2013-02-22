@@ -802,11 +802,11 @@ do
 
   local ByteFold = 1024
   local BytePrefixes = {
-    { name = "B",   fold = 1 },
-    { name = "KiB", fold = ByteFold },
-    { name = "MiB", fold = ByteFold*ByteFold },
-    { name = "GiB", fold = ByteFold*ByteFold*ByteFold },
-    { name = "TiB", fold = ByteFold*ByteFold*ByteFold*ByteFold },
+    { name = "B",   fold = 1, },
+    { name = "KiB", fold = ByteFold, },
+    { name = "MiB", fold = ByteFold*ByteFold, },
+    { name = "GiB", fold = ByteFold*ByteFold*ByteFold, },
+    { name = "TiB", fold = ByteFold*ByteFold*ByteFold*ByteFold, },
   } --- BytePrefixes
 
 -- Make a size value with prefixes.
