@@ -101,4 +101,45 @@ Macro {
   end, ---
 } ---
 --]]
+---------------------------------------- --- -- Colorer Outliner
+-- [[
+-- Workaround for Numpad keys in Colorer Outliner.
+guids.ColorerOutliner = "A8A298BA-AD5A-4094-8E24-F65BF38E6C1F"
+
+local IsOutliner = function ()
+  return PluginExist(guids.Colorer) and Menu.Id == guids.ColorerOutliner
+end
+
+local OutlinerNumpadKeys = {
+  Num0 = "Ins",
+  Num1 = "End",
+  Num2 = "Down",
+  Num3 = "PgDn",
+  Num4 = "Left",
+  Num5 = "Clear",
+  Num6 = "Right",
+  Num7 = "Home",
+  Num8 = "Up",
+  Num9 = "PgUp",
+} --- OutlinerNumpadKeys
+
+for k, v in pairs(OutlinerNumpadKeys) do
+  Macro {
+    area = "Menu",
+    key = k,
+    flags = "DisableOutput",
+    description = "Colorer: Outliner "..v,
+    condition = IsOutliner,
+    action = function () return Keys(v) end, ---
+  } ---
+  Macro {
+    area = "Menu",
+    key = "Ctrl"..k,
+    flags = "DisableOutput",
+    description = "Colorer: Outliner Ctrl"..v,
+    condition = IsOutliner,
+    action = function () return Keys("Ctrl"..v) end, ---
+  } ---
+end -- for
+--]]
 --------------------------------------------------------------------------------
