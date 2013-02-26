@@ -88,7 +88,7 @@ Macro {
   end, ---
   action = function ()
     if not PPanel.Plugin then
-      return Panel.SetPath(0, PPanel.Path, PPanel.Current)
+      return Panel.SetPath(0, PPanel.Path0, PPanel.Current)
     end
 
     if PPanel.HostFile ~= "" then
