@@ -272,7 +272,7 @@ Macro {
   key = "CtrlAltShift8",
   flags = "DisableOutput",
   description = "HList: Lib->Books",
-  action = function () return Keys"F2 H B B `" end, ---
+  action = function () return Keys"F2 B B `" end, ---
 } ---
 --]]
 ---------------------------------------- 9 -- Library
@@ -302,8 +302,8 @@ Macro {
   area = "Shell",
   key = "CtrlAltShift9",
   flags = "DisableOutput",
-  description = "HList: Lib->Sorted",
-  action = function () return Keys"F2 H B S `" end, ---
+  description = "HList: Lib/Informs",
+  action = function () return Keys"F2 B W Q" end, ---
 } ---
 --]]
 ---------------------------------------- 0 -- Firm
