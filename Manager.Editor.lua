@@ -639,8 +639,10 @@ function unit.FindNumberStr (Info, Line, Pos, Shift, Limit)
 
   --[[
   local t = {
+    tostring(k),
     tostring(PosB),
     tostring(PosE),
+    s,
     '"'..(s and s:sub(PosB, PosE) or "")..'"',
   } ---
   far.Message(table.concat(t, "\n"), "FindNumberStr")
@@ -1000,7 +1002,8 @@ Macro {
   action = function ()
     Keys"End"
     local Info = editor.GetInfo()
-    local n = unit.FindNumberStr(Info, Info.CurLine, -1, -1, 1000)
+    -- Поиск с предпоследней позиции, так исключается ")"!
+    local n = unit.FindNumberStr(Info, Info.CurLine, -2, -1, 1000)
     print" ()"
     Keys"Left"
     if n then print(n) end
