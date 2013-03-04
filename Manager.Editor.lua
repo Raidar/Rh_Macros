@@ -697,6 +697,7 @@ end ---- ShiftDigit
 function unit.ShiftNumber (Shift)
   local Info = editor.GetInfo()
   local s, PosB, PosE = unit.FindNumberPos(Info, -1, Info.CurPos)
+  if not s then return end
 
   local c = s:sub(PosB, PosE)
   local n = tonumber(c)
@@ -1006,7 +1007,9 @@ Macro {
     local n = unit.FindNumberStr(Info, Info.CurLine, -2, -1, 1000)
     print" ()"
     Keys"Left"
-    if n then print(n) end
+    if n then
+      print(n)
+    end
   end, ---
 } ---
 --]]
@@ -1077,18 +1080,23 @@ end -- do
 -- Автоустановка номера раздела (с инкрементом).
 local function AutoSectionNumber ()
   local Info = editor.GetInfo()
-  local n = unit.FindNumberStr(Info, Info.CurLine, Info.CurPos, -1, 1000)
+  local s = unit.FindNumberStr(Info, Info.CurLine, Info.CurPos, -1, 1000)
   -- TODO: Переделать с использованием только Lua, без Keys/print.
-  if n then
-    local Len = n:len()
-    n = tostring(tonumber(n) + 1)
-    if n:len() > Len then Keys"Left" end
-    print(n..".")
-  else
-    print("1.")
-  end
+  if s then
+    local sLen = s:len()
+    local n = tostring(tonumber(s) + 1)
+    local nLen = n:len()
+    --far.Message('"'..s..'"\n"'..n..'"\n')
+    if nLen > sLen then
+      Keys"Left"
+    elseif nLen < sLen then
+      print("0")
+    end
+    return print(n..". ")
 
-  return Keys"Left"
+  else
+    return print("1. ")
+  end
 end ---- AutoSectionNumber
 
   local SectionPat = "[^\.]*\."
