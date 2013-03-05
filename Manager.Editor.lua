@@ -1147,18 +1147,20 @@ local function ClearSectionNumber (Level, Subst, Kind)
     if s == "." then return "" end
     if Kind == "all" then return Subst end
 
-    if Kind == "number" or Kind == "both" then
+    if Kind == "number" then
       if s:find("^%d+\.$") then return Subst end
-    end
-    if Kind == "roman"  or Kind == "both" then
+    elseif Kind == "roman"  then
       if s:find("^[IVXLCDMivxlcdm]+\.$") then return Subst end
+    elseif Kind == "both" then
+      if s:find("^[%dIVXLCDMivxlcdm]+\.$") then return Subst end
     end
-
+    
     Count = Count - 1 -- Без замены
   end -- ReplaceSection
 
   c, Count = c:gsub(SectionPat, ReplaceSection, Level)
   --far.Message('"'..c..'"', tostring(Level - Count > 0))
+  --far.Message('"'..c..'"', tostring(Level).." - "..tostring(Count))
 
   --[[
   local t = {
@@ -1170,7 +1172,7 @@ local function ClearSectionNumber (Level, Subst, Kind)
   far.Message(table.concat(t, "\n"), Line)
   --]]
 
-  if Count ~= Level then
+  if Count > 0 and Count == Level then
     s = s:sub(1, PosB - 1)..c..s:sub(PosE + 1, -1)
     --far.Message('"'..s..'"', c:len())
 
