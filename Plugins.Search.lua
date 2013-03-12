@@ -80,6 +80,16 @@ Macro {
     if PluginMenu(guids.LFSearch) then return Keys"3" end
   end, ---
 } ---
+Macro {
+  area = "Editor",
+  key = "CtrlShiftF7",
+  flags = "DisableOutput",
+  description = "SnR: Menu",
+  condition = Exist,
+  action = function ()
+    return PluginMenu(guids.LFSearch)
+  end, ---
+} ---
 --]]
 ---------------------------------------- Editor
 
