@@ -44,7 +44,7 @@ local Exist = function () return PluginExist(guids.EMenu) end
 Macro {
   area = "Shell",
   key = "AltApps",
-  flags = "DisableOutput",
+  flags = "",
   description = "EMenu: My Computer",
   condition = Exist,
   action = function ()
@@ -63,7 +63,7 @@ local Exist = function () return PluginExist(guids.TmpPanel) end
 Macro {
   area = "Shell",
   key = "CtrlApps",
-  flags = "DisableOutput",
+  flags = "",
   description = "TmpPanel: Shortcuts",
   condition = Exist,
   action = function ()
@@ -83,7 +83,7 @@ local Exist = function () return PluginExist(guids.ArcLite) end
 Macro {
   area = "Shell",
   key = "AltShiftF1",
-  flags = "DisableOutput",
+  flags = "",
   description = "Arch: Choose profile…",
   condition = Exist,
   action = function ()
@@ -111,7 +111,7 @@ Macro {
 Macro { -- Editor.WordDiv must be consist "."
   area = "Shell",
   key = "CtrlShiftF1",
-  flags = "DisableOutput",
+  flags = "",
   description = "Arch: Make archive…",
   condition = function ()
     return PluginExist(guids.ArcLite) and APanel.FilePanel
@@ -145,7 +145,7 @@ Macro { -- Editor.WordDiv must be consist "."
 Macro {
   area = "Shell",
   key = "CtrlAltShiftF1",
-  flags = "DisableOutput",
+  flags = "",
   description = "Arch: Test archive",
   condition = Exist,
   action = function ()

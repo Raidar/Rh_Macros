@@ -46,7 +46,7 @@ local Exist = function () return PluginExist(guids.Colorer) end
 Macro {
   area = "Editor",
   key = "CtrlAltShiftC",
-  flags = "DisableOutput",
+  flags = "",
   description = "Colorer: Reload HRC",
   condition = Exist,
   action = function ()
@@ -58,7 +58,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlShiftL",
-  flags = "DisableOutput",
+  flags = "",
   description = "Colorer: Section List",
   condition = Exist,
   action = function ()
@@ -69,7 +69,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlShiftNum9",
-  flags = "DisableOutput",
+  flags = "",
   description = "Colorer: Prev Section",
   condition = Exist,
   action = function ()
@@ -80,7 +80,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlShiftNum3",
-  flags = "DisableOutput",
+  flags = "",
   description = "Colorer: Next Section",
   condition = Exist,
   action = function ()
@@ -92,7 +92,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlAltL",
-  flags = "DisableOutput",
+  flags = "",
   description = "Colorer: Attention List",
   condition = Exist,
   action = function ()
@@ -127,7 +127,7 @@ for k, v in pairs(OutlinerNumpadKeys) do
   Macro {
     area = "Menu",
     key = k,
-    flags = "DisableOutput",
+    flags = "",
     description = "Colorer: Outliner "..v,
     condition = IsOutliner,
     action = function () return Keys(v) end, ---
@@ -135,7 +135,7 @@ for k, v in pairs(OutlinerNumpadKeys) do
   Macro {
     area = "Menu",
     key = "Ctrl"..k,
-    flags = "DisableOutput",
+    flags = "",
     description = "Colorer: Outliner Ctrl"..v,
     condition = IsOutliner,
     action = function () return Keys("Ctrl"..v) end, ---

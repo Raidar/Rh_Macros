@@ -51,7 +51,7 @@ local Exist = function () return PluginExist(guids.LF4Ed) end
 Macro {
   area = "Shell Editor Viewer",
   key = "CtrlL",
-  flags = "DisableOutput",
+  flags = "",
   description = "LF4Ed: Menu",
   condition = Exist,
   action = function ()
@@ -74,7 +74,7 @@ end -- ShowLUM
 Macro {
   area = "Shell Editor Viewer",
   key = "AltShiftF2",
-  flags = "DisableOutput",
+  flags = "",
   description = "LUM: Lua User Menu",
   condition = Exist,
   action = ShowLUM,
@@ -83,7 +83,7 @@ Macro {
 Macro {
   area = "Shell Editor Viewer",
   key = "CtrlAltShiftF2",
-  flags = "DisableOutput",
+  flags = "",
   description = "LUM: Tortoise SVN",
   condition = Exist,
   action = function ()
@@ -96,7 +96,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlJ",
-  flags = "DisableOutput",
+  flags = "",
   description = "LUM: Template Insert",
   condition = Exist,
   action = function ()
@@ -110,7 +110,7 @@ Macro {
 Macro {
   area = "Common",
   key = "CtrlK",
-  flags = "DisableOutput",
+  flags = "",
   description = "LUM: Calendar",
   condition = Exist,
   action = function ()
@@ -120,7 +120,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlShiftH",
-  flags = "DisableOutput",
+  flags = "",
   description = "LUM: Characters",
   condition = Exist,
   action = function ()
@@ -130,7 +130,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlShiftQ",
-  flags = "DisableOutput",
+  flags = "",
   description = "LUM: Quote text",
   condition = Exist,
   action = function ()
@@ -140,7 +140,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlShiftT",
-  flags = "DisableOutput",
+  flags = "",
   description = "LUM: Clear text",
   condition = Exist,
   action = function ()
@@ -222,7 +222,7 @@ for k, v in pairs(QuoteMarks) do
     Macro {
       area = "Editor",
       key = v.key,
-      flags = "DisableOutput",
+      flags = "",
       description = DescFmt:format(v.note),
       condition = Exist,
       action = function ()
@@ -240,7 +240,7 @@ end
 Macro {
   area = "Editor",
   key = "CtrlAltShiftM",
-  flags = "DisableOutput",
+  flags = "",
   description = "Dequote: <!--|-->",
   condition = Exist,
   action = function ()

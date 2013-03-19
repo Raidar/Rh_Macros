@@ -28,7 +28,7 @@ local Macro = Macro or function () end
 Macro {
   area = "Common",
   key = "CtrlAltShiftF9",
-  flags = "DisableOutput",
+  flags = "",
   description = "All: Video mode",
   action = function ()
              return Keys"AltF9"
@@ -38,7 +38,7 @@ Macro {
 Macro {
   area = "Shell Info QView Tree",
   key = "Esc",
-  flags = "DisableOutput|EmptyCommandLine",
+  flags = "EmptyCommandLine",
   description = "All: Esc - Panels on/off",
   action = function () return Keys"CtrlO" end, ---
 } ---
@@ -46,7 +46,7 @@ Macro {
 Macro {
   area = "Shell Info QView Tree Editor",
   key = "CtrlAltX",
-  flags = "DisableOutput",
+  flags = "",
   description = "All: XLat",
   action = function () return Keys"XLat" end, ---
 } ---
@@ -56,14 +56,14 @@ Macro {
 Macro {
   area = "Shell Info QView Tree",
   key = "Ctrl'",
-  flags = "DisableOutput",
+  flags = "",
   description = "All: Full name on AP",
   action = function () return Keys"CtrlF" end, ---
 } ---
 Macro {
   area = "Shell Info QView Tree",
   key = "CtrlAlt'",
-  flags = "DisableOutput",
+  flags = "",
   description = "All: Network name on AP",
   action = function () return Keys"CtrlAltF" end, ---
 } ---

@@ -36,7 +36,7 @@ local Macro = Macro or function () end
 Macro {
   area = "Dialog",
   key = "ShiftF2",
-  flags = "DisableOutput",
+  flags = "",
   description = "Dlg: Dialog Info",
   action = function ()
     local sfind = string.find
@@ -61,7 +61,7 @@ Macro {
 Macro {
   area = "Dialog",
   key = "AltDown",
-  flags = "DisableOutput",
+  flags = "",
   description = "Dlg: Open history box",
   condition = function ()
     return Dlg.ItemType == F.DI_EDIT
@@ -102,7 +102,7 @@ end -- ReplaceInFindFile
 Macro {
   area = "Dialog",
   key = "CtrlR",
-  flags = "DisableOutput",
+  flags = "",
   description = "FindFile: Replace in file",
   condition = IsFindFileResult,
   action = function () 
@@ -112,7 +112,7 @@ Macro {
 Macro {
   area = "Dialog",
   key = "CtrlShiftR",
-  flags = "DisableOutput",
+  flags = "",
   description = "FindFile: Replace in file + Down",
   condition = IsFindFileResult,
   action = function ()

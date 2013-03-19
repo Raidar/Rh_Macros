@@ -52,7 +52,7 @@ local Exist = function () return PluginExist(guids.LFHistory) end
 Macro {
   area = "Common",
   key = "AltF10",
-  flags = "DisableOutput",
+  flags = "",
   description = "History: Commands",
   condition = Exist,
   action = function ()
@@ -63,7 +63,7 @@ Macro {
 Macro {
   area = "Common",
   key = "AltF11",
-  flags = "DisableOutput",
+  flags = "",
   description = "History: Edit/View",
   condition = Exist,
   action = function ()
@@ -74,7 +74,7 @@ Macro {
 Macro {
   area = "Common",
   key = "AltF12",
-  flags = "DisableOutput",
+  flags = "",
   description = "History: Folders",
   condition = Exist,
   action = function ()
@@ -90,7 +90,7 @@ local LFH_Menu = function () return LFHistoryMenu[Menu.Id] end
 Macro {
   area = "Menu",
   key = "Ins NumIns",
-  flags = "DisableOutput",
+  flags = "",
   description = "Menu: Insert item",
   priority = 100,
   condition = LFH_Menu,
@@ -99,7 +99,7 @@ Macro {
 Macro {
   area = "Menu",
   key = "Del NumDel",
-  flags = "DisableOutput",
+  flags = "",
   description = "Menu: Delete item",
   priority = 100,
   condition = LFH_Menu,
@@ -109,7 +109,7 @@ Macro {
 Macro {
   area = "Menu",
   key = "CtrlIns CtrlNumIns",
-  flags = "DisableOutput",
+  flags = "",
   description = "Menu: CtrlInsert item",
   priority = 100,
   condition = LFH_Menu,
@@ -118,7 +118,7 @@ Macro {
 Macro {
   area = "Menu",
   key = "CtrlDel CtrlNumDel",
-  flags = "DisableOutput",
+  flags = "",
   description = "Menu: CtrlDelete item",
   priority = 100,
   condition = LFH_Menu,

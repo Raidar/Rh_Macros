@@ -62,7 +62,7 @@ end ----
 Macro {
   area = "Shell",
   key = "ShiftF2",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: Panel Info",
   action = function ()
     return ShowAreaContent(APanel)
@@ -74,14 +74,14 @@ Macro {
 Macro {
   area = "Shell",
   key = "CtrlShiftL",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: Information panel",
   action = function () return Keys"CtrlL" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "AltBS",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: Same folder/file",
   condition = function () 
     return PPanel.FilePanel
@@ -104,7 +104,7 @@ Macro {
 Macro {
   area = "Shell",
   key = "CtrlLeft CtrlNum4",
-  flags = "DisableOutput|EmptyCommandLine",
+  flags = "EmptyCommandLine",
   description = "Panel: Prev drive",
   action = function ()
     return Keys"F9 Enter Up Enter Up Enter"
@@ -113,7 +113,7 @@ Macro {
 Macro {
   area = "Shell",
   key = "CtrlRight CtrlNum6",
-  flags = "DisableOutput|EmptyCommandLine",
+  flags = "EmptyCommandLine",
   description = "Panel: Next drive",
   action = function ()
     return Keys"F9 Enter Up Enter Down Enter"
@@ -124,7 +124,7 @@ Macro {
 Macro {
   area = "Shell",
   key = "CtrlShiftPgUp",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: Prev folder on same level",
   action = function ()
     if not APanel.Root then Keys"CtrlPgUp" end
@@ -137,7 +137,7 @@ Macro {
 Macro {
   area = "Shell",
   key = "CtrlShiftPgDn",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: Next folder on same level",
   action = function ()
     if not APanel.Root then Keys"CtrlPgUp" end
@@ -151,7 +151,7 @@ Macro {
 Macro {
   area = "Shell",
   key = "CtrlShiftBS",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: Early visited folder",
   action = function ()
     return Keys"AltF12 Up ShiftEnter"
@@ -161,7 +161,7 @@ Macro {
 Macro {
   area = "Shell",
   key = "CtrlUp CtrlNum8",
-  flags = "DisableOutput|EmptyCommandLine",
+  flags = "EmptyCommandLine",
   description = "Panel: Name sorted Prev file",
   action = function ()
     return Keys"CtrlF3 Up CtrlF4"
@@ -170,7 +170,7 @@ Macro {
 Macro {
   area = "Shell",
   key = "CtrlDown CtrlNum2",
-  flags = "DisableOutput|EmptyCommandLine",
+  flags = "EmptyCommandLine",
   description = "Panel: Name sorted Next file",
   action = function ()
     return Keys"CtrlF3 Down CtrlF4"
@@ -182,21 +182,21 @@ Macro {
 Macro {
   area = "Shell",
   key = "CtrlDivide",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: Restore selection",
   action = function () return Keys"CtrlM" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "CtrlShiftDivide",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: Select files with same name+ext",
   action = function () return Keys"AltAdd CtrlAdd" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "CtrlShiftMultiply",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: Select folders only",
   action = function () return Keys"ShiftAdd CtrlMultiply" end, ---
 } ---
@@ -206,7 +206,7 @@ Macro {
 Macro { -- File name
   area = "Shell",
   key = "CtrlF3",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: Full file name",
   action = function ()
     local s = APanel.Path.."\\"
@@ -219,7 +219,7 @@ Macro { -- File name
 Macro { -- File extension
   area = "Shell",
   key = "CtrlF4",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: File extension",
   action = function ()
     local s = ""
@@ -234,7 +234,7 @@ Macro { -- File extension
 Macro { -- File modification time
   area = "Shell",
   key = "CtrlF5",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: File modification time",
   action = function ()
     return far.CopyToClipboard(Panel.Item(0, 0, 5))
@@ -243,7 +243,7 @@ Macro { -- File modification time
 Macro { -- File size
   area = "Shell",
   key = "CtrlF6",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: File size",
   action = function ()
     if APanel.Folder then Keys"F3" end
@@ -253,7 +253,7 @@ Macro { -- File size
 Macro { -- File path
   area = "Shell",
   key = "CtrlF7",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: File path",
   action = function ()
     return far.CopyToClipboard(APanel.Path)
@@ -262,7 +262,7 @@ Macro { -- File path
 Macro { -- File creation time
   area = "Shell",
   key = "CtrlF8",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: File creation time",
   action = function ()
     return far.CopyToClipboard(Panel.Item(0, 0, 3))
@@ -271,7 +271,7 @@ Macro { -- File creation time
 Macro { -- File access time
   area = "Shell",
   key = "CtrlF9",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: File access time",
   action = function ()
     return far.CopyToClipboard(Panel.Item(0, 0, 4))
@@ -280,7 +280,7 @@ Macro { -- File access time
 Macro { -- File packed size
   area = "Shell",
   key = "CtrlF10",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: File packed size",
   action = function ()
     return far.CopyToClipboard(Panel.Item(0, 0, 7))
@@ -289,7 +289,7 @@ Macro { -- File packed size
 Macro { -- File CRC32
   area = "Shell",
   key = "CtrlF11",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: File CRC32",
   action = function ()
     return far.CopyToClipboard(Panel.Item(0, 0, 13))
@@ -330,7 +330,7 @@ end ---- GetPanelItemName
 Macro { -- File name only
   area = "Shell",
   key = "CtrlP",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: File name only to clipboard",
   action = function ()
     --ShowAreaContent(APanel)
@@ -342,7 +342,7 @@ Macro { -- File name only
 Macro { -- Full file name
   area = "Shell",
   key = "CtrlShiftP",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: Full file name to clipboard",
   action = function ()
     --ShowAreaContent(APanel)
@@ -360,7 +360,7 @@ guids.MoveFile = "431A2F37-AC01-4ECD-BB6F-8CDE584E5A03"
 Macro { -- Rename
   area = "Shell",
   key = "CtrlT",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: Rename preserving extension",
   condition = function ()
     return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
@@ -377,7 +377,7 @@ Macro { -- Rename
 Macro { -- Recopy
   area = "Shell",
   key = "CtrlShiftT",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: Recopy preserving extension",
   condition = function ()
     return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
@@ -394,7 +394,7 @@ Macro { -- Recopy
 Macro { -- Copy
   area = "Shell",
   key = "AltShiftF5",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: Copy to… preserving extension",
   condition = function ()
     return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
@@ -420,7 +420,7 @@ Macro { -- Copy
 Macro { -- Move
   area = "Shell",
   key = "AltShiftF6",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: Move to… preserving extension",
   condition = function ()
     return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
@@ -451,7 +451,7 @@ guids.FindFile = "8C9EAD29-910F-4B24-A669-EDAFBA6ED964"
 Macro {
   area = "Shell",
   key = "CtrlF",
-  flags = "DisableOutput",
+  flags = "",
   description = "Find: Find…",
   action = function ()
     Keys"AltF7"
@@ -464,7 +464,7 @@ Macro {
 Macro { -- Find file with clipboard text..
   area = "Shell",
   key = "AltF8",
-  flags = "DisableOutput",
+  flags = "",
   description = "Find: Find files with text…",
   action = function ()
     Keys"AltF7"
@@ -477,7 +477,7 @@ Macro { -- Find file with clipboard text..
 Macro { -- Find file with clipboard namepart…
   area = "Shell",
   key = "CtrlAltF8",
-  flags = "DisableOutput",
+  flags = "",
   description = "Find: Find files with namepart…",
   action = function ()
     Keys"AltF7"
@@ -497,7 +497,7 @@ guids.Attributes = "80695D20-1085-44D6-8061-F3C41AB5569C"
 Macro { -- для файла, каталога или выделенных элементов
   area = "Shell",
   key = "CtrlShiftA",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: File - RA",
   condition = function ()
     return APanel.Selected or APanel.Root or not APanel.Bof
@@ -532,7 +532,7 @@ Macro { -- для файла, каталога или выделенных эл�
 Macro { -- для файла, каталога и его элементов
   area = "Shell",
   key = "CtrlAltShiftA",
-  flags = "DisableOutput",
+  flags = "",
   description = "Panel: Folder - RA",
   condition = function ()
     return APanel.Selected or APanel.Root or not APanel.Bof
@@ -566,35 +566,35 @@ Macro { -- для файла, каталога и его элементов
 Macro {
   area = "Shell Info QView Tree",
   key = "Esc",
-  flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "NotEmptyCommandLine",
   description = "CmdLn: Clear CmdLine",
   action = function () return Keys"CtrlY" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "Add",
-  flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "NotEmptyCommandLine",
   description = "CmdLn: Insert '+'",
   action = function () return print"+" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "Subtract",
-  flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "NotEmptyCommandLine",
   description = "CmdLn: Insert '-'",
   action = function () return print"-" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "Multiply",
-  flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "NotEmptyCommandLine",
   description = "CmdLn: Insert '*'",
   action = function () return print"*" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "Divide",
-  flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "NotEmptyCommandLine",
   description = "CmdLn: Insert '/'",
   action = function () return print"/" end, ---
 } ---
@@ -604,14 +604,14 @@ Macro {
 Macro {
   area = "Shell",
   key = "Home",
-  flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "NotEmptyCommandLine",
   description = "CmdLn: Move to start",
   action = function () return Keys"CtrlHome" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "End",
-  flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "NotEmptyCommandLine",
   description = "CmdLn: Move to end",
   action = function () return Keys"CtrlEnd" end, ---
 } ---
@@ -621,14 +621,14 @@ Macro {
 Macro {
   area = "Shell",
   key = "ShiftHome",
-  flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "NotEmptyCommandLine",
   description = "CmdLn: Select to start",
   action = function () return Keys"AltShiftHome" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "ShiftEnd",
-  flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "NotEmptyCommandLine",
   description = "CmdLn: Select to end",
   action = function () return Keys"AltShiftEnd" end, ---
 } ---
@@ -636,14 +636,14 @@ Macro {
 Macro {
   area = "Shell",
   key = "ShiftUp",
-  flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "NotEmptyCommandLine",
   description = "CmdLn: Select left",
   action = function () return Keys"ShiftLeft" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "ShiftDown",
-  flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "NotEmptyCommandLine",
   description = "CmdLn: Select right",
   action = function () return Keys"ShiftRight" end, ---
 } ---
@@ -653,14 +653,14 @@ Macro {
 Macro {
   area = "Shell",
   key = "ShiftPgUp",
-  flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "NotEmptyCommandLine",
   description = "CmdLn: Prev command",
   action = function () return Keys"CtrlE" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "ShiftPgDn",
-  flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "NotEmptyCommandLine",
   description = "CmdLn: Next command",
   action = function () return Keys"CtrlX" end, ---
 } ---
@@ -670,14 +670,14 @@ Macro {
 Macro {
   area = "Shell",
   key = "CtrlIns",
-  flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "NotEmptyCommandLine",
   description = "CmdLn: Copy to clipboard",
   action = function () return Keys"CtrlIns" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "ShiftIns",
-  flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "NotEmptyCommandLine",
   description = "CmdLn: Paste from clipboard",
   action = function () return Keys"ShiftIns" end, ---
 } ---
@@ -686,31 +686,31 @@ Macro {
 Macro {
   area = "Shell",
   key = "ShiftDel",
-  flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "NotEmptyCommandLine",
   description = "CmdLn: Cut to clipboard",
   action = function () return Keys"CtrlIns Del" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "CtrlC",
-  flags = "DisableOutput",
-  --flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "",
+  --flags = "NotEmptyCommandLine",
   description = "CmdLn: Copy to clipboard",
   action = function () return Keys"CtrlIns" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "CtrlV",
-  flags = "DisableOutput",
-  --flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "",
+  --flags = "NotEmptyCommandLine",
   description = "CmdLn: Paste from clipboard",
   action = function () return Keys"ShiftIns" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "CtrlX",
-  flags = "DisableOutput",
-  --flags = "DisableOutput|NotEmptyCommandLine",
+  flags = "",
+  --flags = "NotEmptyCommandLine",
   description = "CmdLn: Cut to clipboard",
   action = function () return Keys"CtrlIns Del" end, ---
 } ---

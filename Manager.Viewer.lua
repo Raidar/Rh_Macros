@@ -38,7 +38,7 @@ local Macro = Macro or function () end
 Macro {
   area = "Viewer",
   key = "AltF9",
-  flags = "DisableOutput",
+  flags = "",
   description = "View: Next codepage",
   action = function ()
     Keys"ShiftF8"
@@ -58,7 +58,7 @@ Macro {
 Macro {
   area = "Viewer",
   key = "CtrlO",
-  flags = "DisableOutput",
+  flags = "",
   description = "View: Switch to panels",
   action = function () return Keys"F12 0" end, ---
 } ---
@@ -69,14 +69,14 @@ Macro {
 Macro {
   area = "Viewer",
   key = "CtrlF",
-  flags = "DisableOutput",
+  flags = "",
   description = "View: Find…",
   action = function () return Keys"F7" end, ---
 } ---
 Macro {
   area = "Viewer",
   key = "F3",
-  flags = "DisableOutput",
+  flags = "",
   description = "View: Find next",
   action = function () return Keys"ShiftF7" end, ---
 } ---

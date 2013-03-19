@@ -39,7 +39,7 @@ local Exist = function () return PluginExist(guids.Name) end
 Macro {
   area = "Common",
   key = "",
-  flags = "DisableOutput",
+  flags = "",
   description = "Name: Action",
   condition = Exist,
   action = function ()

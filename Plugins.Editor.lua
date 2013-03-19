@@ -50,7 +50,7 @@ local Exist = function () return PluginExist(guids.EditCase) end
 Macro {
   area = "Editor",
   key = "F5",
-  flags = "DisableOutput",
+  flags = "",
   description = "Case: Next case",
   condition = Exist,
   action = function ()
@@ -61,7 +61,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlShiftF5",
-  flags = "DisableOutput",
+  flags = "",
   description = "Case: Sentence case for Bulleted line",
   condition = Exist,
   action = function ()
@@ -75,7 +75,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlAltShiftF5",
-  flags = "DisableOutput",
+  flags = "",
   description = "Case: Sentence case for Numbered line",
   condition = Exist,
   action = function ()

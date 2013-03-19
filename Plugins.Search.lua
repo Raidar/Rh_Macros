@@ -48,7 +48,7 @@ local Exist = function () return PluginExist(guids.LFSearch) end
 Macro {
   area = "Shell Editor",
   key = "CtrlShiftF",
-  flags = "DisableOutput",
+  flags = "",
   description = "SnR: Find",
   condition = Exist,
   action = function ()
@@ -60,7 +60,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlShiftR",
-  flags = "DisableOutput",
+  flags = "",
   description = "SnR: Replace",
   condition = Exist,
   action = function ()
@@ -72,7 +72,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "ShiftF3",
-  flags = "DisableOutput",
+  flags = "",
   description = "SnR: Repeat",
   condition = Exist,
   action = function ()
@@ -83,7 +83,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlShiftF7",
-  flags = "DisableOutput",
+  flags = "",
   description = "SnR: Menu",
   condition = Exist,
   action = function ()
@@ -102,7 +102,7 @@ local Exist = function () return PluginExist(guids.Brackets) end
 Macro {
   area = "Editor",
   key = "CtrlShift9",
-  flags = "DisableOutput",
+  flags = "",
   description = "Find: Paired bracket",
   condition = Exist,
   action = function ()
@@ -112,7 +112,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlShift0",
-  flags = "DisableOutput",
+  flags = "",
   description = "Find: Select bracket",
   condition = Exist,
   action = function ()

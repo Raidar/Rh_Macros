@@ -48,7 +48,7 @@ local Macro = Macro or function () end
 Macro {
   area = "Editor",
   key = "AltF9",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Next codepage",
   action = function ()
     Keys"ShiftF8"
@@ -65,7 +65,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlShiftG",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Goto…",
   action = function () return Keys"AltF8" end, ---
 } ---
@@ -75,7 +75,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlAltShiftL",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Lock/Unlock",
   action = function () return Keys"CtrlL" end, ---
 } ---
@@ -83,7 +83,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlAltShiftEnter",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Insert full filename",
   action = function () return Keys"CtrlF" end, ---
 } ---
@@ -93,7 +93,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlO",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Switch to panels",
   action = function () return Keys"F12 0" end, ---
 } ---
@@ -103,7 +103,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlS",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Save file",
   action = function ()
     local IsExist = mf.fexist(Editor.FileName)
@@ -173,7 +173,7 @@ end ---- SaveAsUtf8noBOM
 Macro {
   area = "Editor",
   key = "CtrlShiftS",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Save as UTF-8 w/o BOM",
   action = function ()
     return unit.SaveAsUtf8noBOM(true)
@@ -185,28 +185,28 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlF",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Find…",
   action = function () return Keys"F7" end, ---
 } ---
 Macro {
   area = "Editor",
   key = "CtrlR",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Replace…",
   action = function () return Keys"CtrlF7" end, ---
 } ---
 Macro {
   area = "Editor",
   key = "F3",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Find next",
   action = function () return Keys"ShiftF7" end, ---
 } ---
 Macro {
   area = "Editor",
   key = "CtrlF3",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Find next & center",
   action = function ()
     Keys"ShiftF7"
@@ -225,7 +225,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlAltShiftF7",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Replace all",
   action = function ()
     Keys"CtrlF7 Enter" -- Замена первого вхождения
@@ -241,14 +241,14 @@ Macro {
 Macro {
   area = "Editor",
   key = "AltBS",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Tabulation",
   action = function () return Keys"Tab" end, ---
 } ---
 Macro {
   area = "Editor",
   key = "ShiftBS",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Double space",
   action = function () return Keys"Space Space" end, ---
 } ---
@@ -256,7 +256,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "Tab",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Spaced tab / Indent",
   action = function ()
     local Info = editor.GetInfo()
@@ -273,7 +273,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "ShiftTab",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Spaced half-tab / Unindent",
   action = function ()
     local Info = editor.GetInfo()
@@ -290,7 +290,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlAltShiftTab",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Table-Tab",
   condition = function ()
     local Info = editor.GetInfo()
@@ -310,21 +310,21 @@ Macro {
 Macro {
   area = "Editor",
   key = "Left",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Left within line",
   action = function () return Keys"CtrlS" end, ---
 } ---
 Macro {
   area = "Editor",
   key = "CtrlD",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Left within file",
   action = function () return Keys"Left" end, ---
 } ---
 Macro {
   area = "Editor",
   key = "CtrlShiftD",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Right within file",
   action = function ()
     local Info = editor.GetInfo()
@@ -340,14 +340,14 @@ Macro {
 Macro {
   area = "Editor",
   key = "Num4",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Left within line",
   action = function () return Keys"CtrlS" end, ---
 } ---
 Macro {
   area = "Editor",
   key = "Num6",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Right within line",
   action = function () return Keys"Right" end, ---
 } ---
@@ -355,14 +355,14 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlAltHome",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Start of first line",
   action = function () return Keys"CtrlHome Home" end, ---
 } ---
 Macro {
   area = "Editor",
   key = "CtrlAltEnd",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Start of last line",
   action = function () return Keys"CtrlEnd Home" end, ---
 } ---
@@ -370,14 +370,14 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlNum1",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: End of last line",
   action = function () return Keys"CtrlEnd End" end, ---
 } ---
 Macro {
   area = "Editor",
   key = "CtrlNum7",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Start of first line",
   action = function () return Keys"CtrlHome Home" end, ---
 } ---
@@ -387,14 +387,14 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlShiftI",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Shift 4fold block right",
   action = function () return Keys"AltI AltI AltI AltI" end, ---
 } ---
 Macro {
   area = "Editor",
   key = "CtrlShiftU",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Shift 4fold block left",
   action = function () return Keys"AltU AltU AltU AltU" end, ---
 } ---
@@ -402,14 +402,14 @@ Macro {
 Macro {
   area = "Editor",
   key = "AltShiftI",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Shift twice block right",
   action = function () return Keys"AltI AltI" end, ---
 } ---
 Macro {
   area = "Editor",
   key = "AltShiftU",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Shift twice block left",
   action = function () return Keys"AltU AltU" end, ---
 } ---
@@ -433,14 +433,14 @@ end ---- ShiftCurLine
 Macro {
   area = "Editor",
   key = "CtrlEnter",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Shift up current line",
   action = function () return unit.ShiftCurLine(7) end, ---
 } ---
 Macro {
   area = "Editor",
   key = "CtrlNumEnter",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Shift up current line",
   action = function () return unit.ShiftCurLine(7) end, ---
 } ---
@@ -448,14 +448,14 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlAltEnter",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Shift down current line",
   action = function () return unit.ShiftCurLine(-4) end, ---
 } ---
 Macro {
   area = "Editor",
   key = "CtrlAltNumEnter",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Shift down current line",
   action = function () return unit.ShiftCurLine(-4) end, ---
 } ---
@@ -465,7 +465,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlC",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Copy selection only",
   action = function ()
     local Info = editor.GetInfo()
@@ -477,7 +477,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlIns",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Copy selection only",
   action = function ()
     local Info = editor.GetInfo()
@@ -489,7 +489,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlShiftIns",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Add to clipboard",
   action = function ()
     local Info = editor.GetInfo()
@@ -502,14 +502,14 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlAltV",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Paste + Down",
   action = function () return Keys"CtrlV Down" end, ---
 } ---
 Macro {
   area = "Editor",
   key = "CtrlShiftV",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Paste + Down + End",
   action = function () return Keys"CtrlV Down End" end, ---
 } ---
@@ -722,14 +722,14 @@ end -- do
 Macro {
   area = "Editor",
   key = "AltLeft",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Digit decrement",
   action = function () return unit.ShiftDigit(-1) end, ---
 } ---
 Macro {
   area = "Editor",
   key = "AltRight",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Digit increment",
   action = function () return unit.ShiftDigit(1) end, ---
 } ---
@@ -738,14 +738,14 @@ Macro {
 Macro {
   area = "Editor",
   key = "AltDown",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Number decrement",
   action = function () return unit.ShiftNumber(-1) end, ---
 } ---
 Macro {
   area = "Editor",
   key = "AltUp",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Number increment",
   action = function () return unit.ShiftNumber(1) end, ---
 } ---
@@ -886,7 +886,7 @@ end -- do
 Macro {
   area = "Editor",
   key = "AltQ",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Number spacing",
   action = function () 
     return unit.SeparateNumber(" ", 3, 4)
@@ -896,7 +896,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "AltShiftQ",
-  flags = "DisableOutput",
+  flags = "",
   description = "Edit: Bytes folding",
   action = function ()
     return unit.FoldByteSize(" ", 3, 4)
@@ -910,7 +910,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "AltP",
-  flags = "DisableOutput",
+  flags = "",
   description = "ReadMe: Text (|)",
   action = function ()
     Keys"End"
@@ -921,7 +921,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlAltP",
-  flags = "DisableOutput",
+  flags = "",
   description = "ReadMe: Text (|) Text",
   action = function ()
     print" ()"
@@ -931,7 +931,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlP",
-  flags = "DisableOutput",
+  flags = "",
   description = "ReadMe: (Text)|",
   action = function ()
     print"("
@@ -942,7 +942,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlShiftP",
-  flags = "DisableOutput",
+  flags = "",
   description = "ReadMe: (Text)| + Next",
   action = function ()
     print"("
@@ -955,7 +955,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlAltShiftP",
-  flags = "DisableOutput",
+  flags = "",
   description = "ReadMe: (Number)| + Next",
   action = function ()
     print"("
@@ -970,7 +970,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlO",
-  flags = "DisableOutput",
+  flags = "",
   description = "ReadMe: (|Number)",
   action = function ()
     Keys"End"
@@ -982,7 +982,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlAltShiftO",
-  flags = "DisableOutput",
+  flags = "",
   description = "ReadMe: (Num / Num)| + Next",
   action = function ()
     Keys"End"
@@ -998,7 +998,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "AltShiftZ",
-  flags = "DisableOutput",
+  flags = "",
   description = "ReadMe: (Num) from up",
   action = function ()
     Keys"End"
@@ -1035,7 +1035,7 @@ for k, v in pairs(Bullets) do
     Macro {
       area = "Editor",
       key = v.key,
-      flags = "DisableOutput",
+      flags = "",
       description = DescFmt:format(k, BulletSep, v.level),
       action = function ()
         print(k..BulletSep)
@@ -1060,7 +1060,7 @@ for k, v in pairs(IndentBullets) do
     Macro {
       area = "Editor",
       key = v.key,
-      flags = "DisableOutput",
+      flags = "",
       description = DescFmt:format(k, BulletSep, v.level),
       action = function ()
         local Info = editor.GetInfo()
@@ -1185,7 +1185,7 @@ end -- ClearSectionNumber
 Macro {
   area = "Editor",
   key = "AltZ",
-  flags = "DisableOutput",
+  flags = "",
   description = "ReadMe: 'Num. ' from up",
   action = function ()
     return AutoSectionNumber()
@@ -1195,7 +1195,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlY",
-  flags = "DisableOutput",
+  flags = "",
   description = "ReadMe: Clear first 'Num. '",
   action = function ()
     return ClearSectionNumber(1, nil, "both")
@@ -1205,7 +1205,7 @@ Macro {
 Macro {
   area = "Editor",
   key = "CtrlShiftY",
-  flags = "DisableOutput",
+  flags = "",
   description = "ReadMe: Clear all 'Num. ' but last",
   action = function ()
     return ClearSectionNumber(nil, nil, "both")
@@ -1277,7 +1277,7 @@ for k, v in pairs(Characters) do
     Macro {
       area = "Editor",
       key = v,
-      flags = "DisableOutput",
+      flags = "",
       description = DescFmt:format(k, ucp2s(u8byte(k), true)),
       action = function () print(k) end, ---
     } ---
