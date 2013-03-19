@@ -43,6 +43,19 @@ local unit = {}
 
 local Macro = Macro or function () end
 
+---------------------------------------- Testing
+--[[
+Macro {
+  area = "Editor",
+  key = "CtrlQ",
+  flags = "",
+  description = "Edit: Test",
+  action = function ()
+    prints("test")
+    return prints("abc", 10, "def")
+  end, ---
+} ---
+--]]
 ---------------------------------------- Actions
 -- [[
 Macro {
@@ -888,7 +901,7 @@ Macro {
   key = "AltQ",
   flags = "",
   description = "Edit: Number spacing",
-  action = function () 
+  action = function ()
     return unit.SeparateNumber(" ", 3, 4)
   end, ---
 } ---
@@ -1154,7 +1167,7 @@ local function ClearSectionNumber (Level, Subst, Kind)
     elseif Kind == "both" then
       if s:find("^[%dIVXLCDMivxlcdm]+\.$") then return Subst end
     end
-    
+
     Count = Count - 1 -- Без замены
   end -- ReplaceSection
 
