@@ -275,7 +275,7 @@ Macro {
     local Info = editor.GetInfo()
     if Info.BlockType == BlockNoneType then
       local Pos = Info.CurPos
-      Pos = 4 - Pos % 4
+      Pos = 4 - (Pos - 1) % 4
       --far.Message(Pos, Info.CurPos)
       for k = 1, Pos do Keys"Space" end
     else
@@ -292,7 +292,7 @@ Macro {
     local Info = editor.GetInfo()
     if Info.BlockType == BlockNoneType then
       local Pos = Info.CurPos
-      Pos = 2 - Pos % 2
+      Pos = 2 - (Pos - 1) % 2
       --far.Message(Pos, Info.CurPos)
       for k = 1, Pos do Keys"Space" end
     else
@@ -312,7 +312,7 @@ Macro {
   action = function ()
     Keys"Tab Left" -- Табуляция с сохранением позиции
     local Info = editor.GetInfo()
-    if Info.CurLine < Info.TotalLines - 1 then
+    if Info.CurLine < Info.TotalLines then
       return Keys"Down" -- Перемещение на следующую строку
     end
   end, ---
@@ -341,8 +341,8 @@ Macro {
   description = "Edit: Right within file",
   action = function ()
     local Info = editor.GetInfo()
-    local s = editor.GetString(Info.EditorID, -1, 2)
-    if Info.CurPos > s:len() - 1 then
+    local s = editor.GetString(Info.EditorID, 0, 2)
+    if Info.CurPos > s:len() then
       return Keys"Down Home"
     else
       return Keys"Right"
@@ -434,9 +434,9 @@ function unit.ShiftCurLine (Shift)
   local Info = editor.GetInfo()
   local Line = Info.CurLine
   if Shift > 0 then
-    Line = math.max(Line - Shift, 0)
+    Line = math.max(Line - Shift, 1)
   else
-    Line = math.max(Line - (Info.WindowSizeY + Shift), 0)
+    Line = math.max(Line - (Info.WindowSizeY + Shift), 1)
   end
 
   return editor.SetPosition(Info.EditorID, { TopScreenLine = Line })
@@ -546,30 +546,26 @@ do
 function unit.FindNumberPos (Info, Line, Pos)
   local Info = Info or editor.GetInfo()
 
-  local s = editor.GetString(Info.EditorID, Line or -1, 2)
+  local s = editor.GetString(Info.EditorID, Line or 0, 2)
   --far.Message(s, s:len())
   if not s then return end
   local Len = s:len()
   if Len == 0 then return end
 
   local Pos = Pos or Info.CurPos
-  if Pos < 0 then
+  if Pos <= 0 then
     Pos = Len + Pos + 1
   end
 
   local PosB, PosE -- begin/end pos
 
-  local atEnd = Len <= Pos
-  if atEnd then
-    PosE = Len
-  else
-    Pos = Pos + 1
-  end
+  local atEnd = Len < Pos
+  if atEnd then PosE = Len end
 
   local f = isdigit(s:sub(Pos, Pos))
   --far.Message(f, Pos)
   if not f then
-    if atEnd or Pos == 1 then return end
+    if atEnd or Pos < 2 then return end
     Pos = Pos - 1
     PosE = Pos
     f = isdigit(s:sub(Pos, Pos))
@@ -678,20 +674,20 @@ do
 function unit.ShiftDigit (Shift)
   local Info = editor.GetInfo()
 
-  local s = editor.GetString(Info.EditorID, -1, 2)
+  local s = editor.GetString(Info.EditorID, 0, 2)
   --far.Message(s:len(), Pos)
   if not s then return end
   local Len = s:len()
   if Len == 0 then return end
 
   local Pos = Info.CurPos
-  local atEnd = Len == Pos
-  if not atEnd then Pos = Pos + 1 end
+  local atEnd = Len < Pos
+  if atEnd then Pos = Len end
 
   local c = todigit(s:sub(Pos, Pos))
   --far.Message(c, Pos)
   if c < 0 then
-    if atEnd or Pos == 1 then return end
+    if atEnd or Pos < 2 then return end
     Pos = Pos - 1
     c = todigit(s:sub(Pos, Pos))
     if c < 0 then return end
@@ -700,7 +696,7 @@ function unit.ShiftDigit (Shift)
   c = digit((c + Shift) % 10)
   s = s:sub(1, Pos - 1)..c..s:sub(Pos + 1, -1)
 
-  return editor.SetString(Info.EditorID, -1, s)
+  return editor.SetString(Info.EditorID, 0, s)
 end ---- ShiftDigit
 
   local ssub, srep = string.sub, string.rep
@@ -709,7 +705,7 @@ end ---- ShiftDigit
 -- Смещение значения числа на текущей позиции текущей линии.
 function unit.ShiftNumber (Shift)
   local Info = editor.GetInfo()
-  local s, PosB, PosE = unit.FindNumberPos(Info, -1, Info.CurPos)
+  local s, PosB, PosE = unit.FindNumberPos(Info, 0, Info.CurPos)
   if not s then return end
 
   local c = s:sub(PosB, PosE)
@@ -726,7 +722,7 @@ function unit.ShiftNumber (Shift)
   end
   s = s:sub(1, PosB - 1)..c..s:sub(PosE + 1, -1)
 
-  return editor.SetString(Info.EditorID, -1, s)
+  return editor.SetString(Info.EditorID, 0, s)
 end ---- ShiftNumber
 
 end -- do
@@ -799,7 +795,7 @@ end ---- toseparate
 --]]
 function unit.SeparateNumber (Separator, GroupSize, MaxDigits)
   local Info = editor.GetInfo()
-  local s, PosB, PosE = unit.FindNumberPos(Info, -1, Info.CurPos)
+  local s, PosB, PosE = unit.FindNumberPos(Info, 0, Info.CurPos)
 
   local c = s:sub(PosB, PosE)
   if not c then return end
@@ -808,7 +804,7 @@ function unit.SeparateNumber (Separator, GroupSize, MaxDigits)
 
   s = s:sub(1, PosB - 1)..c..s:sub(PosE + 1, -1)
 
-  return editor.SetString(Info.EditorID, -1, s)
+  return editor.SetString(Info.EditorID, 0, s)
 end ---- SeparateNumber
 
 end -- do
@@ -872,7 +868,7 @@ end ---- tobytefold
 --]]
 function unit.FoldByteSize (Separator, GroupSize, MaxDigits)
   local Info = editor.GetInfo()
-  local s, PosB, PosE = unit.FindNumberPos(Info, -1, Info.CurPos)
+  local s, PosB, PosE = unit.FindNumberPos(Info, 0, Info.CurPos)
 
   local c = s:sub(PosB, PosE)
   if not c then return end
@@ -889,8 +885,8 @@ function unit.FoldByteSize (Separator, GroupSize, MaxDigits)
 
   s = s:sub(1, PosB - 1)..c..s:sub(PosE + 1, -1)
 
-  editor.SetString(Info.EditorID, -1, s)
-  return editor.SetPosition(Info.EditorID, -1, PosB + c:len() - 1)
+  editor.SetString(Info.EditorID, 0, s)
+  return editor.SetPosition(Info.EditorID, 0, PosB + c:len() - 1)
 end ---- FoldByteSize
 
 end -- do
@@ -1017,7 +1013,7 @@ Macro {
     Keys"End"
     local Info = editor.GetInfo()
     -- Поиск с предпоследней позиции, так исключается ")"!
-    local n = unit.FindNumberStr(Info, Info.CurLine, -2, -1, 1000)
+    local n = unit.FindNumberStr(Info, Info.CurLine, -2, -1, 100)
     print" ()"
     Keys"Left"
     if n then
@@ -1093,7 +1089,7 @@ end -- do
 -- Автоустановка номера раздела (с инкрементом).
 local function AutoSectionNumber ()
   local Info = editor.GetInfo()
-  local s = unit.FindNumberStr(Info, Info.CurLine, Info.CurPos, -1, 1000)
+  local s = unit.FindNumberStr(Info, Info.CurLine, Info.CurPos, -1, 100)
   -- TODO: Переделать с использованием только Lua, без Keys/print.
   if s then
     local sLen = s:len()
@@ -1125,16 +1121,17 @@ end ---- AutoSectionNumber
 --]]
 local function ClearSectionNumber (Level, Subst, Kind)
   local Info = editor.GetInfo()
+  local id = Info.EditorID
 
   -- Пропуск пустых строк:
   local s -- Текущая линия
   local Line = Info.CurLine
   repeat
-    if Line == Info.TotalLines - 1 then return end
-    s = editor.GetString(Info.EditorID, -1, 2)
+    if Line == Info.TotalLines then return end
+    s = editor.GetString(id, 0, 2)
     -- Следующая линия:
     Line = Line + 1
-    editor.SetPosition(Info.EditorID, Line)
+    editor.SetPosition(id, Line)
   until not s:find("^%s-$")
 
   local PosB, PosE = s:cfind("[^%s]+") -- Позиция начала и конца
@@ -1189,9 +1186,9 @@ local function ClearSectionNumber (Level, Subst, Kind)
     s = s:sub(1, PosB - 1)..c..s:sub(PosE + 1, -1)
     --far.Message('"'..s..'"', c:len())
 
-    editor.SetPosition(Info.EditorID, Line - 1)     -- Текущая линия
-    editor.SetString(Info.EditorID, -1, s)          -- Обновление линии
-    return editor.SetPosition(Info.EditorID, Line)  -- Следующая линия
+    editor.SetPosition(id, Line - 1)    -- Текущая линия
+    editor.SetString(id, 0, s)          -- Обновление линии
+    return editor.SetPosition(id, Line) -- Следующая линия
   end
 end -- ClearSectionNumber
 

@@ -69,7 +69,7 @@ Macro {
     Keys"ShiftHome CtrlShiftRight CtrlShiftLeft ShiftRight"
     CallPlugin(guids.EditCase, 0)
     editor.Select(Info.EditorID, BlockNoneType)
-    return editor.SetPosition(Info.EditorID, -1, Info.CurPos)
+    return editor.SetPosition(Info.EditorID, 0, Info.CurPos)
   end, ---
 } ---
 Macro {
@@ -83,7 +83,7 @@ Macro {
     Keys"ShiftHome CtrlShiftRight CtrlShiftRight CtrlShiftLeft ShiftRight"
     CallPlugin(guids.EditCase, 0)
     editor.Select(Info.EditorID, BlockNoneType)
-    return editor.SetPosition(Info.EditorID, -1, Info.CurPos)
+    return editor.SetPosition(Info.EditorID, 0, Info.CurPos)
   end, ---
 } ---
 --]]
