@@ -44,10 +44,14 @@ Macro {
 } ---
 ---------------------------------------- XLat
 Macro {
-  area = "Shell Info QView Tree Editor",
+  area = "Shell Info QView Tree Editor Dialog",
   key = "CtrlAltX",
   flags = "",
   description = "All: XLat",
+  condition = function ()
+    --return true
+    return not Area.Dialog or Area.Dialog and Dlg.ItemType == 4
+  end, ---
   action = function () return Keys"XLat" end, ---
 } ---
 ---------------------------------------- File name
