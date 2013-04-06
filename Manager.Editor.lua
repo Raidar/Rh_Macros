@@ -135,7 +135,8 @@ function unit.SaveAsUtf8noBOM (Ask)
   --local isOk = true -- DEBUG only
   if Ask then
     local isOk = far.Message("Save this file as UTF-8?",
-                             "Warning!", ";YesNo", "w") == 0
+                             "Warning!", ";YesNo", "w") == 1
+    --far.Message(isOk, "SaveAsUtf8noBOM")
     if not isOk then return end -- Отмена --> Не сохранять
   end
 
@@ -150,7 +151,7 @@ function unit.SaveAsUtf8noBOM (Ask)
   -- Поиск в списке
   local sfind = string.find
   local value = Dlg.GetValue(id, 0) or "" -- Значение
-  --far.Message(value, start)
+  --far.Message(value, Dlg.GetValue(id, 7))
   if not sfind(value, "65001", 1, true) then
     -- Переход на самый верхний элемент списка
     local start = Dlg.GetValue(id, 7)
@@ -1273,7 +1274,7 @@ local Characters = {
 
   -- Graphic characters with Numpad:
   ["┼"] = "CtrlAltShiftAdd",        ["●"] = "CtrlAltShiftMultiply",
-  ["─"] = "CtrlAltShiftSubtract",   ["╳"] = "CtrlAltShiftDivide",
+  ["─"] = "CtrlAltShiftSubtract",   ["│"] = "CtrlAltShiftDivide",
 } --- Characters
 
 ----------------------------------------
