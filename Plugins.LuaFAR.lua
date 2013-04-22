@@ -108,7 +108,8 @@ Macro {
 ----------------------------------------     -- -- LUM Items
 -- [[
 Macro {
-  area = "Common",
+  --area = "Common",
+  area = "Shell Editor Viewer",
   key = "CtrlK",
   flags = "",
   description = "LUM: Calendar",
@@ -118,7 +119,8 @@ Macro {
   end, ---
 } ---
 Macro {
-  area = "Common",
+  --area = "Common",
+  area = "Shell Editor",
   key = "CtrlH",
   flags = "",
   description = "LUM: CharsMap",
