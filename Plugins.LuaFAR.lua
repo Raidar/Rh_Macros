@@ -118,6 +118,16 @@ Macro {
   end, ---
 } ---
 Macro {
+  area = "Common",
+  key = "CtrlH",
+  flags = "",
+  description = "LUM: CharsMap",
+  condition = Exist,
+  action = function ()
+    if ShowLUM() then return Keys"A H" end
+  end, ---
+} ---
+Macro {
   area = "Editor",
   key = "CtrlShiftH",
   flags = "",
