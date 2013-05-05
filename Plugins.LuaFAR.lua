@@ -110,6 +110,7 @@ Macro {
 Macro {
   --area = "Common",
   area = "Shell Editor Viewer",
+  --area = "Shell Editor Viewer Dialog",
   key = "CtrlK",
   flags = "",
   description = "LUM: Calendar",
@@ -121,6 +122,7 @@ Macro {
 Macro {
   --area = "Common",
   area = "Shell Editor",
+  --area = "Shell Editor Viewer Dialog",
   key = "CtrlH",
   flags = "",
   description = "LUM: CharsMap",

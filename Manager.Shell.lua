@@ -80,6 +80,13 @@ Macro {
 } ---
 Macro {
   area = "Shell",
+  key = "CtrlShiftH",
+  flags = "",
+  description = "Panel: Hidden/system files",
+  action = function () return Keys"CtrlH" end, ---
+} ---
+Macro {
+  area = "Shell",
   key = "AltBS",
   flags = "",
   description = "Panel: Same folder/file",
