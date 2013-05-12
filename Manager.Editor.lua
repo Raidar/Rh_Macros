@@ -1098,7 +1098,7 @@ local function AutoSectionNumber ()
     local nLen = n:len()
     --far.Message('"'..s..'"\n"'..n..'"\n')
     if nLen > sLen then
-      Keys"Left"
+      Keys"CtrlS"
     elseif nLen < sLen then
       print("0")
     end
