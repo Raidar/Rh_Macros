@@ -797,9 +797,11 @@ end ---- toseparate
 function unit.SeparateNumber (Separator, GroupSize, MaxDigits)
   local Info = editor.GetInfo()
   local s, PosB, PosE = unit.FindNumberPos(Info, 0, Info.CurPos)
+  if not s then return end
 
   local c = s:sub(PosB, PosE)
   if not c then return end
+
   c = unit.toseparate(c, Separator, GroupSize, MaxDigits)
   if not c then return end
 
@@ -870,6 +872,7 @@ end ---- tobytefold
 function unit.FoldByteSize (Separator, GroupSize, MaxDigits)
   local Info = editor.GetInfo()
   local s, PosB, PosE = unit.FindNumberPos(Info, 0, Info.CurPos)
+  if not s then return end
 
   local c = s:sub(PosB, PosE)
   if not c then return end
