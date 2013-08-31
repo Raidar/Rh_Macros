@@ -67,6 +67,7 @@ guids.LUM = "00B06FBA-0BB7-4333-8025-BA48B6077435"
 local function ShowLUM (key, guid) --> (bool)
   if not PluginMenu(guids.LF4Ed) then return end
   Keys(key or "M")
+  --far.Message(Menu.Id, guids.LUM)
   return Menu.Id == (guid or guids.LUM)
 end -- ShowLUM
 
@@ -168,10 +169,11 @@ do
 
 local QuoteMarks = {
   -- Quotes:
-  ["'"] = { key = "Ctrl'",      note = "'|'", },
-  ['"'] = { key = "CtrlShift'", note = '"|"', },
-  [";"] = { key = "Ctrl;",      note = "‹|›", },
-  [":"] = { key = "CtrlShift;", note = "«|»", },
+  ["'"] = { key = "Ctrl'",          note = "'|'", },
+  ['"'] = { key = "CtrlShift'",     note = '"|"', },
+  [";"] = { key = "Ctrl;",          note = "‹|›", },
+  [":"] = { key = "CtrlShift;",     note = "«|»", },
+  ["1"] = { key = "CtrlAltShift2",  note = "‘|’", },
   -- ‘|’
   -- “|”
   -- ‚|‘
