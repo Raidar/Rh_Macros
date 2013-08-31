@@ -232,7 +232,7 @@ Macro { -- File extension
     local s = ""
     if APanel.Root or not APanel.Bof then
       s = APanel.Current
-      local p = s:cfind("\.[^\.]-$")
+      local p = s:cfind("%.[^%.]-$")
       if p then s = s:sub(p, -1) end
     end
     return far.CopyToClipboard(s)

@@ -121,7 +121,7 @@ Macro { -- Editor.WordDiv must be consist "."
     local IsFile = not Panel.Folder
     local Selected = Panel.Selected
     local Name = Panel.Current
-    local ExtPos = Name:cfind("\.[^\.]-$")
+    local ExtPos = Name:cfind("%.[^%.]-$")
 
     if not PluginMenu(guids.ArcLite) then return end
 

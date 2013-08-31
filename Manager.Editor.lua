@@ -1112,7 +1112,7 @@ local function AutoSectionNumber ()
   end
 end ---- AutoSectionNumber
 
-  local SectionPat = "[^\.]*\."
+  local SectionPat = "[^%.]*%."
 
 -- Clear a section number from all supersections' numbers.
 -- Очистка номера раздела от всех номеров надразделов.
@@ -1162,11 +1162,11 @@ local function ClearSectionNumber (Level, Subst, Kind)
     if Kind == "all" then return Subst end
 
     if Kind == "number" then
-      if s:find("^%d+\.$") then return Subst end
+      if s:find("^%d+%.$") then return Subst end
     elseif Kind == "roman"  then
-      if s:find("^[IVXLCDMivxlcdm]+\.$") then return Subst end
+      if s:find("^[IVXLCDMivxlcdm]+%.$") then return Subst end
     elseif Kind == "both" then
-      if s:find("^[%dIVXLCDMivxlcdm]+\.$") then return Subst end
+      if s:find("^[%dIVXLCDMivxlcdm]+%.$") then return Subst end
     end
 
     Count = Count - 1 -- Без замены
@@ -1250,8 +1250,8 @@ local Characters = {
   [" "] = "CtrlShiftSpace",
   ["…"] = "CtrlAlt/",
 
-  ["/"] = "Shift"..BSh,
-  ["°"] = "Ctrl"..BSh,
+  ["°"] = "Shift"..BSh,
+  ["́"] = "Ctrl"..BSh,
   [""] = "CtrlShift"..BSh,
   ["―"] = "CtrlAlt"..BSh,
 
