@@ -859,7 +859,7 @@ function unit.tobytefold (v)
 
   --far.Message(n, Prefix.name)
 
-  return n, Prefix.name
+  return n and n:gsub("%.", ","), Prefix.name
 end ---- tobytefold
 
   local FoldByteFmt = "%s %s (%s B)"
