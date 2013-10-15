@@ -1252,7 +1252,7 @@ local Characters = {
 
   ["°"] = "Shift"..BSh,
   ["́"] = "Ctrl"..BSh,
-  [""] = "CtrlShift"..BSh,
+  ["§"] = "CtrlShift"..BSh,
   ["―"] = "CtrlAlt"..BSh,
 
   ["≤"] = "CtrlAlt,",
