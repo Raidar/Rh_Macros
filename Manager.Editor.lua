@@ -1177,16 +1177,31 @@ local function ClearSectionNumber (Level, Subst, Kind)
   --far.Message('"'..c..'"', tostring(Level).." - "..tostring(Count))
 
   --[[
+  local tostring = tostring
   local t = {
-    tostring(PosB),
-    tostring(PosE),
+    "Level = "..tostring(Level),
+    "Count = "..tostring(Count),
+    "PosB = "..tostring(PosB),
+    "PosE = "..tostring(PosE),
     '"'..c..'"',
     '"'..s..'"',
+    '"'..s:sub(1, PosB - 1)..c..s:sub(PosE + 1, -1)..'"',
+    c:cfind("[^%s%.]+")
   } ---
   far.Message(table.concat(t, "\n"), Line)
   --]]
 
   if Count > 0 and Count == Level then
+
+    -- Исправление отступа с учётом длины номера
+    local nPosB, nPosE = c:cfind("[^%s%.]+%.")
+    if nPosB then
+      local nLen = nPosE - nPosB
+      if nLen > 1 and nPosB > nLen then
+        c = c:sub(nLen, -1)
+      end
+    end
+
     s = s:sub(1, PosB - 1)..c..s:sub(PosE + 1, -1)
     --far.Message('"'..s..'"', c:len())
 
