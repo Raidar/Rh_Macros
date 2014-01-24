@@ -1248,7 +1248,7 @@ do
 local BSh = "BackSlash"
 
 local Characters = {
-  -- Alt + <a> --           -- Alt + Shift + <a> --
+  -- Alt + <a>          -- Alt+Shift + <a>          -- Ctrl+Alt+Shift + <a>
 
   -- Latin key-characters:                          -- Latin number-characters:
   ["["] = "Alt[",       ["{"] = "AltShift[",
@@ -1278,7 +1278,7 @@ local Characters = {
   ["−"] = "ShiftAdd",               ["⋅"] = "ShiftMultiply",
   ["±"] = "CtrlAdd",                ["×"] = "CtrlMultiply",
   ["∓"] = "CtrlShiftAdd",           ["¤"] = "CtrlShiftMultiply",
-  [" "] = "CtrlAltAdd",             ["·"] = "CtrlAltMultiply",
+  ["†"] = "CtrlAltAdd",             ["·"] = "CtrlAltMultiply",
   ["∑"] = "AltAdd",                 ["∏"] = "AltMultiply",
   ["∫"] = "AltShiftAdd",            ["∂"] = "AltShiftMultiply",
 
