@@ -342,7 +342,7 @@ Macro {
   description = "Edit: Right within file",
   action = function ()
     local Info = editor.GetInfo()
-    local s = editor.GetString(Info.EditorID, 0, 2)
+    local s = editor.GetString(Info.EditorID, 0, 3)
     if Info.CurPos > s:len() then
       return Keys"Down Home"
     else
@@ -547,7 +547,7 @@ do
 function unit.FindNumberPos (Info, Line, Pos)
   local Info = Info or editor.GetInfo()
 
-  local s = editor.GetString(Info.EditorID, Line or 0, 2)
+  local s = editor.GetString(Info.EditorID, Line or 0, 3)
   --far.Message(s, s:len())
   if not s then return end
   local Len = s:len()
@@ -675,7 +675,7 @@ do
 function unit.ShiftDigit (Shift)
   local Info = editor.GetInfo()
 
-  local s = editor.GetString(Info.EditorID, 0, 2)
+  local s = editor.GetString(Info.EditorID, 0, 3)
   --far.Message(s:len(), Pos)
   if not s then return end
   local Len = s:len()
@@ -958,6 +958,9 @@ Macro {
   flags = "",
   description = "ReadMe: (Text)| + Next",
   action = function ()
+    local Info = editor.GetInfo()
+    local s = editor.GetString(Info.EditorID, 0, 3)
+    if Info.CurPos > s:len() then return end
     print"("
     Keys"End"
     print")"
@@ -971,6 +974,9 @@ Macro {
   flags = "",
   description = "ReadMe: (Number)| + Next",
   action = function ()
+    local Info = editor.GetInfo()
+    local s = editor.GetString(Info.EditorID, 0, 3)
+    if Info.CurPos > s:len() then return end
     print"("
     Keys"End"
     print")"
@@ -1132,7 +1138,7 @@ local function ClearSectionNumber (Level, Subst, Kind)
   local Line = Info.CurLine
   repeat
     if Line == Info.TotalLines then return end
-    s = editor.GetString(id, 0, 2)
+    s = editor.GetString(id, 0, 3)
     -- Следующая линия:
     Line = Line + 1
     editor.SetPosition(id, Line)
