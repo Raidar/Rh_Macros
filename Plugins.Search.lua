@@ -58,7 +58,7 @@ Macro {
   end, ---
 } ---
 Macro {
-  area = "Editor",
+  area = "Shell Editor",
   key = "CtrlShiftR",
   flags = "",
   description = "SnR: Replace",
