@@ -31,28 +31,28 @@ local Macro = Macro or function () end
 -- [[
 Macro {
   area = "Shell",
-  key = "Ctrl1",
+  key = "LCtrl1",
   flags = "",
   description = "HList: Users",
   action = function () return Keys"F2 H Z" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlShift1",
+  key = "LCtrlShift1",
   flags = "",
   description = "HList: Users/Current",
   action = function () return Keys"F2 H Z C" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAlt1",
+  key = "LCtrlLAlt1",
   flags = "",
   description = "HList: UserLib",
   action = function () return Keys"F2 H U" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAltShift1",
+  key = "LCtrlLAltShift1",
   flags = "",
   description = "HList: Users/Work",
   action = function () return Keys"F2 H Z W" end, ---
@@ -62,28 +62,28 @@ Macro {
 -- [[
 Macro {
   area = "Shell",
-  key = "Ctrl2",
+  key = "LCtrl2",
   flags = "",
   description = "HList: Work folder",
   action = function () return Keys"F2 H U Q" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlShift2",
+  key = "LCtrlShift2",
   flags = "",
   description = "HList: Own works",
   action = function () return Keys"F2 H U W" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAlt2",
+  key = "LCtrlLAlt2",
   flags = "",
   description = "HList: Own sites",
   action = function () return Keys"F2 H U S" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAltShift2",
+  key = "LCtrlLAltShift2",
   flags = "",
   description = "HList: Own media",
   action = function () return Keys"F2 H U R" end, ---
@@ -93,28 +93,28 @@ Macro {
 -- [[
 Macro {
   area = "Shell",
-  key = "Ctrl3",
+  key = "LCtrl3",
   flags = "",
   description = "HList: Base",
   action = function () return Keys"F2 H" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlShift3",
+  key = "LCtrlShift3",
   flags = "",
   description = "HList: Apps",
   action = function () return Keys"F2 H A" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAlt3",
+  key = "LCtrlLAlt3",
   flags = "",
   description = "HList: Programs",
   action = function () return Keys"F2 H A G" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAltShift3",
+  key = "LCtrlLAltShift3",
   flags = "",
   description = "HList: Loaded",
   action = function () return Keys"F2 H C L" end, ---
@@ -124,28 +124,28 @@ Macro {
 -- [[
 Macro {
   area = "Shell",
-  key = "Ctrl4",
+  key = "LCtrl4",
   flags = "",
   description = "HList: Folders",
   action = function () return Keys"F2 H F" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlShift4",
+  key = "LCtrlShift4",
   flags = "",
   description = "HList: Editing",
   action = function () return Keys"F2 H E" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAlt4",
+  key = "LCtrlLAlt4",
   flags = "",
   description = "HList: ?",
   action = function () return Keys"F2 H" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAltShift4",
+  key = "LCtrlLAltShift4",
   flags = "",
   description = "HList: ?",
   action = function () return Keys"F2 H" end, ---
@@ -155,28 +155,28 @@ Macro {
 -- [[
 Macro {
   area = "Shell",
-  key = "Ctrl5",
+  key = "LCtrl5",
   flags = "",
   description = "HList: Dev/Projects",
   action = function () return Keys"F2 D Q" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlShift5",
+  key = "LCtrlShift5",
   flags = "",
   description = "HList: Dev/Tools",
   action = function () return Keys"F2 D D" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAlt5",
+  key = "LCtrlLAlt5",
   flags = "",
   description = "HList: Dev/Scripts",
   action = function () return Keys"F2 D I" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAltShift5",
+  key = "LCtrlLAltShift5",
   flags = "",
   description = "HList: Dev/LuaFAR",
   action = function () return Keys"F2 D I L" end, ---
@@ -186,28 +186,28 @@ Macro {
 -- [[
 Macro {
   area = "Shell",
-  key = "Ctrl6",
+  key = "LCtrl6",
   flags = "",
   description = "HList: Dev/Work",
   action = function () return Keys"F2 D W" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlShift6",
+  key = "LCtrlShift6",
   flags = "",
   description = "HList: Dev/Sources",
   action = function () return Keys"F2 D S" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAlt6",
+  key = "LCtrlLAlt6",
   flags = "",
   description = "HList: Dev/?",
   action = function () return Keys"F2 D" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAltShift6",
+  key = "LCtrlLAltShift6",
   flags = "",
   description = "HList: Dev/Temps",
   action = function () return Keys"F2 D T" end, ---
@@ -217,28 +217,28 @@ Macro {
 -- [[
 Macro {
   area = "Shell",
-  key = "Ctrl7",
+  key = "LCtrl7",
   flags = "",
   description = "HList: Backup",
   action = function () return Keys"F2 H K" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlShift7",
+  key = "LCtrlShift7",
   flags = "",
   description = "HList: Collect/Audio",
   action = function () return Keys"F2 H C A" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAlt7",
+  key = "LCtrlLAlt7",
   flags = "",
   description = "HList: Collect/Video",
   action = function () return Keys"F2 H C V" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAltShift7",
+  key = "LCtrlLAltShift7",
   flags = "",
   description = "HList: Collect/Biblio",
   action = function () return Keys"F2 H C B" end, ---
@@ -248,28 +248,28 @@ Macro {
 -- [[
 Macro {
   area = "Shell",
-  key = "Ctrl8",
+  key = "LCtrl8",
   flags = "",
   description = "HList: Library",
   action = function () return Keys"F2 B" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlShift8",
+  key = "LCtrlShift8",
   flags = "",
   description = "HList: Lib/Books",
   action = function () return Keys"F2 B B" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAlt8",
+  key = "LCtrlLAlt8",
   flags = "",
   description = "HList: Lib/Checked",
   action = function () return Keys"F2 B C" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAltShift8",
+  key = "LCtrlLAltShift8",
   flags = "",
   description = "HList: Lib->Books",
   action = function () return Keys"F2 B B `" end, ---
@@ -279,28 +279,28 @@ Macro {
 -- [[
 Macro {
   area = "Shell",
-  key = "Ctrl9",
+  key = "LCtrl9",
   flags = "",
   description = "HList: Lib/Work",
   action = function () return Keys"F2 B W" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlShift9",
+  key = "LCtrlShift9",
   flags = "",
   description = "HList: Lib/Sorted",
   action = function () return Keys"F2 B S" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAlt9",
+  key = "LCtrlLAlt9",
   flags = "",
   description = "HList: Lib/Unsorted",
   action = function () return Keys"F2 B U" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAltShift9",
+  key = "LCtrlLAltShift9",
   flags = "",
   description = "HList: Lib/Informs",
   action = function () return Keys"F2 B W Q" end, ---
@@ -310,28 +310,28 @@ Macro {
 -- [[
 Macro {
   area = "Shell",
-  key = "Ctrl0",
+  key = "LCtrl0",
   flags = "",
   description = "HList: Firm",
   action = function () return Keys"F2 F" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlShift0",
+  key = "LCtrlShift0",
   flags = "",
   description = "HList: Firm/Projects",
   action = function () return Keys"F2 F Q" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAlt0",
+  key = "LCtrlLAlt0",
   flags = "",
   description = "HList: Firm/Binaries",
   action = function () return Keys"F2 F B" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAltShift0",
+  key = "LCtrlLAltShift0",
   flags = "",
   description = "HList: Firm/Scripts",
   action = function () return Keys"F2 F S" end, ---
@@ -341,28 +341,28 @@ Macro {
 -- [[
 Macro {
   area = "Shell",
-  key = "Ctrl-",
+  key = "LCtrl-",
   flags = "",
   description = "HList: Games",
   action = function () return Keys"F2 H G" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlShift-",
+  key = "LCtrlShift-",
   flags = "",
   description = "HList: Games/Updates",
   action = function () return Keys"F2 H G I" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAlt-",
+  key = "LCtrlLAlt-",
   flags = "",
   description = "HList: Games/Loaded",
   action = function () return Keys"F2 H G L" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAltShift-",
+  key = "LCtrlLAltShift-",
   flags = "",
   description = "HList: Games/New-info",
   action = function () return Keys"F2 H G N" end, ---
@@ -372,28 +372,28 @@ Macro {
 -- [[
 Macro {
   area = "Shell",
-  key = "Ctrl=",
+  key = "LCtrl=",
   flags = "",
   description = "HList: Setup",
   action = function () return Keys"F2 H I" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlShift=",
+  key = "LCtrlShift=",
   flags = "",
   description = "HList: Setup/Install",
   action = function () return Keys"F2 H I I" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAlt=",
+  key = "LCtrlLAlt=",
   flags = "",
   description = "HList: Games/Sorteds",
   action = function () return Keys"F2 H I S" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlAltShift=",
+  key = "LCtrlLAltShift=",
   flags = "",
   description = "HList: Games/Unsorted",
   action = function () return Keys"F2 H I U" end, ---

@@ -101,7 +101,7 @@ end -- ReplaceInFindFile
 
 Macro {
   area = "Dialog",
-  key = "CtrlR",
+  key = "LCtrlR",
   flags = "",
   description = "FindFile: Replace in file",
   condition = IsFindFileResult,
@@ -111,7 +111,7 @@ Macro {
 } ---
 Macro {
   area = "Dialog",
-  key = "CtrlShiftR",
+  key = "LCtrlShiftR",
   flags = "",
   description = "FindFile: Replace in file + Down",
   condition = IsFindFileResult,

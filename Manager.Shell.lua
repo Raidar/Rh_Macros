@@ -73,21 +73,21 @@ Macro {
 -- [[
 Macro {
   area = "Shell",
-  key = "CtrlShiftL",
+  key = "RCtrlShiftL",
   flags = "",
   description = "Panel: Information panel",
   action = function () return Keys"CtrlL" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlShiftH",
+  key = "RCtrlShiftH",
   flags = "",
   description = "Panel: Hidden/system files",
   action = function () return Keys"CtrlH" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "AltBS",
+  key = "LAltBS",
   flags = "",
   description = "Panel: Same folder/file",
   condition = function () 
@@ -188,21 +188,21 @@ Macro {
 -- [[
 Macro {
   area = "Shell",
-  key = "CtrlDivide",
+  key = "LCtrlDivide",
   flags = "",
   description = "Panel: Restore selection",
   action = function () return Keys"CtrlM" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlShiftDivide",
+  key = "LCtrlShiftDivide",
   flags = "",
   description = "Panel: Select files with same name+ext",
   action = function () return Keys"AltAdd CtrlAdd" end, ---
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlShiftMultiply",
+  key = "LCtrlShiftMultiply",
   flags = "",
   description = "Panel: Select folders only",
   action = function () return Keys"ShiftAdd CtrlMultiply" end, ---
@@ -212,7 +212,7 @@ Macro {
 -- [[
 Macro { -- File name
   area = "Shell",
-  key = "CtrlF3",
+  key = "LCtrlF3",
   flags = "",
   description = "Panel: Full file name",
   action = function ()
@@ -225,7 +225,7 @@ Macro { -- File name
 } ---
 Macro { -- File extension
   area = "Shell",
-  key = "CtrlF4",
+  key = "LCtrlF4",
   flags = "",
   description = "Panel: File extension",
   action = function ()
@@ -240,7 +240,7 @@ Macro { -- File extension
 } ---
 Macro { -- File modification time
   area = "Shell",
-  key = "CtrlF5",
+  key = "LCtrlF5",
   flags = "",
   description = "Panel: File modification time",
   action = function ()
@@ -249,7 +249,7 @@ Macro { -- File modification time
 } ---
 Macro { -- File size
   area = "Shell",
-  key = "CtrlF6",
+  key = "LCtrlF6",
   flags = "",
   description = "Panel: File size",
   action = function ()
@@ -259,7 +259,7 @@ Macro { -- File size
 } ---
 Macro { -- File path
   area = "Shell",
-  key = "CtrlF7",
+  key = "LCtrlF7",
   flags = "",
   description = "Panel: File path",
   action = function ()
@@ -268,7 +268,7 @@ Macro { -- File path
 } ---
 Macro { -- File creation time
   area = "Shell",
-  key = "CtrlF8",
+  key = "LCtrlF8",
   flags = "",
   description = "Panel: File creation time",
   action = function ()
@@ -277,7 +277,7 @@ Macro { -- File creation time
 } ---
 Macro { -- File access time
   area = "Shell",
-  key = "CtrlF9",
+  key = "LCtrlF9",
   flags = "",
   description = "Panel: File access time",
   action = function ()
@@ -286,7 +286,7 @@ Macro { -- File access time
 } ---
 Macro { -- File packed size
   area = "Shell",
-  key = "CtrlF10",
+  key = "LCtrlF10",
   flags = "",
   description = "Panel: File packed size",
   action = function ()
@@ -295,7 +295,7 @@ Macro { -- File packed size
 } ---
 Macro { -- File CRC32
   area = "Shell",
-  key = "CtrlF11",
+  key = "LCtrlF11",
   flags = "",
   description = "Panel: File CRC32",
   action = function ()
@@ -336,7 +336,7 @@ end ---- GetPanelItemName
 -- [[
 Macro { -- File name only
   area = "Shell",
-  key = "CtrlP",
+  key = "LCtrlP",
   flags = "",
   description = "Panel: File name only to clipboard",
   action = function ()
@@ -348,7 +348,7 @@ Macro { -- File name only
 } ---
 Macro { -- Full file name
   area = "Shell",
-  key = "CtrlShiftP",
+  key = "LCtrlShiftP",
   flags = "",
   description = "Panel: Full file name to clipboard",
   action = function ()
@@ -366,7 +366,7 @@ guids.MoveFile = "431A2F37-AC01-4ECD-BB6F-8CDE584E5A03"
 
 Macro { -- Rename
   area = "Shell",
-  key = "CtrlT",
+  key = "LCtrlT",
   flags = "",
   description = "Panel: Rename preserving extension",
   condition = function ()
@@ -383,7 +383,7 @@ Macro { -- Rename
 } ---
 Macro { -- Recopy
   area = "Shell",
-  key = "CtrlShiftT",
+  key = "LCtrlShiftT",
   flags = "",
   description = "Panel: Recopy preserving extension",
   condition = function ()
@@ -400,7 +400,7 @@ Macro { -- Recopy
 } ---
 Macro { -- Copy
   area = "Shell",
-  key = "AltShiftF5",
+  key = "LAltShiftF5",
   flags = "",
   description = "Panel: Copy to… preserving extension",
   condition = function ()
@@ -426,7 +426,7 @@ Macro { -- Copy
 } ---
 Macro { -- Move
   area = "Shell",
-  key = "AltShiftF6",
+  key = "LAltShiftF6",
   flags = "",
   description = "Panel: Move to… preserving extension",
   condition = function ()
@@ -457,7 +457,7 @@ guids.FindFile = "8C9EAD29-910F-4B24-A669-EDAFBA6ED964"
 
 Macro {
   area = "Shell",
-  key = "CtrlF",
+  key = "LCtrlF",
   flags = "",
   description = "Find: Find…",
   action = function ()
@@ -470,7 +470,7 @@ Macro {
 -- Find folder -->
 Macro { -- Find file with clipboard text..
   area = "Shell",
-  key = "AltF8",
+  key = "LAltF8",
   flags = "",
   description = "Find: Find files with text…",
   action = function ()
@@ -483,7 +483,7 @@ Macro { -- Find file with clipboard text..
 } ---
 Macro { -- Find file with clipboard namepart…
   area = "Shell",
-  key = "CtrlAltF8",
+  key = "LCtrlAltF8",
   flags = "",
   description = "Find: Find files with namepart…",
   action = function ()
@@ -503,7 +503,7 @@ guids.Attributes = "80695D20-1085-44D6-8061-F3C41AB5569C"
 -- Установка ReadOnly и Archive:
 Macro { -- для файла, каталога или выделенных элементов
   area = "Shell",
-  key = "CtrlShiftA",
+  key = "LCtrlShiftA",
   flags = "",
   description = "Panel: File - RA",
   condition = function ()
@@ -538,7 +538,7 @@ Macro { -- для файла, каталога или выделенных эл�
 } ---
 Macro { -- для файла, каталога и его элементов
   area = "Shell",
-  key = "CtrlAltShiftA",
+  key = "LCtrlLAltShiftA",
   flags = "",
   description = "Panel: Folder - RA",
   condition = function ()
@@ -699,7 +699,7 @@ Macro {
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlC",
+  key = "LCtrlC",
   flags = "",
   --flags = "NotEmptyCommandLine",
   description = "CmdLn: Copy to clipboard",
@@ -707,7 +707,7 @@ Macro {
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlV",
+  key = "LCtrlV",
   flags = "",
   --flags = "NotEmptyCommandLine",
   description = "CmdLn: Paste from clipboard",
@@ -715,7 +715,7 @@ Macro {
 } ---
 Macro {
   area = "Shell",
-  key = "CtrlX",
+  key = "LCtrlX",
   flags = "",
   --flags = "NotEmptyCommandLine",
   description = "CmdLn: Cut to clipboard",

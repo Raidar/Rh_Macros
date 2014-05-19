@@ -47,7 +47,7 @@ local Macro = Macro or function () end
 --[[
 Macro {
   area = "Editor",
-  key = "CtrlQ",
+  key = "LCtrlQ",
   flags = "",
   description = "Edit: Test",
   action = function ()
@@ -60,7 +60,7 @@ Macro {
 -- [[
 Macro {
   area = "Editor",
-  key = "AltF9",
+  key = "LAltF9",
   flags = "",
   description = "Edit: Next codepage",
   action = function ()
@@ -77,7 +77,7 @@ Macro {
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlShiftG",
+  key = "LCtrlShiftG",
   flags = "",
   description = "Edit: Goto…",
   action = function () return Keys"AltF8" end, ---
@@ -87,7 +87,7 @@ Macro {
 -- [[
 Macro {
   area = "Editor",
-  key = "CtrlAltShiftL",
+  key = "RCtrlRAltShiftL",
   flags = "",
   description = "Edit: Lock/Unlock",
   action = function () return Keys"CtrlL" end, ---
@@ -95,7 +95,7 @@ Macro {
 
 Macro {
   area = "Editor",
-  key = "CtrlAltShiftEnter",
+  key = "RCtrlRAltShiftEnter",
   flags = "",
   description = "Edit: Insert full filename",
   action = function () return Keys"CtrlF" end, ---
@@ -105,7 +105,7 @@ Macro {
 --[[
 Macro {
   area = "Editor",
-  key = "CtrlO",
+  key = "LCtrlO",
   flags = "",
   description = "Edit: Switch to panels",
   action = function () return Keys"F12 0" end, ---
@@ -115,7 +115,7 @@ Macro {
 -- [[
 Macro {
   area = "Editor",
-  key = "CtrlS",
+  key = "LCtrlS",
   flags = "",
   description = "Edit: Save file",
   action = function ()
@@ -186,7 +186,7 @@ end ---- SaveAsUtf8noBOM
 -- [[
 Macro {
   area = "Editor",
-  key = "CtrlShiftS",
+  key = "LCtrlShiftS",
   flags = "",
   description = "Edit: Save as UTF-8 w/o BOM",
   action = function ()
@@ -198,14 +198,14 @@ Macro {
 -- [[
 Macro {
   area = "Editor",
-  key = "CtrlF",
+  key = "LCtrlF",
   flags = "",
   description = "Edit: Find…",
   action = function () return Keys"F7" end, ---
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlR",
+  key = "LCtrlR",
   flags = "",
   description = "Edit: Replace…",
   action = function () return Keys"CtrlF7" end, ---
@@ -219,7 +219,7 @@ Macro {
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlF3",
+  key = "LCtrlF3",
   flags = "",
   description = "Edit: Find next & center",
   action = function ()
@@ -238,7 +238,7 @@ Macro {
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlAltShiftF7",
+  key = "LCtrlLAltShiftF7",
   flags = "",
   description = "Edit: Replace all",
   action = function ()
@@ -254,7 +254,7 @@ Macro {
 -- [[
 Macro {
   area = "Editor",
-  key = "AltBS",
+  key = "LAltBS",
   flags = "",
   description = "Edit: Tabulation",
   action = function () return Keys"Tab" end, ---
@@ -303,7 +303,7 @@ Macro {
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlAltShiftTab",
+  key = "LCtrlLAltShiftTab",
   flags = "",
   description = "Edit: Table-Tab",
   condition = function ()
@@ -330,14 +330,14 @@ Macro {
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlD",
+  key = "RCtrlD",
   flags = "",
   description = "Edit: Left within file",
   action = function () return Keys"Left" end, ---
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlShiftD",
+  key = "RCtrlShiftD",
   flags = "",
   description = "Edit: Right within file",
   action = function ()
@@ -368,14 +368,14 @@ Macro {
 
 Macro {
   area = "Editor",
-  key = "CtrlAltHome",
+  key = "LCtrlLAltHome",
   flags = "",
   description = "Edit: Start of first line",
   action = function () return Keys"CtrlHome Home" end, ---
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlAltEnd",
+  key = "LCtrlLAltEnd",
   flags = "",
   description = "Edit: Start of last line",
   action = function () return Keys"CtrlEnd Home" end, ---
@@ -383,14 +383,14 @@ Macro {
 
 Macro {
   area = "Editor",
-  key = "CtrlNum1",
+  key = "LCtrlNum1",
   flags = "",
   description = "Edit: End of last line",
   action = function () return Keys"CtrlEnd End" end, ---
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlNum7",
+  key = "LCtrlNum7",
   flags = "",
   description = "Edit: Start of first line",
   action = function () return Keys"CtrlHome Home" end, ---
@@ -400,14 +400,14 @@ Macro {
 --[[
 Macro {
   area = "Editor",
-  key = "CtrlShiftI",
+  key = "LCtrlShiftI",
   flags = "",
   description = "Edit: Shift 4fold block right",
   action = function () return Keys"AltI AltI AltI AltI" end, ---
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlShiftU",
+  key = "LCtrlShiftU",
   flags = "",
   description = "Edit: Shift 4fold block left",
   action = function () return Keys"AltU AltU AltU AltU" end, ---
@@ -415,14 +415,14 @@ Macro {
 
 Macro {
   area = "Editor",
-  key = "AltShiftI",
+  key = "LAltShiftI",
   flags = "",
   description = "Edit: Shift twice block right",
   action = function () return Keys"AltI AltI" end, ---
 } ---
 Macro {
   area = "Editor",
-  key = "AltShiftU",
+  key = "LAltShiftU",
   flags = "",
   description = "Edit: Shift twice block left",
   action = function () return Keys"AltU AltU" end, ---
@@ -446,14 +446,14 @@ end ---- ShiftCurLine
 -- [[
 Macro {
   area = "Editor",
-  key = "CtrlEnter",
+  key = "LCtrlEnter",
   flags = "",
   description = "Edit: Shift up current line",
   action = function () return unit.ShiftCurLine(7) end, ---
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlNumEnter",
+  key = "LCtrlNumEnter",
   flags = "",
   description = "Edit: Shift up current line",
   action = function () return unit.ShiftCurLine(7) end, ---
@@ -461,14 +461,14 @@ Macro {
 
 Macro {
   area = "Editor",
-  key = "CtrlAltEnter",
+  key = "LCtrlLAltEnter",
   flags = "",
   description = "Edit: Shift down current line",
   action = function () return unit.ShiftCurLine(-4) end, ---
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlAltNumEnter",
+  key = "LCtrlLAltNumEnter",
   flags = "",
   description = "Edit: Shift down current line",
   action = function () return unit.ShiftCurLine(-4) end, ---
@@ -478,7 +478,7 @@ Macro {
 -- [[
 Macro {
   area = "Editor",
-  key = "CtrlC",
+  key = "LCtrlC",
   flags = "",
   description = "Edit: Copy selection only",
   action = function ()
@@ -490,7 +490,7 @@ Macro {
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlIns",
+  key = "LCtrlIns",
   flags = "",
   description = "Edit: Copy selection only",
   action = function ()
@@ -502,7 +502,7 @@ Macro {
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlShiftIns",
+  key = "LCtrlShiftIns",
   flags = "",
   description = "Edit: Add to clipboard",
   action = function ()
@@ -515,14 +515,14 @@ Macro {
 
 Macro {
   area = "Editor",
-  key = "CtrlAltV",
+  key = "LCtrlLAltV",
   flags = "",
   description = "Edit: Paste + Down",
   action = function () return Keys"CtrlV Down" end, ---
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlShiftV",
+  key = "LCtrlShiftV",
   flags = "",
   description = "Edit: Paste + Down + End",
   action = function () return Keys"CtrlV Down End" end, ---
@@ -731,14 +731,14 @@ end -- do
 -- [[
 Macro {
   area = "Editor",
-  key = "AltLeft",
+  key = "LAltLeft",
   flags = "",
   description = "Edit: Digit decrement",
   action = function () return unit.ShiftDigit(-1) end, ---
 } ---
 Macro {
   area = "Editor",
-  key = "AltRight",
+  key = "LAltRight",
   flags = "",
   description = "Edit: Digit increment",
   action = function () return unit.ShiftDigit(1) end, ---
@@ -747,14 +747,14 @@ Macro {
 
 Macro {
   area = "Editor",
-  key = "AltDown",
+  key = "LAltDown",
   flags = "",
   description = "Edit: Number decrement",
   action = function () return unit.ShiftNumber(-1) end, ---
 } ---
 Macro {
   area = "Editor",
-  key = "AltUp",
+  key = "LAltUp",
   flags = "",
   description = "Edit: Number increment",
   action = function () return unit.ShiftNumber(1) end, ---
@@ -898,7 +898,7 @@ end -- do
 -- [[
 Macro {
   area = "Editor",
-  key = "AltQ",
+  key = "LAltQ",
   flags = "",
   description = "Edit: Number spacing",
   action = function ()
@@ -908,7 +908,7 @@ Macro {
 
 Macro {
   area = "Editor",
-  key = "AltShiftQ",
+  key = "LAltShiftQ",
   flags = "",
   description = "Edit: Bytes folding",
   action = function ()
@@ -922,7 +922,7 @@ Macro {
 -- [[
 Macro {
   area = "Editor",
-  key = "AltP",
+  key = "LAltP",
   flags = "",
   description = "ReadMe: Text (|)",
   action = function ()
@@ -933,7 +933,7 @@ Macro {
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlAltP",
+  key = "LCtrlLAltP",
   flags = "",
   description = "ReadMe: Text (|) Text",
   action = function ()
@@ -943,7 +943,7 @@ Macro {
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlP",
+  key = "LCtrlP",
   flags = "",
   description = "ReadMe: (Text)|",
   action = function ()
@@ -954,7 +954,7 @@ Macro {
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlShiftP",
+  key = "LCtrlShiftP",
   flags = "",
   description = "ReadMe: (Text)| + Next",
   action = function ()
@@ -970,7 +970,7 @@ Macro {
 
 Macro {
   area = "Editor",
-  key = "CtrlAltShiftP",
+  key = "LCtrlLAltShiftP",
   flags = "",
   description = "ReadMe: (Number)| + Next",
   action = function ()
@@ -988,7 +988,7 @@ Macro {
 
 Macro {
   area = "Editor",
-  key = "CtrlO",
+  key = "LCtrlO",
   flags = "",
   description = "ReadMe: (|Number)",
   action = function ()
@@ -1000,7 +1000,7 @@ Macro {
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlAltShiftO",
+  key = "LCtrlLAltShiftO",
   flags = "",
   description = "ReadMe: (Num / Num)| + Next",
   action = function ()
@@ -1016,7 +1016,7 @@ Macro {
 -- Автоустановка предыдущего номера страницы.
 Macro {
   area = "Editor",
-  key = "AltShiftZ",
+  key = "LAltShiftZ",
   flags = "",
   description = "ReadMe: (Num) from up",
   action = function ()
@@ -1039,12 +1039,14 @@ do
 local BulletSep = ". "
 
 local Bullets = {
-  ["#"] = { level = "Num",  key = "Alt1", },
-  ["*"] = { level = "1",    key = "AltShift1", },
-  ["-"] = { level = "2",    key = "Alt2", },
-  [":"] = { level = "Lib",  key = "AltShift2", },
-  ["~"] = { level = "3",    key = "Alt3", },
-  ["·"] = { level = "4",    key = "AltShift3", },
+  ["#"] = { level = "Num",  key = "LAlt1", },
+  ["*"] = { level = "1",    key = "LAltShift1", },
+  ["-"] = { level = "2",    key = "LAlt2", },
+  ["+"] = { level = "2-3",  key = "LAltShift2", },
+  ["~"] = { level = "3",    key = "LAlt3", },
+  [":"] = { level = "Lib",  key = "LAltShift3", },
+  ["·"] = { level = "4",    key = "LAlt4", },
+  ["¤"] = { level = "4-5",  key = "LAltShift4", },
 } --- Bullets
 
   local DescFmt = "Bullet: '%s%s' (Level %s)"
@@ -1067,9 +1069,9 @@ end
 --[=[
 -- WARN: Закомментировано, т.к. занято на Quote-макросы.
 local IndentBullets = {
-  ["-"]     = { level = "2",    key = "CtrlAltShift1", },
-  ["  ~"]   = { level = "3",    key = "CtrlAltShift2", },
-  ["    ·"] = { level = "4",    key = "CtrlAltShift3", },
+  ["-"]     = { level = "2",    key = "LCtrlLAltShift1", },
+  ["  ~"]   = { level = "3",    key = "LCtrlLAltShift2", },
+  ["    ·"] = { level = "4",    key = "LCtrlLAltShift3", },
 } --- IndentBullets
 
   local DescFmt = "Bullet: '%s%s' (L%s) + Next"
@@ -1219,7 +1221,7 @@ end -- ClearSectionNumber
 
 Macro {
   area = "Editor",
-  key = "AltZ",
+  key = "LAltZ",
   flags = "",
   description = "ReadMe: 'Num. ' from up",
   action = function ()
@@ -1229,7 +1231,7 @@ Macro {
 
 Macro {
   area = "Editor",
-  key = "CtrlY",
+  key = "LCtrlY",
   flags = "",
   description = "ReadMe: Clear first 'Num. '",
   action = function ()
@@ -1239,7 +1241,7 @@ Macro {
 
 Macro {
   area = "Editor",
-  key = "CtrlShiftY",
+  key = "LCtrlShiftY",
   flags = "",
   description = "ReadMe: Clear all 'Num. ' but last",
   action = function ()
@@ -1257,48 +1259,51 @@ local Characters = {
   -- Alt + <a>          -- Alt+Shift + <a>          -- Ctrl+Alt+Shift + <a>
 
   -- Latin key-characters:                          -- Latin number-characters:
-  ["["] = "Alt[",       ["{"] = "AltShift[",
-  ["]"] = "Alt]",       ["}"] = "AltShift]",
-  [","] = "Alt,",       ["<"] = "AltShift,",        ["#"] = "CtrlAltShift,",
-  ["."] = "Alt.",       [">"] = "AltShift.",        ["^"] = "CtrlAltShift.",
-  [";"] = "Alt;",       [":"] = "AltShift;",        ["$"] = "CtrlAltShift;",
-  ["'"] = "Alt'",       ['"'] = "AltShift'",        ["@"] = "CtrlAltShift'",
-  ["`"] = "Alt`",       ["~"] = "AltShift`",
-  ["/"] = "Alt/",       ["?"] = "AltShift/",        ["&"] = "CtrlAltShift/",
- ["\\"] = "Alt"..BSh,   ["|"] = "AltShift"..BSh,    ["‾"] = "CtrlAltShift"..BSh,
+  ["["] = "LAlt[",      ["{"] = "LAltShift[",
+  ["]"] = "LAlt]",      ["}"] = "LAltShift]",
+  [","] = "LAlt,",      ["<"] = "LAltShift,",       ["#"] = "LCtrlLAltShift,",
+  ["."] = "LAlt.",      [">"] = "LAltShift.",       ["^"] = "LCtrlLAltShift.",
+  [";"] = "LAlt;",      [":"] = "LAltShift;",       ["$"] = "LCtrlLAltShift;",
+  ["'"] = "LAlt'",      ['"'] = "LAltShift'",       ["@"] = "LCtrlLAltShift'",
+  ["`"] = "LAlt`",      ["~"] = "LAltShift`",       --["ʼ"] = "LCtrlLAltShift'",
+  ["/"] = "LAlt/",      ["?"] = "LAltShift/",       ["&"] = "LCtrlLAltShift/",
+ ["\\"] = "LAlt"..BSh,  ["|"] = "LAltShift"..BSh,   ["‾"] = "LCtrlLAltShift"..BSh,
+
+  ["ʻ"] = "RAlt;",      ["ʽ"] = "RAltShift;",       --[""] = "RCtrlRAltShift;",
+  ["ʼ"] = "RAlt'",      ['ˮ'] = "RAltShift'",       --[""] = "RCtrlRAltShift'",
 
   -- Special characters:
-  [" "] = "CtrlShiftSpace",
-  ["…"] = "CtrlAlt/",
+  [" "] = "LCtrlShiftSpace",
+  ["…"] = "LCtrlLAlt/",
 
-  ["°"] = "Shift"..BSh,
-  ["́"] = "Ctrl"..BSh,
-  ["§"] = "CtrlShift"..BSh,
-  ["―"] = "CtrlAlt"..BSh,
+  ["°"] = "|", --["°"] = "Shift"..BSh,
+  ["́"] = "LCtrl"..BSh,
+  ["§"] = "LCtrlShift"..BSh,
+  ["―"] = "LCtrlLAlt"..BSh,
 
-  ["≤"] = "CtrlAlt,",
-  ["≥"] = "CtrlAlt.",
+  ["≤"] = "LCtrlLAlt,",
+  ["≥"] = "LCtrlLAlt.",
 
   -- Math/Lang characters with Numpad:
   -- Num+ — Add --                  -- Num* — Multiply --
   ["−"] = "ShiftAdd",               ["⋅"] = "ShiftMultiply",
-  ["±"] = "CtrlAdd",                ["×"] = "CtrlMultiply",
-  ["∓"] = "CtrlShiftAdd",           ["¤"] = "CtrlShiftMultiply",
-  ["†"] = "CtrlAltAdd",             ["·"] = "CtrlAltMultiply",
-  ["∑"] = "AltAdd",                 ["∏"] = "AltMultiply",
-  ["∫"] = "AltShiftAdd",            ["∂"] = "AltShiftMultiply",
+  ["±"] = "LCtrlAdd",               ["×"] = "LCtrlMultiply",
+  ["∓"] = "LCtrlShiftAdd",          ["¤"] = "LCtrlShiftMultiply",
+  ["†"] = "LCtrlLAltAdd",           ["·"] = "LCtrlLAltMultiply",
+  ["∑"] = "LAltAdd",                ["∏"] = "LAltMultiply",
+  ["∫"] = "LAltShiftAdd",           ["∂"] = "LAltShiftMultiply",
 
   -- Num- — Subtract --             -- Num/ — Divide --
   ["­"] = "ShiftSubtract",          ["÷"] = "ShiftDivide",
-  ["—"] = "CtrlSubtract",           ["∕"] = "CtrlDivide",
-  ["‑"] = "CtrlShiftSubtract",      ["∞"] = "CtrlShiftDivide",
-  ["–"] = "CtrlAltSubtract",        ["⁄"] = "CtrlAltDivide",
-  [" "] = "AltSubtract",            ["√"] = "AltDivide",
-  ["‒"] = "AltShiftSubtract",       ["∛"] = "AltShiftDivide",
+  ["—"] = "LCtrlSubtract",          ["∕"] = "LCtrlDivide",
+  ["‑"] = "LCtrlShiftSubtract",     ["∞"] = "LCtrlShiftDivide",
+  ["–"] = "LCtrlLAltSubtract",      ["⁄"] = "LCtrlLAltDivide",
+  [" "] = "LAltSubtract",           ["√"] = "LAltDivide",
+  ["‒"] = "LAltShiftSubtract",      ["∛"] = "LAltShiftDivide",
 
   -- Graphic characters with Numpad:
-  ["┼"] = "CtrlAltShiftAdd",        ["●"] = "CtrlAltShiftMultiply",
-  ["─"] = "CtrlAltShiftSubtract",   ["│"] = "CtrlAltShiftDivide",
+  ["┼"] = "LCtrlLAltShiftAdd",        ["●"] = "LCtrlLAltShiftMultiply",
+  ["─"] = "LCtrlLAltShiftSubtract",   ["│"] = "LCtrlLAltShiftDivide",
 } --- Characters
 
 ----------------------------------------

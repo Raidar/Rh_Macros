@@ -51,7 +51,7 @@ local Exist = function () return PluginExist(guids.LFHistory) end
 
 Macro {
   area = "Common",
-  key = "AltF10",
+  key = "LAltF10",
   flags = "",
   description = "History: Commands",
   condition = Exist,
@@ -62,7 +62,7 @@ Macro {
 } ---
 Macro {
   area = "Common",
-  key = "AltF11",
+  key = "LAltF11",
   flags = "",
   description = "History: Edit/View",
   condition = Exist,
@@ -73,7 +73,7 @@ Macro {
 } ---
 Macro {
   area = "Common",
-  key = "AltF12",
+  key = "LAltF12",
   flags = "",
   description = "History: Folders",
   condition = Exist,

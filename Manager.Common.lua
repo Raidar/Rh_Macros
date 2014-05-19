@@ -27,7 +27,7 @@ local Macro = Macro or function () end
 ---------------------------------------- Common
 Macro {
   area = "Common",
-  key = "CtrlAltShiftF9",
+  key = "RCtrlRAltShiftF9",
   flags = "",
   description = "All: Video mode",
   action = function ()
@@ -45,7 +45,7 @@ Macro {
 ---------------------------------------- XLat
 Macro {
   area = "Shell Info QView Tree Editor Dialog",
-  key = "CtrlAltX",
+  key = "LCtrlLAltX",
   flags = "",
   description = "All: XLat",
   condition = function ()
@@ -59,14 +59,14 @@ Macro {
 -- ";" - Passive Panel (used by default configs).
 Macro {
   area = "Shell Info QView Tree",
-  key = "Ctrl'",
+  key = "LCtrl'",
   flags = "",
   description = "All: Full name on AP",
   action = function () return Keys"CtrlF" end, ---
 } ---
 Macro {
   area = "Shell Info QView Tree",
-  key = "CtrlAlt'",
+  key = "LCtrlLAlt'",
   flags = "",
   description = "All: Network name on AP",
   action = function () return Keys"CtrlAltF" end, ---

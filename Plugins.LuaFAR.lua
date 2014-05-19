@@ -50,7 +50,7 @@ local Exist = function () return PluginExist(guids.LF4Ed) end
 -- [[
 Macro {
   area = "Shell Editor Viewer",
-  key = "CtrlL",
+  key = "LCtrlL",
   flags = "",
   description = "LF4Ed: Menu",
   condition = Exist,
@@ -74,7 +74,7 @@ end -- ShowLUM
 -- [[
 Macro {
   area = "Shell Editor Viewer",
-  key = "AltShiftF2",
+  key = "LAltShiftF2",
   flags = "",
   description = "LUM: Lua User Menu",
   condition = Exist,
@@ -83,7 +83,7 @@ Macro {
 
 Macro {
   area = "Shell Editor Viewer",
-  key = "CtrlAltShiftF2",
+  key = "LCtrlLAltShiftF2",
   flags = "",
   description = "LUM: Tortoise SVN",
   condition = Exist,
@@ -96,7 +96,7 @@ Macro {
 --[=[
 Macro {
   area = "Editor",
-  key = "CtrlJ",
+  key = "LCtrlJ",
   flags = "",
   description = "LUM: Template Insert",
   condition = Exist,
@@ -112,7 +112,7 @@ Macro {
   --area = "Common",
   area = "Shell Editor Viewer",
   --area = "Shell Editor Viewer Dialog",
-  key = "CtrlK",
+  key = "LCtrlK",
   flags = "",
   description = "LUM: Calendar",
   condition = Exist,
@@ -124,7 +124,7 @@ Macro {
   --area = "Common",
   area = "Shell Editor",
   --area = "Shell Editor Viewer Dialog",
-  key = "CtrlH",
+  key = "LCtrlH",
   flags = "",
   description = "LUM: CharsMap",
   condition = Exist,
@@ -134,7 +134,7 @@ Macro {
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlShiftH",
+  key = "LCtrlShiftH",
   flags = "",
   description = "LUM: Characters",
   condition = Exist,
@@ -144,7 +144,7 @@ Macro {
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlShiftQ",
+  key = "LCtrlShiftQ",
   flags = "",
   description = "LUM: Quote text",
   condition = Exist,
@@ -154,7 +154,7 @@ Macro {
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlShiftT",
+  key = "LCtrlShiftT",
   flags = "",
   description = "LUM: Clear text",
   condition = Exist,
@@ -169,52 +169,51 @@ do
 
 local QuoteMarks = {
   -- Quotes:
-  ["'"] = { key = "Ctrl'",          note = "'|'", },
-  ['"'] = { key = "CtrlShift'",     note = '"|"', },
-  [";"] = { key = "Ctrl;",          note = "‹|›", },
-  [":"] = { key = "CtrlShift;",     note = "«|»", },
-  ["1"] = { key = "CtrlAltShift2",  note = "‘|’", },
-  -- ‘|’
-  -- “|”
-  -- ‚|‘
-  -- „|“
+  ["'"] = { key = "LCtrl'",             note = "'|'", },
+  ['"'] = { key = "LCtrlShift'",        note = '"|"', },
+  [";"] = { key = "LCtrl;",             note = "‹|›", },
+  [":"] = { key = "LCtrlShift;",        note = "«|»", },
+  ["1"] = { key = "RCtrl'",             note = "‘|’", },
+  ['2'] = { key = "RCtrlShift'",        note = '“|”', },
+  ["3"] = { key = "RCtrl;",             note = "‚|‘", },
+  ["4"] = { key = "RCtrlShift;",        note = "„|“", },
 
   -- Brackets:
-  ["["] = { key = "Ctrl[",          note = "[|]", },
-  ["{"] = { key = "CtrlShift[",     note = "{|}", },
-  ["("] = { key = "Ctrl]",          note = "(|)", },
+  ["["] = { key = "LCtrl[",             note = "[|]", },
+  ["{"] = { key = "LCtrlShift[",        note = "{|}", },
+  ["("] = { key = "LCtrl]",             note = "(|)", },
   -- --
-  ["<"] = { key = "Ctrl,",          note = "<|>", },
-  [">"] = { key = "Ctrl.",          note = "⟨|⟩", },
-  ["/"] = { key = "Ctrl/",          note = "/|/" },
- ["\\"] = { key = "CtrlShift/",     note = "\\|\\", },
+  ["<"] = { key = "LCtrl,",             note = "<|>", },
+  [">"] = { key = "LCtrl.",             note = "⟨|⟩", },
+  ["/"] = { key = "LCtrl/",             note = "/|/" },
+ ["\\"] = { key = "LCtrlShift/",        note = "\\|\\", },
 
   -- Comments:
-  ["d"] = { key = "CtrlAltShift[",  note = "{ | }", },
-  ["p"] = { key = "CtrlShift]",     note = "(*|*)", },
-  ["c"] = { key = "CtrlAltShift]",  note = "/* | */", },
+  ["p"] = { key = "LCtrlShift]",        note = "(*|*)", },
+  ["d"] = { key = "LCtrlLAltShift[",    note = "{ | }", },
+  ["c"] = { key = "LCtrlLAltShift]",    note = "/* | */", },
   -- --
   -- <!-- | -->
   -- --[[ | ]]--
   -- --
   -- --
 
-  ["x"] = { key = "CtrlAltM",       note = "<!--|-->", },
-  --["h"] = { key = "CtrlShift.",     note = "<!--|-->", },
-  --["l"] = { key = "CtrlShift,",     note = "--[[ | ]]--", },
+  ["x"] = { key = "LCtrlLAltM",         note = "<!--|-->", },
+  --["h"] = { key = "LCtrlShift.",        note = "<!--|-->", },
+  --["l"] = { key = "LCtrlShift,",        note = "--[[ | ]]--", },
 
   -- Markers:
-  ["|"] = { key = "CtrlAltShift1",  note = "|||", },
-  -- --
-  ["#"] = { key = "CtrlAltShift3",  note = "#|#", },
-  ["$"] = { key = "CtrlAltShift4",  note = "$|$", },
-  ["%"] = { key = "CtrlAltShift5",  note = "%|%", },
-  ["^"] = { key = "CtrlAltShift6",  note = "^|^", },
-  ["&"] = { key = "CtrlAltShift7",  note = "&|&", },
-  ["*"] = { key = "CtrlAltShift8",  note = "*|*", },
+  ["|"] = { key = "LCtrlLAltShift1",    note = "|||", },
+  --["@"] = { key = "LCtrlLAltShift2",    note = "@|@", },
+  ["#"] = { key = "LCtrlLAltShift3",    note = "#|#", },
+  ["$"] = { key = "LCtrlLAltShift4",    note = "$|$", },
+  ["%"] = { key = "LCtrlLAltShift5",    note = "%|%", },
+  ["^"] = { key = "LCtrlLAltShift6",    note = "^|^", },
+  ["&"] = { key = "LCtrlLAltShift7",    note = "&|&", },
+  ["*"] = { key = "LCtrlLAltShift8",    note = "*|*", },
 
-  ["`"] = { key = "CtrlAlt`",       note = "`|`", },
-  ["~"] = { key = "CtrlAltShift`",  note = "~|~", },
+  ["`"] = { key = "LCtrlLAlt`",         note = "`|`", },
+  ["~"] = { key = "LCtrlLAltShift`",    note = "~|~", },
   -- -|-
   -- _|_
   -- +|+
@@ -227,8 +226,8 @@ local QuoteMarks = {
   -- ⌈|⌉
   -- ⟦|⟧
   -- --
-  ["q"] = { key = "CtrlAlt'",       note = 'cleared "|"', },
-  ["w"] = { key = "CtrlAlt;",       note = 'cleared «|»', },
+  ["q"] = { key = "LCtrlLAlt'",         note = 'cleared "|"', },
+  ["w"] = { key = "LCtrlLAlt;",         note = 'cleared «|»', },
 } --- QuoteMarks
 
   local DescFmt = "Quote: %s"
@@ -255,7 +254,7 @@ end
 
 Macro {
   area = "Editor",
-  key = "CtrlAltShiftM",
+  key = "LCtrlLAltShiftM",
   flags = "",
   description = "Dequote: <!--|-->",
   condition = Exist,

@@ -60,7 +60,7 @@ Macro {
 
 Macro {
   area = "Editor",
-  key = "CtrlShiftF5",
+  key = "LCtrlShiftF5",
   flags = "",
   description = "Case: Sentence case for Bulleted line",
   condition = Exist,
@@ -74,7 +74,7 @@ Macro {
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlAltShiftF5",
+  key = "LCtrlLAltShiftF5",
   flags = "",
   description = "Case: Sentence case for Numbered line",
   condition = Exist,

@@ -37,7 +37,7 @@ local Macro = Macro or function () end
 -- [[
 Macro {
   area = "Viewer",
-  key = "AltF9",
+  key = "LAltF9",
   flags = "",
   description = "View: Next codepage",
   action = function ()
@@ -57,7 +57,7 @@ Macro {
 --[[
 Macro {
   area = "Viewer",
-  key = "CtrlO",
+  key = "LCtrlO",
   flags = "",
   description = "View: Switch to panels",
   action = function () return Keys"F12 0" end, ---
@@ -68,7 +68,7 @@ Macro {
 -- [[
 Macro {
   area = "Viewer",
-  key = "CtrlF",
+  key = "LCtrlF",
   flags = "",
   description = "View: Find…",
   action = function () return Keys"F7" end, ---

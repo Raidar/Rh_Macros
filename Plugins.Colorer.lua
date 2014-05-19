@@ -45,7 +45,7 @@ local Exist = function () return PluginExist(guids.Colorer) end
 
 Macro {
   area = "Editor",
-  key = "CtrlAltShiftC",
+  key = "LCtrlLAltShiftC",
   flags = "",
   description = "Colorer: Reload HRC",
   condition = Exist,
@@ -57,7 +57,7 @@ Macro {
 
 Macro {
   area = "Editor",
-  key = "CtrlShiftL",
+  key = "LCtrlShiftL",
   flags = "",
   description = "Colorer: Section List",
   condition = Exist,
@@ -68,7 +68,7 @@ Macro {
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlShiftNum9",
+  key = "LCtrlShiftNum9",
   flags = "",
   description = "Colorer: Prev Section",
   condition = Exist,
@@ -79,7 +79,7 @@ Macro {
 } ---
 Macro {
   area = "Editor",
-  key = "CtrlShiftNum3",
+  key = "LCtrlShiftNum3",
   flags = "",
   description = "Colorer: Next Section",
   condition = Exist,
@@ -91,7 +91,7 @@ Macro {
 
 Macro {
   area = "Editor",
-  key = "CtrlAltL",
+  key = "LCtrlLAltL",
   flags = "",
   description = "Colorer: Attention List",
   condition = Exist,
