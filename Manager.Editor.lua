@@ -626,12 +626,14 @@ function unit.FindNumberStr (Info, Line, Pos, Shift, Limit)
 
   local abs, FindNumberPos = math.abs, unit.FindNumberPos
 
+  --far.Show(Line, Pos, Shift, Limit, Count)
+
   -- Просмотр строк выше/ниже:
   local s, PosB, PosE
   local k = Line
   while not s and
         abs(k - Line) <= Limit and
-        (k >= 0 and k < Count) do
+        (k > 0 and k <= Count) do
     k = k + Shift
     s, PosB, PosE = FindNumberPos(Info, k, Pos)
     --[[
