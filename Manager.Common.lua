@@ -30,9 +30,7 @@ Macro {
   key = "RCtrlRAltShiftF9",
   flags = "",
   description = "All: Video mode",
-  action = function ()
-             return Keys"AltF9"
-           end, ---
+  action = function () return Keys"AltF9" end, ---
 } ---
 ---------------------------------------- Escape
 Macro {
