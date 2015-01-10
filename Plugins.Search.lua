@@ -69,6 +69,19 @@ Macro {
     -- TODO: Добавить подстановку из предыдущего поиска.
   end, ---
 } ---
+
+Macro {
+  area = "Shell",
+  key = "LCtrlShiftN",
+  flags = "",
+  description = "SnR: Rename",
+  condition = Exist,
+  action = function ()
+    --return CallPlugin(guids.LFSearch, 3)
+    if PluginMenu(guids.LFSearch) then return Keys"3" end
+  end, ---
+} ---
+
 Macro {
   area = "Editor",
   key = "ShiftF3",
