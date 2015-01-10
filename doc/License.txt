@@ -1,7 +1,7 @@
 License of Rh_Macros pack
 --------------------------
 
-Copyright (c) Aidar Rakhmatullin 2013-2013
+Copyright (c) Aidar Rakhmatullin 2013-2015
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the "Software"),
