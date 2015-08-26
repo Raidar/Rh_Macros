@@ -152,6 +152,27 @@ Macro {
     if ShowLUM() then return Keys"Q Q" end
   end, ---
 } ---
+
+-- [=[
+Macro {
+  area = "Editor",
+  key = "RCtrlShiftQ",
+  flags = "",
+  description = "LUM: Quoting",
+  condition = Exist,
+  action = function ()
+    --if ShowLUM() then return Keys"Q Q" end
+    --Plugin.Call("6F332978-08B8-4919-847A-EFBB6154C99A", --"file",
+    --            [[@C:\Programs\Far3\Profile\plugins\LF4Ed\scripts\Rh_Scripts\LuaEUM\LuaEUM.lua]],
+    --              {"Quoting"})
+    --Plugin.Call("6F332978-08B8-4919-847A-EFBB6154C99A",
+    --            [[@C:\Programs\Far3\Profile\plugins\LF4Ed\scripts\Rh_Scripts\LuaEUM\LuaEUM.lua]],
+    --              "Insert")
+    --Plugin.Call("6F332978-08B8-4919-847A-EFBB6154C99A", "*luaeum_q")
+    Plugin.Call("6F332978-08B8-4919-847A-EFBB6154C99A", "command", "luaeum", "Quoting")
+  end, ---
+} ---]=]
+
 Macro {
   area = "Editor",
   key = "LCtrlShiftT",
