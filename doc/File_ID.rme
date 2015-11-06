@@ -6,11 +6,11 @@ Date : 2015-08-26
 Ware : Freeware
 Lic. : MIT
 Reqs : FAR + LuaFAR v.3.0.4406,
-       LuaFAR for Editor v.3.7.0,
+       LuaFAR for Editor v.3.7.0,
        LuaFAR context v.3.1.3.0,
        Rh_Scripts pack v.3.1.6.0
-Type : Plugin for FAR Manager (Script package)
-Desc : Rh_Scripts package for LuaFAR for Editor
+Type : Plugin for FAR Manager (Script package)
+Desc : Rh_Scripts package for LuaFAR for Editor
 
 Auth : A.I. Rakhmatullin
        / А.И. Рахматуллин
@@ -24,7 +24,7 @@ Link : http://raidar.github.com/Programs/FarScripts.htm#Rh_Macros
 Repo : https://github.com/Raidar/Rh_Macros
 
 [Anons]
-  Rh_Macros is a package of scripts and macros for FAR Manager.
-  Rh_Macros pack — пакет скриптов и макросов для FAR Manager.
+  Rh_Macros is a package of scripts and macros for FAR Manager.
+  Rh_Macros pack — пакет скриптов и макросов для FAR Manager.
 
 ―――――――

@@ -2,7 +2,7 @@
 
 ----------------------------------------
 --[[ description:
-  -- Macros handling history with plugins.
+  -- Macros handling history with plugins.
   -- Макросы работы с историей с плагинами.
 --]]
 ----------------------------------------

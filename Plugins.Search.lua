@@ -2,8 +2,8 @@
 
 ----------------------------------------
 --[[ description:
-  -- Macros for find and replace with plugins.
-  -- Макросы для поиска и замены с плагинами.
+  -- Macros for find and replace with plugins.
+  -- Макросы для поиска и замены с плагинами.
 --]]
 ----------------------------------------
 --[[ uses:

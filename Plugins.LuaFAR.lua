@@ -2,8 +2,8 @@
 
 ----------------------------------------
 --[[ description:
-  -- Macros with LuaFAR for Editor plugin.
-  -- Макросы с плагином LuaFAR for Editor.
+  -- Macros with LuaFAR for Editor plugin.
+  -- Макросы с плагином LuaFAR for Editor.
 --]]
 ----------------------------------------
 --[[ uses:
@@ -41,7 +41,7 @@ local Plugin = Plugin or {}
 local PluginExist = Plugin.Exist
 local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 
----------------------------------------- 'L' -- LuaFAR for Editor
+---------------------------------------- 'L' -- LuaFAR for Editor
 
 guids.LF4Ed = "6F332978-08B8-4919-847A-EFBB6154C99A"
 
@@ -66,9 +66,10 @@ guids.LUM = "00B06FBA-0BB7-4333-8025-BA48B6077435"
 
 local function ShowLUM (key, guid) --> (bool)
   if not PluginMenu(guids.LF4Ed) then return end
+  --far.Message(key or "M", guids.LUM)
   Keys(key or "M")
-  --far.Message(Menu.Id, guids.LUM)
-  return Menu.Id == (guid or guids.LUM)
+  --far.Message(Dlg and Dlg.Id or "No dlg", guids.LUM)
+  return (Menu.Id or Dlg.Id) == (guid or guids.LUM)
 end -- ShowLUM
 
 -- [[
@@ -262,10 +263,11 @@ for k, v in pairs(QuoteMarks) do
       description = DescFmt:format(v.note),
       condition = Exist,
       action = function ()
-        if not PluginMenu(guids.LF4Ed) then return end
-        Keys"M"
+        if not ShowLUM() then return end
+        --if not PluginMenu(guids.LF4Ed) then return end
+        --Keys"M"
         --far.Message(Menu.Id, tostring(Area.Menu))
-        if not Area.Menu or Menu.Id ~= guids.LUM then return end
+        --if not Area.Menu or Menu.Id ~= guids.LUM then return end
         Keys"Q Q"
         return Keys(k)
       end, ---
@@ -280,10 +282,11 @@ Macro {
   description = "Dequote: <!--|-->",
   condition = Exist,
   action = function ()
-    if not PluginMenu(guids.LF4Ed) then return end
-    Keys"M"
+    if not ShowLUM() then return end
+    --if not PluginMenu(guids.LF4Ed) then return end
+    --Keys"M"
     --far.Message(Menu.Id, tostring(Area.Menu))
-    if not Area.Menu or Menu.Id ~= guids.LUM then return end
+    --if not Area.Menu or Menu.Id ~= guids.LUM then return end
     return Keys"Q D X"
   end, ---
 } ---
