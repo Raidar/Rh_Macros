@@ -434,11 +434,10 @@ Macro {
 function unit.ShiftCurLine (Shift)
   local Info = editor.GetInfo()
   local Line = Info.CurLine
-  if Shift > 0 then
-    Line = math.max(Line - Shift, 1)
-  else
-    Line = math.max(Line - (Info.WindowSizeY + Shift), 1)
+  if Shift < 0 then
+    Shift = Info.WindowSizeY + Shift
   end
+  Line = math.max(Line - Shift, 1)
 
   return editor.SetPosition(Info.EditorID, { TopScreenLine = Line })
 end ---- ShiftCurLine
@@ -529,6 +528,8 @@ Macro {
 } ---
 --]]
 ---------------------------------------- Numeration
+
+---------------------------------------- -- Find
 do
   local isdigit = strings.isdigit
 
@@ -668,6 +669,7 @@ function unit.FindNumberStr (Info, Line, Pos, Shift, Limit)
 end ---- FindNumberStr
 
 end -- do
+---------------------------------------- -- Shift
 do
   local isdigit = strings.isdigit
   local digit, todigit = strings.digit, strings.todigit
@@ -762,6 +764,10 @@ Macro {
   action = function () return unit.ShiftNumber(1) end, ---
 } ---
 
+---------------------------------------- -- Separate
+unit.DefNumSep = " "
+unit.ReqNumSep = " "
+
 do
   local srep, format = string.rep, string.format
 
@@ -783,7 +789,7 @@ function unit.toseparate (s, sep, group, limit)
   if limit and len <= limit then return end
 
   --far.Message(reverse(c), Separator)
-  local sep = sep or " "
+  local sep = sep or unit.DefNumSep
   s = s:reverse():gsub(srep(".", group), "%0"..sep)
   return s:reverse():gsub(format("^[%s]+", sep), "")
 end ---- toseparate
@@ -864,7 +870,7 @@ function unit.tobytefold (v)
   return n and n:gsub("%.", ","), Prefix.name
 end ---- tobytefold
 
-  local FoldByteFmt = "%s %s (%s B)"
+  local FoldByteFmt = "%%s%s%%s (%%s B)"
 
 -- Make a size value as a byte measure.
 -- Формирование значения размера как размерности в байтах.
@@ -875,6 +881,8 @@ function unit.FoldByteSize (Separator, GroupSize, MaxDigits)
   local Info = editor.GetInfo()
   local s, PosB, PosE = unit.FindNumberPos(Info, 0, Info.CurPos)
   if not s then return end
+
+  local Separator = Separator or unit.DefNumSep
 
   local c = s:sub(PosB, PosE)
   if not c then return end
@@ -887,7 +895,7 @@ function unit.FoldByteSize (Separator, GroupSize, MaxDigits)
   local f, n = unit.tobytefold(c)
   if not f then return end
 
-  c = FoldByteFmt:format(f, n, b)
+  c = FoldByteFmt:format(" "):format(f, n, b)
 
   s = s:sub(1, PosB - 1)..c..s:sub(PosE + 1, -1)
 
@@ -904,7 +912,7 @@ Macro {
   flags = "",
   description = "Edit: Number spacing",
   action = function ()
-    return unit.SeparateNumber(" ", 3, 4)
+    return unit.SeparateNumber(unit.ReqNumSep, 3, 4)
   end, ---
 } ---
 
@@ -914,7 +922,7 @@ Macro {
   flags = "",
   description = "Edit: Bytes folding",
   action = function ()
-    return unit.FoldByteSize(" ", 3, 4)
+    return unit.FoldByteSize(unit.ReqNumSep, 3, 4)
   end, ---
 } ---
 --]]
