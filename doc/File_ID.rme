@@ -1,14 +1,14 @@
 Rh_Macros pack
 
 [Info]
-Ver. : 3.1.3.0
-Date : 2015-08-26
+Ver. : 3.2.0.0
+Date : 2016-05-12
 Ware : Freeware
 Lic. : MIT
-Reqs : FAR + LuaFAR v.3.0.4406,
-       LuaFAR for Editor v.3.7.0,
+Reqs : FAR + LuaFAR v.3.0.4575,
+       LuaFAR for Editor v.3.7.1,
        LuaFAR context v.3.1.3.0,
-       Rh_Scripts pack v.3.1.6.0
+       Rh_Scripts pack v.3.2.0.0
 Type : Plugin for FAR Manager (Script package)
 Desc : Rh_Scripts package for LuaFAR for Editor
 
@@ -16,7 +16,7 @@ Auth : A.I. Rakhmatullin
        / А.И. Рахматуллин
 Addr : RF, RT, Kazan
        / РФ, РТ, Казань
-Copy : 2012/2015+
+Copy : 2012/2016+
 
 Home : http://raidar.github.com/index.htm
 Link : http://raidar.github.com/Programs/FarScripts.htm#Rh_Macros
