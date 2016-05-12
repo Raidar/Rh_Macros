@@ -111,8 +111,8 @@ Macro {
 -- [[
 Macro {
   --area = "Common",
-  area = "Shell Editor Viewer",
-  --area = "Shell Editor Viewer Dialog",
+  --area = "Shell Editor Viewer",
+  area = "Shell Editor Viewer Dialog",
   key = "LCtrlK",
   flags = "",
   description = "LUM: Calendar",
