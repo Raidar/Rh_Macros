@@ -117,7 +117,7 @@ Macro {
   key = "LCtrlLAltShift3",
   flags = "",
   description = "HList: Loaded",
-  action = function () return Keys"F2 H C L" end, ---
+  action = function () return Keys"F2 H C X" end, ---
 } ---
 --]]
 ---------------------------------------- 4 -- Folders
@@ -147,8 +147,8 @@ Macro {
   area = "Shell",
   key = "LCtrlLAltShift4",
   flags = "",
-  description = "HList: ?",
-  action = function () return Keys"F2 H" end, ---
+  description = "HList: Library",
+  action = function () return Keys"F2 H E B" end, ---
 } ---
 --]]
 ---------------------------------------- 5 -- Developing
@@ -366,6 +366,13 @@ Macro {
   flags = "",
   description = "HList: Games/New-info",
   action = function () return Keys"F2 H G N" end, ---
+} ---
+Macro {
+  area = "Shell",
+  key = "RCtrlLAltShift-",
+  flags = "",
+  description = "HList: Games/Passes",
+  action = function () return Keys"F2 H G P" end, ---
 } ---
 --]]
 ---------------------------------------- = -- Setup
