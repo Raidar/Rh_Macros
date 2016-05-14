@@ -49,7 +49,7 @@ local Exist = function () return PluginExist(guids.LF4Ed) end
 
 -- [[
 Macro {
-  area = "Shell Editor Viewer",
+  area = "Shell Editor Viewer Dialog",
   key = "LCtrlL",
   flags = "",
   description = "LF4Ed: Menu",
@@ -74,7 +74,7 @@ end -- ShowLUM
 
 -- [[
 Macro {
-  area = "Shell Editor Viewer",
+  area = "Shell Editor Viewer Dialog",
   key = "LAltShiftF2",
   flags = "",
   description = "LUM: Lua User Menu",
@@ -123,7 +123,7 @@ Macro {
 } ---
 Macro {
   --area = "Common",
-  area = "Shell Editor",
+  area = "Shell Editor Dialog",
   --area = "Shell Editor Viewer Dialog",
   key = "LCtrlH",
   flags = "",
@@ -134,7 +134,7 @@ Macro {
   end, ---
 } ---
 Macro {
-  area = "Editor",
+  area = "Editor Dialog",
   key = "LCtrlShiftH",
   flags = "",
   description = "LUM: Characters",
