@@ -13,6 +13,10 @@
 --------------------------------------------------------------------------------
 
 ----------------------------------------
+local far = far
+local F = far.Flags
+
+----------------------------------------
 --[[
 local dbg = require "context.utils.useDebugs"
 local logShow = dbg.Show
@@ -23,6 +27,12 @@ local logShow = dbg.Show
 
 ----------------------------------------
 local Macro = Macro or function () end
+
+----------------------------------------
+
+local IsDlgEdit = function ()
+  return not Area.Dialog or Area.Dialog and Dlg.ItemType == F.DI_EDIT
+end -- IsDlgEdit
 
 ---------------------------------------- Common
 Macro {
@@ -46,10 +56,7 @@ Macro {
   key = "LCtrlLAltX",
   flags = "",
   description = "All: XLat",
-  condition = function ()
-    --return true
-    return not Area.Dialog or Area.Dialog and Dlg.ItemType == 4
-  end, ---
+  condition = IsDlgEdit,
   action = function () return Keys"XLat" end, ---
 } ---
 ---------------------------------------- File name

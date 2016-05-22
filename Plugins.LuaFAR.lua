@@ -33,9 +33,33 @@ local logShow = dbg.Show
 local guids = {}
 --unit.guids = guids
 
+--[[
+local dlgGuids = {
+  ["19500a29-1a9b-4b1b-833c-693d58669963"] = true, -- Common.CharsMap
+  ["1B26647B-44B0-4AC6-984D-45CBA59568D0"] = true, -- Common.Calendar
+
+  ["3B84D47B-930C-47AB-A211-913C76280491"] = true, -- CharsMenu (RectMenu)
+
+  ["19500a29-1a9b-4b1b-833c-693d58669963"] = true, -- Common.CharsMap
+  ["19ae6fa2-7ceb-4893-b2a7-fd8b783cc365"] = true, -- Common.CharsMap Names
+  ["19b4271d-09c2-4671-af59-b043d1698104"] = true, -- Common.CharsMap Blocks
+
+  ["62023165-B8F6-41D6-B468-94CA21D7B34F"] = true, -- Editor.TextTemplate script
+  ["64B26458-1E8B-4844-9585-BECFB1CE8DE3"] = true, -- Editor.WordComplete script
+
+  ["D7F001FF-7860-4A24-B9CA-37BEF603F7BC"] = true, -- LuaSpell
+} --- dlgGuids
+--]]
+
 local Macro = Macro or function () end
 
 local Async = function () return mmode(3, 1) end
+
+--[[
+local IsNotRectMenu = function ()
+  return not Area.Dialog or Area.Dialog and Dlg.ItemType ~= 255
+end -- IsNotRectMenu
+--]]
 
 local Plugin = Plugin or {}
 local PluginExist = Plugin.Exist
@@ -47,13 +71,23 @@ guids.LF4Ed = "6F332978-08B8-4919-847A-EFBB6154C99A"
 
 local Exist = function () return PluginExist(guids.LF4Ed) end
 
+local IsDlgEdit = function ()
+  return not Area.Dialog or Area.Dialog and Dlg.ItemType == F.DI_EDIT
+end -- IsDlgEdit
+
+local ExistSpec = function ()
+  if Area.Menu then return end
+
+  return IsDlgEdit() and PluginExist(guids.LF4Ed)
+end -- ExistSpec
+
 -- [[
 Macro {
   area = "Shell Editor Viewer Dialog",
   key = "LCtrlL",
   flags = "",
   description = "LF4Ed: Menu",
-  condition = Exist,
+  condition = ExistSpec,
   action = function ()
     --return CallPlugin(guids.LF4Ed)
     return PluginMenu(guids.LF4Ed)
@@ -78,7 +112,7 @@ Macro {
   key = "LAltShiftF2",
   flags = "",
   description = "LUM: Lua User Menu",
-  condition = Exist,
+  condition = ExistSpec,
   action = ShowLUM,
 } ---
 
@@ -116,7 +150,7 @@ Macro {
   key = "LCtrlK",
   flags = "",
   description = "LUM: Calendar",
-  condition = Exist,
+  condition = ExistSpec,
   action = function ()
     if ShowLUM() then return Keys"A C" end
   end, ---
@@ -128,7 +162,7 @@ Macro {
   key = "LCtrlH",
   flags = "",
   description = "LUM: CharsMap",
-  condition = Exist,
+  condition = ExistSpec,
   action = function ()
     if ShowLUM() then return Keys"A H" end
   end, ---
@@ -138,7 +172,7 @@ Macro {
   key = "LCtrlShiftH",
   flags = "",
   description = "LUM: Characters",
-  condition = Exist,
+  condition = ExistSpec,
   action = function ()
     if ShowLUM() then return Keys"H" end
   end, ---

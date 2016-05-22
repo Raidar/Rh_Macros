@@ -31,6 +31,13 @@ local guids = {}
 
 local Macro = Macro or function () end
 
+----------------------------------------
+
+local IsDlgEdit = function ()
+  return --not Area.Dialog or
+         Area.Dialog and Dlg.ItemType == F.DI_EDIT
+end -- IsDlgEdit
+
 ---------------------------------------- Info
 -- [[
 Macro {
@@ -38,6 +45,7 @@ Macro {
   key = "ShiftF2",
   flags = "",
   description = "Dlg: Dialog Info",
+  --condition = ,
   action = function ()
     local sfind = string.find
     local tp = Dlg.ItemType
@@ -63,9 +71,7 @@ Macro {
   key = "AltDown",
   flags = "",
   description = "Dlg: Open history box",
-  condition = function ()
-    return Dlg.ItemType == F.DI_EDIT
-  end, ---
+  condition = IsDlgEdit,
   action = function () return Keys"CtrlDown" end, ---
 } ---
 --]]
