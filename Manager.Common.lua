@@ -18,8 +18,8 @@ local F = far.Flags
 
 ----------------------------------------
 --[[
-local dbg = require "context.utils.useDebugs"
-local logShow = dbg.Show
+local debugs = require "context.utils.useDebugs"
+local logShow = debugs.Show
 --]]
 
 --------------------------------------------------------------------------------

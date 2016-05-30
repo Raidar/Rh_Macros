@@ -1,9 +1,9 @@
---[[ Macros with LuaFAR for Editor ]]--
+--[[ Macros with LuaFAR plugin pack ]]--
 
 ----------------------------------------
 --[[ description:
-  -- Macros with LuaFAR for Editor plugin.
-  -- Макросы с плагином LuaFAR for Editor.
+  -- Macros with LuaFAR plugin pack.
+  -- Макросы с пакетом LuaFAR plugin.
 --]]
 ----------------------------------------
 --[[ uses:
@@ -22,8 +22,8 @@ local editor = editor
 
 ----------------------------------------
 --[[
-local dbg = require "context.utils.useDebugs"
-local logShow = dbg.Show
+local debugs = require "context.utils.useDebugs"
+local logShow = debugs.Show
 --]]
 
 --------------------------------------------------------------------------------
@@ -65,32 +65,43 @@ local Plugin = Plugin or {}
 local PluginExist = Plugin.Exist
 local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 
----------------------------------------- 'L' -- LuaFAR for Editor
+---------------------------------------- 'L' -- LuaFAR
 
 guids.LF4Ed = "6F332978-08B8-4919-847A-EFBB6154C99A"
 
-local Exist = function () return PluginExist(guids.LF4Ed) end
+--far.Show("UMAdapterMenu", UMAdapterMenu)
 
-local IsDlgEdit = function ()
+local function Exist ()
+  return UMAdapterMenu or PluginExist(guids.LF4Ed)
+end
+
+local function IsDlgEdit ()
   return not Area.Dialog or Area.Dialog and Dlg.ItemType == F.DI_EDIT
 end -- IsDlgEdit
 
-local ExistSpec = function ()
+local function ExistSpec ()
   if Area.Menu then return end
 
-  return IsDlgEdit() and PluginExist(guids.LF4Ed)
+  return IsDlgEdit() and Exist()
 end -- ExistSpec
+
+local function UM_MainMenu ()
+  if UMAdapterMenu then
+    return UMAdapterMenu()
+  else
+    return PluginMenu(guids.LF4Ed)
+  end
+end -- UM_MainMenu
 
 -- [[
 Macro {
   area = "Shell Editor Viewer Dialog",
   key = "LCtrlL",
   flags = "",
-  description = "LF4Ed: Menu",
+  description = "LuaFAR: Menu",
   condition = ExistSpec,
   action = function ()
-    --return CallPlugin(guids.LF4Ed)
-    return PluginMenu(guids.LF4Ed)
+    return UM_MainMenu()
   end, ---
 } ---
 --]]
@@ -99,8 +110,8 @@ guids.LUM = "00B06FBA-0BB7-4333-8025-BA48B6077435"
 --guids.CustomMenu = "3700ABE9-C460-42B2-9F2E-1FE705B2942A"
 
 local function ShowLUM (key, guid) --> (bool)
-  if not PluginMenu(guids.LF4Ed) then return end
-  --far.Message(key or "M", guids.LUM)
+  if not UM_MainMenu() then return end
+  --far.Show(key or "M", guids.LUM)
   Keys(key or "M")
   --far.Message(Dlg and Dlg.Id or "No dlg", guids.LUM)
   return (Menu.Id or Dlg.Id) == (guid or guids.LUM)
