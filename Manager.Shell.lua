@@ -44,9 +44,11 @@ function unit.GetAreaContent (Area) --> (table)
   for k, v in pairs(Area.properties) do
     local w = Area[k]
     t[#t+1] = AreaContentValueFmt:format(k, type(w), tostring(w))
+
   end
 
   return t
+
 end -- GetAreaContent
 
 end -- do
@@ -56,6 +58,7 @@ end -- do
 function ShowAreaContent (Area, Title) --> (dialog)
   local Content = table.concat(unit.GetAreaContent(Area), "\n")
   return far.Message(Content, Title or Object.Title, ";Ok", "l")
+
 end ----
 
 -- [[
@@ -66,6 +69,7 @@ Macro {
   description = "Panel: Panel Info",
   action = function ()
     return ShowAreaContent(APanel)
+
   end, ---
 } ---
 --]]
@@ -96,11 +100,13 @@ Macro {
   action = function ()
     if not PPanel.Plugin then
       return Panel.SetPath(0, PPanel.Path0, PPanel.Current)
+
     end
 
     if PPanel.HostFile ~= "" then
       far.Message(PPanel.HostFile:match("^(.+)\\([^\\]+)$"))
       return Panel.SetPath(0, PPanel.HostFile:match("^(.+)\\([^\\]+)$"))
+
     end
   end, ---
 } ---

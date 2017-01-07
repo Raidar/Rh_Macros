@@ -1325,7 +1325,7 @@ local Characters = {
 for k, v in pairs(Characters) do
   if k ~= "" then
     Macro {
-      area = "Editor",
+      area = "Shell Editor Dialog",
       key = v,
       flags = "",
       description = DescFmt:format(k, ucp2s(u8byte(k), true)),

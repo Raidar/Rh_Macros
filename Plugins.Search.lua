@@ -77,8 +77,8 @@ Macro {
   description = "SnR: Rename",
   condition = Exist,
   action = function ()
-    --return CallPlugin(guids.LFSearch, 3)
-    if PluginMenu(guids.LFSearch) then return Keys"3" end
+    --return CallPlugin(guids.LFSearch, 4)
+    if PluginMenu(guids.LFSearch) then return Keys"4" end
   end, ---
 } ---
 

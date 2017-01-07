@@ -73,23 +73,29 @@ guids.LF4Ed = "6F332978-08B8-4919-847A-EFBB6154C99A"
 
 local function Exist ()
   return UMAdapterMenu or PluginExist(guids.LF4Ed)
+
 end
 
 local function IsDlgEdit ()
-  return not Area.Dialog or Area.Dialog and Dlg.ItemType == F.DI_EDIT
+  return not Area.Dialog or
+         Area.Dialog and Dlg.ItemType == F.DI_EDIT
+
 end -- IsDlgEdit
 
 local function ExistSpec ()
   if Area.Menu then return end
 
   return IsDlgEdit() and Exist()
+
 end -- ExistSpec
 
 local function UM_MainMenu ()
   if UMAdapterMenu then
     return UMAdapterMenu()
+
   else
     return PluginMenu(guids.LF4Ed)
+
   end
 end -- UM_MainMenu
 
@@ -102,6 +108,7 @@ Macro {
   condition = ExistSpec,
   action = function ()
     return UM_MainMenu()
+
   end, ---
 } ---
 --]]
@@ -113,8 +120,10 @@ local function ShowLUM (key, guid) --> (bool)
   if not UM_MainMenu() then return end
   --far.Show(key or "M", guids.LUM)
   Keys(key or "M")
+
   --far.Message(Dlg and Dlg.Id or "No dlg", guids.LUM)
   return (Menu.Id or Dlg.Id) == (guid or guids.LUM)
+
 end -- ShowLUM
 
 -- [[
@@ -148,6 +157,7 @@ Macro {
   condition = Exist,
   action = function ()
     if ShowLUM"M" then return Keys"J" end
+
   end, ---
 } ---
 --]=]
@@ -164,6 +174,7 @@ Macro {
   condition = ExistSpec,
   action = function ()
     if ShowLUM() then return Keys"A C" end
+
   end, ---
 } ---
 Macro {
@@ -176,36 +187,39 @@ Macro {
   condition = ExistSpec,
   action = function ()
     if ShowLUM() then return Keys"A H" end
+
   end, ---
 } ---
 Macro {
-  area = "Editor Dialog",
+  area = "Shell Editor Dialog",
   key = "LCtrlShiftH",
   flags = "",
   description = "LUM: Characters",
   condition = ExistSpec,
   action = function ()
     if ShowLUM() then return Keys"H" end
+
   end, ---
 } ---
 Macro {
-  area = "Editor",
+  area = "Shell Editor Dialog",
   key = "LCtrlShiftQ",
   flags = "",
   description = "LUM: Quote text",
-  condition = Exist,
+  condition = ExistSpec,
   action = function ()
     if ShowLUM() then return Keys"Q Q" end
+
   end, ---
 } ---
 
 -- [=[
 Macro {
-  area = "Editor",
+  area = "Shell Editor Dialog",
   key = "RCtrlShiftQ",
   flags = "",
   description = "LUM: Quoting",
-  condition = Exist,
+  condition = ExistSpec,
   action = function ()
     --if ShowLUM() then return Keys"Q Q" end
     --Plugin.Call("6F332978-08B8-4919-847A-EFBB6154C99A", --"file",
@@ -216,6 +230,7 @@ Macro {
     --              "Insert")
     --Plugin.Call("6F332978-08B8-4919-847A-EFBB6154C99A", "*luaeum_q")
     Plugin.Call("6F332978-08B8-4919-847A-EFBB6154C99A", "command", "luaeum", "Quoting")
+
   end, ---
 } ---]=]
 
@@ -227,6 +242,7 @@ Macro {
   condition = Exist,
   action = function ()
     if ShowLUM() then return Keys"S C" end
+
   end, ---
 } ---
 --]]
@@ -295,6 +311,7 @@ local QuoteMarks = {
   -- --
   ["q"] = { key = "LCtrlLAlt'",         note = 'cleared "|"', },
   ["w"] = { key = "LCtrlLAlt;",         note = 'cleared «|»', },
+
 } --- QuoteMarks
 
   local DescFmt = "Quote: %s"
@@ -302,11 +319,11 @@ local QuoteMarks = {
 for k, v in pairs(QuoteMarks) do
   if k ~= "" then
     Macro {
-      area = "Editor",
+      area = "Editor Dialog",
       key = v.key,
       flags = "",
       description = DescFmt:format(v.note),
-      condition = Exist,
+      condition = ExistSpec,
       action = function ()
         if not ShowLUM() then return end
         --if not PluginMenu(guids.LF4Ed) then return end
@@ -315,6 +332,7 @@ for k, v in pairs(QuoteMarks) do
         --if not Area.Menu or Menu.Id ~= guids.LUM then return end
         Keys"Q Q"
         return Keys(k)
+
       end, ---
     } ---
   end
@@ -333,6 +351,7 @@ Macro {
     --far.Message(Menu.Id, tostring(Area.Menu))
     --if not Area.Menu or Menu.Id ~= guids.LUM then return end
     return Keys"Q D X"
+
   end, ---
 } ---
 

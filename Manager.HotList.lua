@@ -40,22 +40,22 @@ Macro {
   area = "Shell",
   key = "LCtrlShift1",
   flags = "",
-  description = "HList: Users/Current",
+  description = "HList: User fast",
   action = function () return Keys"F2 H Z C" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "LCtrlLAlt1",
   flags = "",
-  description = "HList: UserLib",
-  action = function () return Keys"F2 H U" end, ---
+  description = "HList: User work",
+  action = function () return Keys"F2 H Z W" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "LCtrlLAltShift1",
   flags = "",
-  description = "HList: Users/Work",
-  action = function () return Keys"F2 H Z W" end, ---
+  description = "HList: User list",
+  action = function () return Keys"F2 H Z E" end, ---
 } ---
 --]]
 ---------------------------------------- 2 -- Working
@@ -64,15 +64,15 @@ Macro {
   area = "Shell",
   key = "LCtrl2",
   flags = "",
-  description = "HList: Work folder",
-  action = function () return Keys"F2 H U Q" end, ---
+  description = "HList: User folder",
+  action = function () return Keys"F2 H U" end, ---
 } ---
 Macro {
   area = "Shell",
   key = "LCtrlShift2",
   flags = "",
   description = "HList: Own works",
-  action = function () return Keys"F2 H U W" end, ---
+  action = function () return Keys"F2 H U Q" end, ---
 } ---
 Macro {
   area = "Shell",
