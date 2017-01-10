@@ -53,8 +53,11 @@ Macro {
   flags = "",
   description = "Case: Next case",
   condition = Exist,
+
   action = function ()
+
     return CallPlugin(guids.EditCase, 4)
+
   end, ---
 } ---
 
@@ -64,27 +67,38 @@ Macro {
   flags = "",
   description = "Case: Sentence case for Bulleted line",
   condition = Exist,
+
   action = function ()
+
     local Info = editor.GetInfo()
     Keys"ShiftHome CtrlShiftRight CtrlShiftLeft ShiftRight"
     CallPlugin(guids.EditCase, 0)
     editor.Select(Info.EditorID, BlockNoneType)
+
     return editor.SetPosition(Info.EditorID, 0, Info.CurPos)
+
   end, ---
+
 } ---
+
 Macro {
   area = "Editor",
   key = "LCtrlLAltShiftF5",
   flags = "",
   description = "Case: Sentence case for Numbered line",
   condition = Exist,
+
   action = function ()
+
     local Info = editor.GetInfo()
     Keys"ShiftHome CtrlShiftRight CtrlShiftRight CtrlShiftLeft ShiftRight"
     CallPlugin(guids.EditCase, 0)
     editor.Select(Info.EditorID, BlockNoneType)
+
     return editor.SetPosition(Info.EditorID, 0, Info.CurPos)
+
   end, ---
+
 } ---
 --]]
 --------------------------------------------------------------------------------

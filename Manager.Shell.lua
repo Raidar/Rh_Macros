@@ -40,10 +40,11 @@ do
 -- Get content of macro area table.
 -- Получение содержимого таблицы макро-области.
 function unit.GetAreaContent (Area) --> (table)
+
   local t = {}
   for k, v in pairs(Area.properties) do
     local w = Area[k]
-    t[#t+1] = AreaContentValueFmt:format(k, type(w), tostring(w))
+    t[#t + 1] = AreaContentValueFmt:format(k, type(w), tostring(w))
 
   end
 
@@ -56,6 +57,7 @@ end -- do
 -- Show content of macro area table.
 -- Показ содержимого таблицы макро-области.
 function ShowAreaContent (Area, Title) --> (dialog)
+
   local Content = table.concat(unit.GetAreaContent(Area), "\n")
   return far.Message(Content, Title or Object.Title, ";Ok", "l")
 
@@ -67,10 +69,13 @@ Macro {
   key = "ShiftF2",
   flags = "",
   description = "Panel: Panel Info",
+
   action = function ()
+
     return ShowAreaContent(APanel)
 
   end, ---
+
 } ---
 --]]
 ---------------------------------------- -- Actions
@@ -80,24 +85,35 @@ Macro {
   key = "RCtrlShiftL",
   flags = "",
   description = "Panel: Information panel",
+
   action = function () return Keys"CtrlL" end, ---
+
 } ---
+
 Macro {
   area = "Shell",
   key = "RCtrlShiftH",
   flags = "",
   description = "Panel: Hidden/system files",
+
   action = function () return Keys"CtrlH" end, ---
+
 } ---
+
 Macro {
   area = "Shell",
   key = "LAltBS",
   flags = "",
   description = "Panel: Same folder/file",
+
   condition = function () 
+
     return PPanel.FilePanel
+
   end, ---
+  
   action = function ()
+
     if not PPanel.Plugin then
       return Panel.SetPath(0, PPanel.Path0, PPanel.Current)
 
@@ -109,6 +125,7 @@ Macro {
 
     end
   end, ---
+
 } ---
 --]]
 ---------------------------------------- -- Current
@@ -119,18 +136,27 @@ Macro {
   key = "CtrlLeft CtrlNum4",
   flags = "EmptyCommandLine",
   description = "Panel: Prev drive",
+
   action = function ()
+
     return Keys"F9 Enter Up Enter Up Enter"
+
   end, ---
+
 } ---
+
 Macro {
   area = "Shell",
   key = "CtrlRight CtrlNum6",
   flags = "EmptyCommandLine",
   description = "Panel: Next drive",
+
   action = function ()
+
     return Keys"F9 Enter Up Enter Down Enter"
+
   end, ---
+
 } ---
 
 ---------------------------------------- -- -- Folder
@@ -139,26 +165,39 @@ Macro {
   key = "CtrlShiftPgUp",
   flags = "",
   description = "Panel: Prev folder on same level",
+
   action = function ()
+
     if not APanel.Root then Keys"CtrlPgUp" end
+
     if not APanel.Bof then
       Keys"Up"
       if APanel.Folder then Keys"CtrlPgDn" end
+
     end
+
   end, ---
+
 } ---
+
 Macro {
   area = "Shell",
   key = "CtrlShiftPgDn",
   flags = "",
   description = "Panel: Next folder on same level",
+
   action = function ()
+
     if not APanel.Root then Keys"CtrlPgUp" end
+
     if not APanel.Eof then
       Keys"Down"
       if APanel.Folder then Keys"CtrlPgDn" end
+
     end
+
   end, ---
+
 } ---
 
 Macro {
@@ -166,9 +205,13 @@ Macro {
   key = "CtrlShiftBS",
   flags = "",
   description = "Panel: Early visited folder",
+
   action = function ()
+
     return Keys"AltF12 Up ShiftEnter"
+
   end, ---
+
 } ---
 ---------------------------------------- -- -- File
 Macro {
@@ -176,18 +219,27 @@ Macro {
   key = "CtrlUp CtrlNum8",
   flags = "EmptyCommandLine",
   description = "Panel: Name sorted Prev file",
+
   action = function ()
+
     return Keys"CtrlF3 Up CtrlF4"
+
   end, ---
+
 } ---
+
 Macro {
   area = "Shell",
   key = "CtrlDown CtrlNum2",
   flags = "EmptyCommandLine",
   description = "Panel: Name sorted Next file",
+
   action = function ()
+
     return Keys"CtrlF3 Down CtrlF4"
+
   end, ---
+
 } ---
 --]]
 ---------------------------------------- -- Selection
@@ -197,21 +249,29 @@ Macro {
   key = "LCtrlDivide",
   flags = "",
   description = "Panel: Restore selection",
+
   action = function () return Keys"CtrlM" end, ---
+
 } ---
+
 Macro {
   area = "Shell",
   key = "LCtrlShiftDivide",
   flags = "",
   description = "Panel: Select files with same name+ext",
+
   action = function () return Keys"AltAdd CtrlAdd" end, ---
+
 } ---
+
 Macro {
   area = "Shell",
   key = "LCtrlShiftMultiply",
   flags = "",
   description = "Panel: Select folders only",
+
   action = function () return Keys"ShiftAdd CtrlMultiply" end, ---
+
 } ---
 --]]
 ---------------------------------------- -- Information
@@ -221,92 +281,141 @@ Macro { -- File name
   key = "LCtrlF3",
   flags = "",
   description = "Panel: Full file name",
+
   action = function ()
+
     local s = APanel.Path.."\\"
     if APanel.Root or not APanel.Bof then
       s = s..APanel.Current
+
     end
+
     return far.CopyToClipboard(s)
+
   end, ---
+
 } ---
+
 Macro { -- File extension
   area = "Shell",
   key = "LCtrlF4",
   flags = "",
   description = "Panel: File extension",
+
   action = function ()
+
     local s = ""
     if APanel.Root or not APanel.Bof then
       s = APanel.Current
       local p = s:cfind("%.[^%.]-$")
       if p then s = s:sub(p, -1) end
+
     end
+
     return far.CopyToClipboard(s)
+
   end, ---
+
 } ---
+
 Macro { -- File modification time
   area = "Shell",
   key = "LCtrlF5",
   flags = "",
   description = "Panel: File modification time",
+
   action = function ()
+
     return far.CopyToClipboard(Panel.Item(0, 0, 5))
+
   end, ---
+
 } ---
+
 Macro { -- File size
   area = "Shell",
   key = "LCtrlF6",
   flags = "",
   description = "Panel: File size",
+
   action = function ()
+
     if APanel.Folder then Keys"F3" end
+
     return far.CopyToClipboard(Panel.Item(0, 0, 6))
+
   end, ---
+
 } ---
+
 Macro { -- File path
   area = "Shell",
   key = "LCtrlF7",
   flags = "",
   description = "Panel: File path",
+
   action = function ()
+
     return far.CopyToClipboard(APanel.Path)
+
   end, ---
+
 } ---
+
 Macro { -- File creation time
   area = "Shell",
   key = "LCtrlF8",
   flags = "",
   description = "Panel: File creation time",
+
   action = function ()
+
     return far.CopyToClipboard(Panel.Item(0, 0, 3))
+
   end, ---
+
 } ---
+
 Macro { -- File access time
   area = "Shell",
   key = "LCtrlF9",
   flags = "",
   description = "Panel: File access time",
+
   action = function ()
+
     return far.CopyToClipboard(Panel.Item(0, 0, 4))
+
   end, ---
+
 } ---
+
 Macro { -- File packed size
   area = "Shell",
   key = "LCtrlF10",
   flags = "",
   description = "Panel: File packed size",
+
   action = function ()
+
     return far.CopyToClipboard(Panel.Item(0, 0, 7))
+
   end, ---
+
 } ---
+
 Macro { -- File CRC32
   area = "Shell",
   key = "LCtrlF11",
   flags = "",
   description = "Panel: File CRC32",
+
   action = function ()
+
     return far.CopyToClipboard(Panel.Item(0, 0, 13))
+
   end, ---
+
 } ---
 --]]
 ---------------------------------------- -- Naming
@@ -320,7 +429,8 @@ Macro { -- File CRC32
   s    (string) - panel item name.
 --]]
 function unit.GetPanelItemName (Panel, noext) --> (string)
-  local Panel = Panel or APanel
+
+  Panel = Panel or APanel
   local Name = ""
   if Panel.FilePanel then
     if not Panel.Bof or
@@ -328,15 +438,20 @@ function unit.GetPanelItemName (Panel, noext) --> (string)
       Name = Panel.Current -- File name
       if noext and not Panel.Folder and Name:find(".", 1, true) then
         Name = Name:match("^(.+)%.[^%.]-$") -- Exclude ext
+
       end
+
     else
       -- Folder name for "..".
       -- File/folder name for plugin.
       Name = Panel.UNCPath:match("([^\\]-)$")
+
     end
   end
   --elseif APanel.Plugin then end
+
   return Name
+
 end ---- GetPanelItemName
 
 -- [[
@@ -345,24 +460,35 @@ Macro { -- File name only
   key = "LCtrlP",
   flags = "",
   description = "Panel: File name only to clipboard",
+
   action = function ()
+
     --ShowAreaContent(APanel)
     local s = unit.GetPanelItemName(APanel, true)
     --far.Message(s, APanel.Current)
+
     return far.CopyToClipboard(s)
+
   end, ---
+
 } ---
+
 Macro { -- Full file name
   area = "Shell",
   key = "LCtrlShiftP",
   flags = "",
   description = "Panel: Full file name to clipboard",
+
   action = function ()
+
     --ShowAreaContent(APanel)
     local s = unit.GetPanelItemName(APanel, false)
     --far.Message(s, APanel.Current)
+
     return far.CopyToClipboard(s)
+
   end, ---
+
 } ---
 --]]
 ---------------------------------------- -- Copy / Move
@@ -375,50 +501,77 @@ Macro { -- Rename
   key = "LCtrlT",
   flags = "",
   description = "Panel: Rename preserving extension",
+
   condition = function ()
+
     return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
+
   end, ---
+
   action = function ()
+
     if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
     Keys"ShiftF6"
+
     if Area.Dialog and Dlg.Id == guids.MoveFile then
       Keys"CtrlLeft Left ShiftHome"
+
       exit()
+
     end
+
   end, ---
+
 } ---
+
 Macro { -- Recopy
   area = "Shell",
   key = "LCtrlShiftT",
   flags = "",
   description = "Panel: Recopy preserving extension",
+
   condition = function ()
+
     return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
+
   end, ---
+
   action = function ()
+
     if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
     Keys"ShiftF5"
     if Area.Dialog and Dlg.Id == guids.CopyFile then
       Keys"CtrlLeft Left ShiftHome"
+
       exit()
+
     end
+
   end, ---
+
 } ---
+
 Macro { -- Copy
   area = "Shell",
   key = "LAltShiftF5",
   flags = "",
   description = "Panel: Copy to… preserving extension",
+
   condition = function ()
+
     return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
+
   end, ---
+
   action = function ()
+
     if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
     local Name = APanel.Current
 
     Keys"F5"
     if not Area.Dialog or Dlg.Id ~= guids.CopyFile then
       return
+
     end
 
     local Ext = Name:match("%.([^%.]-)$") -- Extension
@@ -426,25 +579,36 @@ Macro { -- Copy
     if Ext then
       print("."..Ext)
       Keys"CtrlLeft Left"
+
     end
+
     exit()
+
   end, ---
+
 } ---
+
 Macro { -- Move
   area = "Shell",
   key = "LAltShiftF6",
   flags = "",
   description = "Panel: Move to… preserving extension",
+
   condition = function ()
+
     return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
+
   end, ---
+
   action = function ()
+
     if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
     local Name = APanel.Current
 
     Keys"F6"
     if not Area.Dialog or Dlg.Id ~= guids.MoveFile then
       return
+
     end
 
     local Ext = Name:match("%.([^%.]-)$") -- Extension
@@ -452,9 +616,13 @@ Macro { -- Move
     if Ext then
       print("."..Ext)
       Keys"CtrlLeft Left"
+
     end
+
     exit()
+
   end, ---
+
 } ---
 
 ---------------------------------------- -- -- Readme
@@ -464,18 +632,27 @@ Macro { -- Name []
   key = "LCtrlY",
   flags = "EmptyCommandLine",
   description = "Panel: Rename adding []",
+
   condition = function ()
+
     return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
+
   end, ---
+
   action = function ()
+
     if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
     Keys"ShiftF6"
     if Area.Dialog and Dlg.Id == guids.MoveFile then
       Keys"CtrlLeft Left"
       print(" []")
+
       exit()
+
     end
+
   end, ---
+
 } ---
 
 Macro { -- Libro
@@ -483,18 +660,27 @@ Macro { -- Libro
   key = "LCtrlShiftY",
   flags = "EmptyCommandLine",
   description = "Panel: Rename to Libro",
+
   condition = function ()
+
     return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
+
   end, ---
+
   action = function ()
+
     if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
     Keys"ShiftF6"
     if Area.Dialog and Dlg.Id == guids.MoveFile then
       Keys"CtrlLeft Left ShiftHome Del"
       print("Libro")
+
       exit()
+
     end
+
   end, ---
+
 } ---
 
 Macro { -- Infor
@@ -502,18 +688,27 @@ Macro { -- Infor
   key = "LCtrlLAltShiftY",
   flags = "EmptyCommandLine",
   description = "Panel: Rename to Infor",
+
   condition = function ()
+
     return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
+
   end, ---
+
   action = function ()
+
     if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
     Keys"ShiftF6"
     if Area.Dialog and Dlg.Id == guids.MoveFile then
       Keys"CtrlLeft Left ShiftHome Del"
       print("Infor")
+
       exit()
+
     end
+
   end, ---
+
 } ---
 --]=]
 
@@ -527,40 +722,59 @@ Macro {
   key = "LCtrlF",
   flags = "",
   description = "Find: Find…",
+
   action = function ()
+
     Keys"AltF7"
     if Area.Dialog and Dlg.Id == guids.FindFile then
       exit()
+
     end
+
   end, ---
+
 } ---
+
 -- Find folder -->
 Macro { -- Find file with clipboard text..
   area = "Shell",
   key = "LAltF8",
   flags = "",
   description = "Find: Find files with text…",
+
   action = function ()
+
     Keys"AltF7"
     if Area.Dialog and Dlg.Id == guids.FindFile then
       Keys"Tab CtrlV ShiftTab"
+
       exit()
+
     end
+
   end, ---
+
 } ---
+
 Macro { -- Find file with clipboard namepart…
   area = "Shell",
   key = "LCtrlAltF8",
   flags = "",
   description = "Find: Find files with namepart…",
+
   action = function ()
+
     Keys"AltF7"
     if Area.Dialog and Dlg.Id == guids.FindFile then
       print"**.*"
       Keys"Home Right CtrlV"
+
       exit()
+
     end
+
   end, ---
+
 } ---
 --]]
 ---------------------------------------- -- Attributes
@@ -573,15 +787,21 @@ Macro { -- для файла, каталога или выделенных эл�
   key = "LCtrlShiftA",
   flags = "",
   description = "Panel: File - RA",
+
   condition = function ()
+
     return APanel.Selected or APanel.Root or not APanel.Bof
+
   end, ---
+
   action = function ()
+
     local Dlg = Dlg
 
     Keys"CtrlA"
     if not Area.Dialog or Dlg.Id ~= guids.Attributes then
       return
+
     end
 
     -- Установка ReadOnly и Archive
@@ -591,32 +811,45 @@ Macro { -- для файла, каталога или выделенных эл�
       if v ~= 1 then
         Keys"Add"
         k = k + 1
+
       end
       Keys"Down"
+
     end
 
     if k > 0 then
       Keys"Enter"
+
     else
       Keys"Esc"
       if Area.Shell then return Keys"ShiftSubtract" end
+
     end
+
   end, ---
+
 } ---
+
 Macro { -- для файла, каталога и его элементов
   area = "Shell",
   key = "LCtrlLAltShiftA",
   flags = "",
   description = "Panel: Folder - RA",
+
   condition = function ()
+
     return APanel.Selected or APanel.Root or not APanel.Bof
+
   end, ---
+
   action = function ()
+
     local Dlg = Dlg
 
     Keys"CtrlA"
     if not Area.Dialog or Dlg.Id ~= guids.Attributes then
       return
+
     end
 
     -- Установка ReadOnly и Archive
@@ -626,11 +859,14 @@ Macro { -- для файла, каталога и его элементов
     Keys"Up Up" -- Переход на последнюю кнопку
     while Dlg.ItemType ~= F.DI_CHECKBOX and Dlg.CurPos > 1 do
       Keys"Up"
+
     end
     Keys"Add"
 
     return Keys"Enter"
+
   end, ---
+
 } ---
 --]]
 --------------------------------------------------------------------------------

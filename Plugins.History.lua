@@ -35,15 +35,18 @@ local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 -- [[
 guids.LFHistory = "A745761D-42B5-4E67-83DA-F07AF367AE86"
 local LFHistoryMenu = {
+
   Commands = "D853E243-6B82-4B84-96CD-E733D77EEAA1",
   EditView = "D853E243-6B82-4B84-96CD-E733D77EEAA1",
   Folders  = "D853E243-6B82-4B84-96CD-E733D77EEAA1",
+
 } ---
 guids.LFHistoryMenu = LFHistoryMenu
 
 do
   for _, v in pairs(LFHistoryMenu) do
     LFHistoryMenu[v] = true
+
   end
 end -- do
 
@@ -55,32 +58,49 @@ Macro {
   flags = "",
   description = "History: Commands",
   condition = Exist,
+
   action = function ()
+
     --return CallPlugin(guids.LFHistory, 1)
+
     if PluginMenu(guids.LFHistory) then return Keys"1" end
+
   end, ---
+
 } ---
+
 Macro {
   area = "Common",
   key = "LAltF11",
   flags = "",
   description = "History: Edit/View",
   condition = Exist,
+
   action = function ()
+
     --return CallPlugin(guids.LFHistory, 2)
+
     if PluginMenu(guids.LFHistory) then return Keys"2" end
+
   end, ---
+
 } ---
+
 Macro {
   area = "Common",
   key = "LAltF12",
   flags = "",
   description = "History: Folders",
   condition = Exist,
+
   action = function ()
+
     --return CallPlugin(guids.LFHistory, 3)
+
     if PluginMenu(guids.LFHistory) then return Keys"3" end
+
   end, ---
+
 } ---
 
 ---------------------------------------- History Menus
@@ -94,8 +114,11 @@ Macro {
   description = "Menu: Insert item",
   priority = 100,
   condition = LFH_Menu,
+
   action = function () return Keys"Ins" end, ---
+
 } ---
+
 Macro {
   area = "Menu",
   key = "Del NumDel",
@@ -103,7 +126,9 @@ Macro {
   description = "Menu: Delete item",
   priority = 100,
   condition = LFH_Menu,
+
   action = function () return Keys"Del" end, ---
+
 } ---
 
 Macro {
@@ -113,8 +138,11 @@ Macro {
   description = "Menu: CtrlInsert item",
   priority = 100,
   condition = LFH_Menu,
+
   action = function () return Keys"CtrlIns" end, ---
+
 } ---
+
 Macro {
   area = "Menu",
   key = "CtrlDel CtrlNumDel",
@@ -122,7 +150,9 @@ Macro {
   description = "Menu: CtrlDelete item",
   priority = 100,
   condition = LFH_Menu,
+
   action = function () return Keys"CtrlDel" end, ---
+
 } ---
 --]]
 --------------------------------------------------------------------------------

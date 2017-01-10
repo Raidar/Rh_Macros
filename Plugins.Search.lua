@@ -51,23 +51,34 @@ Macro {
   flags = "",
   description = "SnR: Find",
   condition = Exist,
+
   action = function ()
+
     --return CallPlugin(guids.LFSearch, 1)
+
     if PluginMenu(guids.LFSearch) then return Keys"1" end
     -- TODO: Добавить подстановку из предыдущего поиска.
+
   end, ---
+
 } ---
+
 Macro {
   area = "Shell Editor",
   key = "LCtrlShiftR",
   flags = "",
   description = "SnR: Replace",
   condition = Exist,
+
   action = function ()
+
     --return CallPlugin(guids.LFSearch, 2)
+
     if PluginMenu(guids.LFSearch) then return Keys"2" end
     -- TODO: Добавить подстановку из предыдущего поиска.
+
   end, ---
+
 } ---
 
 Macro {
@@ -76,10 +87,15 @@ Macro {
   flags = "",
   description = "SnR: Rename",
   condition = Exist,
+
   action = function ()
+
     --return CallPlugin(guids.LFSearch, 4)
+
     if PluginMenu(guids.LFSearch) then return Keys"4" end
+
   end, ---
+
 } ---
 
 Macro {
@@ -88,20 +104,30 @@ Macro {
   flags = "",
   description = "SnR: Repeat",
   condition = Exist,
+
   action = function ()
+
     --return CallPlugin(guids.LFSearch, 3)
+
     if PluginMenu(guids.LFSearch) then return Keys"3" end
+
   end, ---
+
 } ---
+
 Macro {
   area = "Editor",
   key = "LCtrlShiftF7",
   flags = "",
   description = "SnR: Menu",
   condition = Exist,
+
   action = function ()
+
     return PluginMenu(guids.LFSearch)
+
   end, ---
+
 } ---
 --]]
 ---------------------------------------- Editor
@@ -118,19 +144,28 @@ Macro {
   flags = "",
   description = "Find: Paired bracket",
   condition = Exist,
+
   action = function ()
+
     return CallPlugin(guids.Brackets, 0) -- Find forward
+
   end, ---
+
 } ---
+
 Macro {
   area = "Editor",
   key = "LCtrlShift0",
   flags = "",
   description = "Find: Select bracket",
   condition = Exist,
+
   action = function ()
+
     return CallPlugin(guids.Brackets, 2) -- Select forward
+
   end, ---
+
 } ---
 --]]
 --------------------------------------------------------------------------------

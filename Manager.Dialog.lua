@@ -34,8 +34,10 @@ local Macro = Macro or function () end
 ----------------------------------------
 
 local IsDlgEdit = function ()
+
   return --not Area.Dialog or
          Area.Dialog and Dlg.ItemType == F.DI_EDIT
+
 end -- IsDlgEdit
 
 ---------------------------------------- Info
@@ -46,21 +48,29 @@ Macro {
   flags = "",
   description = "Dlg: Dialog Info",
   --condition = ,
+
   action = function ()
+
     local sfind = string.find
     local tp = Dlg.ItemType
     for k, v in pairs(F) do
       if sfind(k, "DI_", 1, true) == 1 and v == tp then
         tp = k
+
         break
       end
     end
+
     local t = {
+
       "GUID = "..Dlg.Id,
       "CurPos = "..tostring(Dlg.CurPos),
       "ItemType = "..tostring(tp),
+
     } ---
+
     return far.Message(table.concat(t, "\n"), Object.Title)
+
   end, ---
 } ---
 --]]
@@ -72,7 +82,9 @@ Macro {
   flags = "",
   description = "Dlg: Open history box",
   condition = IsDlgEdit,
+
   action = function () return Keys"CtrlDown" end, ---
+
 } ---
 --]]
 ---------------------------------------- FindFile
@@ -81,10 +93,13 @@ guids.FindFileResult = "536754EB-C2D1-4626-933F-A25D1E1D110A"
 
 -- Проверка на диалог FindFile.
 local function IsFindFileResult ()
+
   return Area.Dialog and Dlg.Id == guids.FindFileResult
+
 end
 
 local function ReplaceInFindFile ()
+
   --far.Message(Dlg.Id, Object.Title)
   Keys"F4" -- Редактирование текущего элемента
   if not Area.Editor then return end -- Редактировать нельзя
@@ -95,14 +110,18 @@ local function ReplaceInFindFile ()
     Keys"CtrlHome CtrlF7 Enter"
     if Area.Dialog then
       Keys"Right Enter" -- Подтверждение замены
+
     end
+
     Keys"F2" -- Сохранение
     if Area.Dialog then
       Keys"Enter" -- Подтверждение сохранения
+
     end
   end
 
   return Keys"Esc" -- Выход из редактора
+
 end -- ReplaceInFindFile
 
 Macro {
@@ -111,20 +130,30 @@ Macro {
   flags = "",
   description = "FindFile: Replace in file",
   condition = IsFindFileResult,
+
   action = function () 
+
     return ReplaceInFindFile()
+
   end, ---
+
 } ---
+
 Macro {
   area = "Dialog",
   key = "LCtrlShiftR",
   flags = "",
   description = "FindFile: Replace in file + Down",
   condition = IsFindFileResult,
+
   action = function ()
+
     ReplaceInFindFile()
+
     return Keys"Down" -- На следующий элемент
+
   end, ---
+
 } ---
 --]]
 --------------------------------------------------------------------------------

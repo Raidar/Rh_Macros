@@ -40,16 +40,20 @@ Macro {
   key = "LAltF9",
   flags = "",
   description = "View: Next codepage",
+
   action = function ()
+
     Keys"ShiftF8"
     if not Area.Menu then return end
 
     --far.Message(("%#08x"):format(Menu.ItemStatus()))
     repeat
       Keys"Down"
+
     until band(Menu.ItemStatus(), 0x0000003C) == 0
 
     return Keys"Enter"
+
   end, ---
 } ---
 --]]
@@ -60,7 +64,9 @@ Macro {
   key = "LCtrlO",
   flags = "",
   description = "View: Switch to panels",
+
   action = function () return Keys"F12 0" end, ---
+
 } ---
 --]]
 
@@ -71,14 +77,19 @@ Macro {
   key = "LCtrlF",
   flags = "",
   description = "View: Find…",
+
   action = function () return Keys"F7" end, ---
+
 } ---
+
 Macro {
   area = "Viewer",
   key = "F3",
   flags = "",
   description = "View: Find next",
+
   action = function () return Keys"ShiftF7" end, ---
+
 } ---
 --]]
 --------------------------------------------------------------------------------

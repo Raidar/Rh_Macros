@@ -43,10 +43,14 @@ Macro {
   flags = "DisableOutput",
   description = "Name: Action",
   condition = Exist,
+
   action = function ()
+
     --return CallPlugin(guids.Name, 1)
     if PluginMenu(guids.Name) then return Keys"" end
+
   end, ---
+
 } ---
 --]]
 --------------------------------------------------------------------------------

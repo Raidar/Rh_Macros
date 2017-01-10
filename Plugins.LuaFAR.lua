@@ -35,6 +35,7 @@ local guids = {}
 
 --[[
 local dlgGuids = {
+
   ["19500a29-1a9b-4b1b-833c-693d58669963"] = true, -- Common.CharsMap
   ["1B26647B-44B0-4AC6-984D-45CBA59568D0"] = true, -- Common.Calendar
 
@@ -48,6 +49,7 @@ local dlgGuids = {
   ["64B26458-1E8B-4844-9585-BECFB1CE8DE3"] = true, -- Editor.WordComplete script
 
   ["D7F001FF-7860-4A24-B9CA-37BEF603F7BC"] = true, -- LuaSpell
+
 } --- dlgGuids
 --]]
 
@@ -72,17 +74,20 @@ guids.LF4Ed = "6F332978-08B8-4919-847A-EFBB6154C99A"
 --far.Show("UMAdapterMenu", UMAdapterMenu)
 
 local function Exist ()
+
   return UMAdapterMenu or PluginExist(guids.LF4Ed)
 
 end
 
 local function IsDlgEdit ()
+
   return not Area.Dialog or
          Area.Dialog and Dlg.ItemType == F.DI_EDIT
 
 end -- IsDlgEdit
 
 local function ExistSpec ()
+
   if Area.Menu then return end
 
   return IsDlgEdit() and Exist()
@@ -90,6 +95,7 @@ local function ExistSpec ()
 end -- ExistSpec
 
 local function UM_MainMenu ()
+
   if UMAdapterMenu then
     return UMAdapterMenu()
 
@@ -106,10 +112,13 @@ Macro {
   flags = "",
   description = "LuaFAR: Menu",
   condition = ExistSpec,
+
   action = function ()
+
     return UM_MainMenu()
 
   end, ---
+
 } ---
 --]]
 ---------------------------------------- 'M' -- -- Lua User Menu
@@ -117,6 +126,7 @@ guids.LUM = "00B06FBA-0BB7-4333-8025-BA48B6077435"
 --guids.CustomMenu = "3700ABE9-C460-42B2-9F2E-1FE705B2942A"
 
 local function ShowLUM (key, guid) --> (bool)
+
   if not UM_MainMenu() then return end
   --far.Show(key or "M", guids.LUM)
   Keys(key or "M")
@@ -133,7 +143,9 @@ Macro {
   flags = "",
   description = "LUM: Lua User Menu",
   condition = ExistSpec,
+
   action = ShowLUM,
+
 } ---
 
 Macro {
@@ -142,9 +154,12 @@ Macro {
   flags = "",
   description = "LUM: Tortoise SVN",
   condition = Exist,
+
   action = function ()
+
     return ShowLUM("S")
     --if ShowLUM("S") then return Keys"T" end
+
   end, ---
 } ---
 
@@ -155,10 +170,13 @@ Macro {
   flags = "",
   description = "LUM: Template Insert",
   condition = Exist,
+
   action = function ()
+
     if ShowLUM"M" then return Keys"J" end
 
   end, ---
+
 } ---
 --]=]
 --]]
@@ -172,11 +190,15 @@ Macro {
   flags = "",
   description = "LUM: Calendar",
   condition = ExistSpec,
+
   action = function ()
+
     if ShowLUM() then return Keys"A C" end
 
   end, ---
+
 } ---
+
 Macro {
   --area = "Common",
   area = "Shell Editor Dialog",
@@ -185,32 +207,43 @@ Macro {
   flags = "",
   description = "LUM: CharsMap",
   condition = ExistSpec,
+
   action = function ()
+
     if ShowLUM() then return Keys"A H" end
 
   end, ---
+
 } ---
+
 Macro {
   area = "Shell Editor Dialog",
   key = "LCtrlShiftH",
   flags = "",
   description = "LUM: Characters",
   condition = ExistSpec,
+
   action = function ()
+
     if ShowLUM() then return Keys"H" end
 
   end, ---
+
 } ---
+
 Macro {
   area = "Shell Editor Dialog",
   key = "LCtrlShiftQ",
   flags = "",
   description = "LUM: Quote text",
   condition = ExistSpec,
+
   action = function ()
+
     if ShowLUM() then return Keys"Q Q" end
 
   end, ---
+
 } ---
 
 -- [=[
@@ -220,7 +253,9 @@ Macro {
   flags = "",
   description = "LUM: Quoting",
   condition = ExistSpec,
+
   action = function ()
+
     --if ShowLUM() then return Keys"Q Q" end
     --Plugin.Call("6F332978-08B8-4919-847A-EFBB6154C99A", --"file",
     --            [[@C:\Programs\Far3\Profile\plugins\LF4Ed\scripts\Rh_Scripts\LuaEUM\LuaEUM.lua]],
@@ -229,9 +264,11 @@ Macro {
     --            [[@C:\Programs\Far3\Profile\plugins\LF4Ed\scripts\Rh_Scripts\LuaEUM\LuaEUM.lua]],
     --              "Insert")
     --Plugin.Call("6F332978-08B8-4919-847A-EFBB6154C99A", "*luaeum_q")
+
     Plugin.Call("6F332978-08B8-4919-847A-EFBB6154C99A", "command", "luaeum", "Quoting")
 
   end, ---
+
 } ---]=]
 
 Macro {
@@ -240,10 +277,13 @@ Macro {
   flags = "",
   description = "LUM: Clear text",
   condition = Exist,
+
   action = function ()
+
     if ShowLUM() then return Keys"S C" end
 
   end, ---
+
 } ---
 --]]
 ----------------------------------------     -- -- QuoteMarks
@@ -324,13 +364,16 @@ for k, v in pairs(QuoteMarks) do
       flags = "",
       description = DescFmt:format(v.note),
       condition = ExistSpec,
+
       action = function ()
+
         if not ShowLUM() then return end
         --if not PluginMenu(guids.LF4Ed) then return end
         --Keys"M"
         --far.Message(Menu.Id, tostring(Area.Menu))
         --if not Area.Menu or Menu.Id ~= guids.LUM then return end
         Keys"Q Q"
+
         return Keys(k)
 
       end, ---
@@ -344,15 +387,19 @@ Macro {
   flags = "",
   description = "Dequote: <!--|-->",
   condition = Exist,
+
   action = function ()
+
     if not ShowLUM() then return end
     --if not PluginMenu(guids.LF4Ed) then return end
     --Keys"M"
     --far.Message(Menu.Id, tostring(Area.Menu))
     --if not Area.Menu or Menu.Id ~= guids.LUM then return end
+
     return Keys"Q D X"
 
   end, ---
+
 } ---
 
 end -- do
