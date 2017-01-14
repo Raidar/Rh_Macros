@@ -13,8 +13,8 @@
 --------------------------------------------------------------------------------
 
 ----------------------------------------
-local far = far
-local F = far.Flags
+--local far = far
+--local F = far.Flags
 
 ----------------------------------------
 --[[
@@ -31,11 +31,13 @@ local guids = {}
 
 local Macro = Macro or function () end
 
-local Async = function () return mmode(3, 1) end
+--local Async = function () return mmode(3, 1) end
 
 local Plugin = Plugin or {}
 local PluginExist = Plugin.Exist
 local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
+
+local Exist
 
 ---------------------------------------- Common
 
@@ -43,7 +45,7 @@ local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 -- [[
 guids.LFSearch = "8E11EA75-0303-4374-AC60-D1E38F865449"
 
-local Exist = function () return PluginExist(guids.LFSearch) end
+Exist = function () return PluginExist(guids.LFSearch) end
 
 Macro {
   area = "Shell Editor",
@@ -136,7 +138,7 @@ Macro {
 -- [[
 guids.Brackets = "B66C436D-E657-419C-86D3-6834B9ACF3D2"
 
-local Exist = function () return PluginExist(guids.Brackets) end
+Exist = function () return PluginExist(guids.Brackets) end
 
 Macro {
   area = "Editor",

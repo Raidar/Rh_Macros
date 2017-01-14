@@ -25,11 +25,14 @@ local guids = {}
 
 local Macro = Macro or function () end
 
-local Async = function () return mmode(3, 1) end
+--local Async = function () return mmode(3, 1) end
 
 local Plugin = Plugin or {}
 local PluginExist = Plugin.Exist
-local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
+local PluginMenu = Plugin.Menu
+--local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
+
+local Exist
 
 ---------------------------------------- '`' -- FarCmds
 -- [[
@@ -39,7 +42,7 @@ local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 -- [[
 guids.EMenu = "742910F1-02ED-4542-851F-DEE37C2E13B2"
 
-local Exist = function () return PluginExist(guids.EMenu) end
+Exist = function () return PluginExist(guids.EMenu) end
 
 Macro {
   area = "Shell",
@@ -63,7 +66,7 @@ Macro {
 -- [[
 guids.TmpPanel = "B77C964B-E31E-4D4C-8FE5-D6B0C6853E7C"
 
-local Exist = function () return PluginExist(guids.TmpPanel) end
+Exist = function () return PluginExist(guids.TmpPanel) end
 
 Macro {
   area = "Shell",
@@ -87,7 +90,7 @@ Macro {
 guids.ArcLite = "65642111-AA69-4B84-B4B8-9249579EC4FA"
 guids.ArcLiteArchive = "CD57D7FA-552C-4E31-8FA8-73D9704F0666"
 
-local Exist = function () return PluginExist(guids.ArcLite) end
+Exist = function () return PluginExist(guids.ArcLite) end
 
 Macro {
   area = "Shell",

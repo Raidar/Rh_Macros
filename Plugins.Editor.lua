@@ -35,11 +35,12 @@ local guids = {}
 
 local Macro = Macro or function () end
 
-local Async = function () return mmode(3, 1) end
+--local Async = function () return mmode(3, 1) end
 
 local Plugin = Plugin or {}
 local PluginExist = Plugin.Exist
-local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
+local CallPlugin = Plugin.Call
+--local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 
 ---------------------------------------- 'R' -- EditCase
 -- [[

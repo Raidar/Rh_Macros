@@ -14,7 +14,7 @@
 
 ----------------------------------------
 local far = far
-local F = far.Flags
+--local F = far.Flags
 
 ----------------------------------------
 --[[
@@ -41,7 +41,7 @@ Macro {
 
   action = function ()
 
-    local sfind = string.find
+    --local sfind = string.find
     local t = {
 
       "GUID = "..Menu.Id,

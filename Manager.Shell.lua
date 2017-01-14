@@ -42,7 +42,7 @@ do
 function unit.GetAreaContent (Area) --> (table)
 
   local t = {}
-  for k, v in pairs(Area.properties) do
+  for k, _ in pairs(Area.properties) do
     local w = Area[k]
     t[#t + 1] = AreaContentValueFmt:format(k, type(w), tostring(w))
 
@@ -56,7 +56,7 @@ end -- do
 
 -- Show content of macro area table.
 -- Показ содержимого таблицы макро-области.
-function ShowAreaContent (Area, Title) --> (dialog)
+local function ShowAreaContent (Area, Title) --> (dialog)
 
   local Content = table.concat(unit.GetAreaContent(Area), "\n")
   return far.Message(Content, Title or Object.Title, ";Ok", "l")
@@ -806,7 +806,7 @@ Macro { -- для файла, каталога или выделенных эл�
 
     -- Установка ReadOnly и Archive
     local k = 0
-    for i = 1, 2 do
+    for _ = 1, 2 do
       local v = Dlg.GetValue(Dlg.CurPos, 0)
       if v ~= 1 then
         Keys"Add"

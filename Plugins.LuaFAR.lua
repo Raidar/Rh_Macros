@@ -16,9 +16,9 @@
 local far = far
 local F = far.Flags
 
-local BlockNoneType = F.BTYPE_NONE
+--local BlockNoneType = F.BTYPE_NONE
 
-local editor = editor
+--local editor = editor
 
 ----------------------------------------
 --[[
@@ -55,7 +55,7 @@ local dlgGuids = {
 
 local Macro = Macro or function () end
 
-local Async = function () return mmode(3, 1) end
+--local Async = function () return mmode(3, 1) end
 
 --[[
 local IsNotRectMenu = function ()
@@ -65,7 +65,8 @@ end -- IsNotRectMenu
 
 local Plugin = Plugin or {}
 local PluginExist = Plugin.Exist
-local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
+local PluginMenu = Plugin.Menu
+--local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 
 ---------------------------------------- 'L' -- LuaFAR
 

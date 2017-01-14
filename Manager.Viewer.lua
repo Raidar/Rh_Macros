@@ -16,7 +16,7 @@
 --local far = far
 --local F = far.Flags
 
-local viewer = viewer
+--local viewer = viewer
 
 ----------------------------------------
 --[[

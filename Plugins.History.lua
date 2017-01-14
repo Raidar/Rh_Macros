@@ -13,8 +13,8 @@
 --------------------------------------------------------------------------------
 
 ----------------------------------------
-local far = far
-local F = far.Flags
+--local far = far
+--local F = far.Flags
 
 --------------------------------------------------------------------------------
 --local unit = {}
@@ -25,11 +25,12 @@ local guids = {}
 
 local Macro = Macro or function () end
 
-local Async = function () return mmode(3, 1) end
+--local Async = function () return mmode(3, 1) end
 
 local Plugin = Plugin or {}
 local PluginExist = Plugin.Exist
-local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
+local PluginMenu = Plugin.Menu
+--local PluginMenu, CallPlugin = Plugin.Menu, Plugin.Call
 
 ---------------------------------------- 'H' -- LuaFAR History
 -- [[

@@ -337,7 +337,7 @@ Macro {
       local Pos = Info.CurPos
       Pos = 4 - (Pos - 1) % 4
       --far.Message(Pos, Info.CurPos)
-      for k = 1, Pos do Keys"Space" end
+      for _ = 1, Pos do Keys"Space" end
 
     else
       return Keys"AltI" -- Сдвиг выделения вправо
@@ -361,7 +361,7 @@ Macro {
       local Pos = Info.CurPos
       Pos = 2 - (Pos - 1) % 2
       --far.Message(Pos, Info.CurPos)
-      for k = 1, Pos do Keys"Space" end
+      for _ = 1, Pos do Keys"Space" end
 
     else
       return Keys"AltU" -- Сдвиг выделения влево
@@ -729,12 +729,15 @@ function unit.FindNumberPos (Info, Line, Pos)
 
   end
 
-  local k = Pos
-  while k > 0 and isdigit(s:sub(k, k)) do
-    k = k - 1
+  do
+    local k = Pos
+    while k > 0 and isdigit(s:sub(k, k)) do
+      k = k - 1
+
+    end
+    PosB = k + 1
 
   end
-  PosB = k + 1
 
   if not PosE then
     local k = Pos
@@ -836,7 +839,7 @@ end ---- FindNumberStr
 end -- do
 ---------------------------------------- -- Shift
 do
-  local isdigit = strings.isdigit
+  --local isdigit = strings.isdigit
   local digit, todigit = strings.digit, strings.todigit
 
 -- Shift a digit value on current position of current line.
@@ -966,8 +969,9 @@ function unit.toseparate (s, sep, group, limit)
 
   if not s then return end
 
+  group = group or 3
+
   local len = s:len()
-  local group = group or 3
   if len <= group then return end
   if limit and len <= limit then return end
 
@@ -1445,7 +1449,7 @@ local function ClearSectionNumber (Level, Subst, Kind)
     if Kind == "number" then
       if s:find("^%d+%.$") then return Subst end
 
-    elseif Kind == "roman"  then
+    elseif Kind == "roman" then
       if s:find("^[IVXLCDMivxlcdm]+%.$") then return Subst end
 
     elseif Kind == "both" then
