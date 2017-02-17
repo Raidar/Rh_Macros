@@ -247,7 +247,7 @@ Macro {
 
 } ---
 
--- [=[
+--[=[
 Macro {
   area = "Shell Editor Dialog",
   key = "RCtrlShiftQ",
@@ -266,7 +266,7 @@ Macro {
     --              "Insert")
     --Plugin.Call("6F332978-08B8-4919-847A-EFBB6154C99A", "*luaeum_q")
 
-    Plugin.Call("6F332978-08B8-4919-847A-EFBB6154C99A", "command", "luaeum", "Quoting")
+    Plugin.Call("4EBBEFC8-2084-4B7F-94C0-692CE136894D", "command", "luaeum", "Quoting")
 
   end, ---
 
@@ -274,7 +274,37 @@ Macro {
 
 Macro {
   area = "Editor",
-  key = "LCtrlShiftT",
+  key = "RCtrlShiftS",
+  flags = "",
+  description = "LUM: Lua-scripts",
+  condition = Exist,
+
+  action = function ()
+
+    if ShowLUM() then return Keys"S" end
+
+  end, ---
+
+} ---
+
+Macro {
+  area = "Editor",
+  key = "RCtrlShiftT",
+  flags = "",
+  description = "LUM: Truncate",
+  condition = Exist,
+
+  action = function ()
+
+    if ShowLUM() then return Keys"S T" end
+
+  end, ---
+
+} ---
+
+Macro {
+  area = "Editor",
+  key = "RCtrlShiftC",
   flags = "",
   description = "LUM: Clear text",
   condition = Exist,
@@ -282,6 +312,36 @@ Macro {
   action = function ()
 
     if ShowLUM() then return Keys"S C" end
+
+  end, ---
+
+} ---
+
+Macro {
+  area = "Editor",
+  key = "RCtrlShiftQ",
+  flags = "",
+  description = "LUM: Change text",
+  condition = Exist,
+
+  action = function ()
+
+    if ShowLUM() then return Keys"S Q" end
+
+  end, ---
+
+} ---
+
+Macro {
+  area = "Editor",
+  key = "RCtrlShiftX",
+  flags = "",
+  description = "LUM: Transcript",
+  condition = Exist,
+
+  action = function ()
+
+    if ShowLUM() then return Keys"S X" end
 
   end, ---
 
