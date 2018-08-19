@@ -63,9 +63,13 @@ Macro {
   area = "Shell",
   key = "LCtrlLAltShift1",
   flags = "",
-  description = "HList: User list",
+  --description = "HList: User list",
 
-  action = function () return Keys"F2 H Z E" end, ---
+  --action = function () return Keys"F2 H Z E" end, ---
+
+  description = "HList: Informo",
+
+  action = function () return Keys"F2 H U I" end, ---
 
 } ---
 --]]
