@@ -185,16 +185,15 @@ Macro {
 -- [[
 Macro {
   --area = "Common",
-  --area = "Shell Editor Viewer",
-  area = "Shell Editor Viewer Dialog",
-  key = "LCtrlK",
+  area = "Dialog",
+  key = "LCtrlJ",
   flags = "",
-  description = "LUM: Calendar",
+  description = "LUM: Template Insert",
   condition = ExistSpec,
 
   action = function ()
 
-    if ShowLUM() then return Keys"A C" end
+    if ShowLUM() then return Keys"J" end
 
   end, ---
 
@@ -233,6 +232,23 @@ Macro {
 } ---
 
 Macro {
+  --area = "Common",
+  --area = "Shell Editor Viewer",
+  area = "Shell Editor Viewer Dialog",
+  key = "LCtrlK",
+  flags = "",
+  description = "LUM: Calendar",
+  condition = ExistSpec,
+
+  action = function ()
+
+    if ShowLUM() then return Keys"A C" end
+
+  end, ---
+
+} ---
+
+Macro {
   area = "Shell Editor Dialog",
   key = "LCtrlShiftQ",
   flags = "",
@@ -247,10 +263,11 @@ Macro {
 
 } ---
 
---[=[
+-- [=[
 Macro {
   area = "Shell Editor Dialog",
-  key = "RCtrlShiftQ",
+  key = "RCtrlShiftP",
+  --key = "RCtrlShiftQ",
   flags = "",
   description = "LUM: Quoting",
   condition = ExistSpec,
@@ -266,6 +283,7 @@ Macro {
     --              "Insert")
     --Plugin.Call("6F332978-08B8-4919-847A-EFBB6154C99A", "*luaeum_q")
 
+    --Plugin.Call("6F332978-08B8-4919-847A-EFBB6154C99A", "command", "luaeum", "Quoting")
     Plugin.Call("4EBBEFC8-2084-4B7F-94C0-692CE136894D", "command", "luaeum", "Quoting")
 
   end, ---
