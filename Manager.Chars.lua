@@ -83,8 +83,11 @@ local Characters = {
 
   ["ʻ"] = "RAlt;",      ["ʽ"] = "RAltShift;",       --[""] = "RCtrlRAltShift;",
   ["ʼ"] = "RAlt'",      ['ˮ'] = "RAltShift'",       --[""] = "RCtrlRAltShift'",
+                        ["¦"] = "RAltShift"..BSh,
 
   -- Special characters:
+  --[""]
+  
   [" "] = "LCtrlShiftSpace",
   ["…"] = "LCtrlLAlt/",
 
@@ -95,6 +98,24 @@ local Characters = {
 
   ["≤"] = "LCtrlLAlt,",
   ["≥"] = "LCtrlLAlt.",
+
+  -- Index characters:
+  --₁₂₃₄₅₆₇₈₉₀₊₋₌₍₎
+  --¹²³⁴⁵⁶⁷⁸⁹⁰⁺⁻⁼⁽⁾
+  ["₁"] = "RCtrlLAlt1", ["¹"] = "RCtrlLAltShift1",
+  ["₂"] = "RCtrlLAlt2", ["²"] = "RCtrlLAltShift2",
+  ["₃"] = "RCtrlLAlt3", ["³"] = "RCtrlLAltShift3",
+  ["₄"] = "RCtrlLAlt4", ["⁴"] = "RCtrlLAltShift4",
+  ["₅"] = "RCtrlLAlt5", ["⁵"] = "RCtrlLAltShift5",
+  ["₆"] = "RCtrlLAlt6", ["⁶"] = "RCtrlLAltShift6",
+  ["₇"] = "RCtrlLAlt7", ["⁷"] = "RCtrlLAltShift7",
+  ["₈"] = "RCtrlLAlt8", ["⁸"] = "RCtrlLAltShift8",
+  ["₉"] = "RCtrlLAlt9", ["⁹"] = "RCtrlLAltShift9",
+  ["₀"] = "RCtrlLAlt0", ["⁰"] = "RCtrlLAltShift0",
+  ["₋"] = "RCtrlLAlt-", ["⁻"] = "RCtrlLAltShift-",
+  ["₊"] = "RCtrlLAlt=", ["⁺"] = "RCtrlLAltShift=",
+  ["₌"] = "RCtrlLAlt"..BSh,
+  ["⁼"] = "RCtrlLAltShift"..BSh,
 
   -- Math/Lang characters with Numpad:
   -- Num+ — Add --                  -- Num* — Multiply --
