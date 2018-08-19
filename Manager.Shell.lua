@@ -33,6 +33,13 @@ local Macro = Macro or function () end
 
 ---------------------------------------- Panels
 
+local IsFilePanel = function ()
+
+    return not APanel.Plugin --and
+           --(APanel.Root or not APanel.Bof)
+
+end -- IsFilePanel
+
 ---------------------------------------- -- Info
 do
   local AreaContentValueFmt = "%s (%s) = '%s'"
@@ -530,11 +537,7 @@ Macro { -- Recopy
   flags = "",
   description = "Panel: Recopy preserving extension",
 
-  condition = function ()
-
-    return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
-
-  end, ---
+  condition = IsFilePanel,
 
   action = function ()
 
@@ -557,11 +560,7 @@ Macro { -- Copy
   flags = "",
   description = "Panel: Copy to… preserving extension",
 
-  condition = function ()
-
-    return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
-
-  end, ---
+  condition = IsFilePanel,
 
   action = function ()
 
@@ -594,11 +593,7 @@ Macro { -- Move
   flags = "",
   description = "Panel: Move to… preserving extension",
 
-  condition = function ()
-
-    return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
-
-  end, ---
+  condition = IsFilePanel,
 
   action = function ()
 
@@ -633,11 +628,7 @@ Macro { -- Name []
   flags = "EmptyCommandLine",
   description = "Panel: Rename adding []",
 
-  condition = function ()
-
-    return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
-
-  end, ---
+  condition = IsFilePanel,
 
   action = function ()
 
@@ -655,61 +646,50 @@ Macro { -- Name []
 
 } ---
 
-Macro { -- Libro
-  area = "Shell",
-  key = "LCtrlShiftY",
-  flags = "EmptyCommandLine",
-  description = "Panel: Rename to Libro",
+local function RenameTo (Name)
 
-  condition = function ()
+  if not Name then return end
 
-    return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
+  if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
 
-  end, ---
+  Keys"ShiftF6"
+  if Area.Dialog and Dlg.Id == guids.MoveFile then
+    Keys"CtrlLeft Left ShiftHome Del"
+    print(Name)
 
-  action = function ()
+    exit()
 
-    if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
-    Keys"ShiftF6"
-    if Area.Dialog and Dlg.Id == guids.MoveFile then
-      Keys"CtrlLeft Left ShiftHome Del"
-      print("Libro")
+  end
 
-      exit()
+end -- RenameTo
 
-    end
+--[==[ DEPRECATED
+local Renames = {
 
-  end, ---
+  ["LCtrlShiftY"] = "Libro",
+  ["RCtrlShiftY"] = "Papro",
 
-} ---
+  ["LCtrlLAltShiftY"] = "Infor",
+  ["RCtrlLAltShiftY"] = "Kovro",
 
-Macro { -- Infor
-  area = "Shell",
-  key = "LCtrlLAltShiftY",
-  flags = "EmptyCommandLine",
-  description = "Panel: Rename to Infor",
+} --- Renames
 
-  condition = function ()
+for k, v in pairs(Renames) do
+  if k ~= "" then
+    Macro {
+      area = "Shell",
+      key = k,
+      flags = "EmptyCommandLine",
+      description = "Panel: Rename to "..v,
 
-    return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
+      condition = IsFilePanel,
+      action = function () return RenameTo(v) end, ---
 
-  end, ---
+    } ---
+  end
+end
+--]==]
 
-  action = function ()
-
-    if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
-    Keys"ShiftF6"
-    if Area.Dialog and Dlg.Id == guids.MoveFile then
-      Keys"CtrlLeft Left ShiftHome Del"
-      print("Infor")
-
-      exit()
-
-    end
-
-  end, ---
-
-} ---
 --]=]
 
 --]]
