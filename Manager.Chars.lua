@@ -83,7 +83,7 @@ local Characters = {
 
   ["ʻ"] = "RAlt;",      ["ʽ"] = "RAltShift;",       --[""] = "RCtrlRAltShift;",
   ["ʼ"] = "RAlt'",      ['ˮ'] = "RAltShift'",       --[""] = "RCtrlRAltShift'",
-                        ["¦"] = "RAltShift"..BSh,
+  ["°"] = "RAlt"..BSh,  ["¦"] = "RAltShift"..BSh,   ["‖"] = "RCtrlRAltShift"..BSh,
 
   -- Special characters:
   --[""]
