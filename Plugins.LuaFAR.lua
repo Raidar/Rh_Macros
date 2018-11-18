@@ -201,6 +201,22 @@ Macro {
 
 Macro {
   --area = "Common",
+  area = "Dialog",
+  key = "RCtrlJ",
+  flags = "",
+  description = "LUM: Extension Insert",
+  condition = ExistSpec,
+
+  action = function ()
+
+    if ShowLUM() then return Keys"I" end
+
+  end, ---
+
+} ---
+
+Macro {
+  --area = "Common",
   area = "Shell Editor Dialog",
   --area = "Shell Editor Viewer Dialog",
   key = "LCtrlH",
@@ -403,6 +419,8 @@ local QuoteMarks = {
   ["x"] = { key = "LCtrlLAltM",         note = "<!--|-->", },
   --["h"] = { key = "LCtrlShift.",        note = "<!--|-->", },
   --["l"] = { key = "LCtrlShift,",        note = "--[[ | ]]--", },
+
+  ["v"] = { key = "RCtrlRAltV",         note = "[work_t=]|[/work]", },
 
   -- Markers:
   ["|"] = { key = "LCtrlLAltShift1",    note = "|||", },
