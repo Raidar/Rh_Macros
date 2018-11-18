@@ -509,17 +509,13 @@ Macro { -- Rename
   flags = "",
   description = "Panel: Rename preserving extension",
 
-  condition = function ()
-
-    return not APanel.Plugin --and (APanel.Root or not APanel.Bof)
-
-  end, ---
+  condition = IsFilePanel,
 
   action = function ()
 
     if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
-    Keys"ShiftF6"
 
+    Keys"ShiftF6"
     if Area.Dialog and Dlg.Id == guids.MoveFile then
       Keys"CtrlLeft Left ShiftHome"
 
@@ -542,9 +538,34 @@ Macro { -- Recopy
   action = function ()
 
     if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
+
     Keys"ShiftF5"
     if Area.Dialog and Dlg.Id == guids.CopyFile then
       Keys"CtrlLeft Left ShiftHome"
+
+      exit()
+
+    end
+
+  end, ---
+
+} ---
+
+Macro { -- Goto end of name to change
+  area = "Shell",
+  key = "RCtrlT",
+  flags = "",
+  description = "Panel: Goto end of name to change",
+
+  condition = IsFilePanel,
+
+  action = function ()
+
+    if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
+
+    Keys"ShiftF6"
+    if Area.Dialog and Dlg.Id == guids.MoveFile then
+      Keys"CtrlLeft Left"
 
       exit()
 
@@ -573,8 +594,9 @@ Macro { -- Copy
 
     end
 
-    local Ext = Name:match("%.([^%.]-)$") -- Extension
     Keys"End"
+
+    local Ext = Name:match("%.([^%.]-)$") -- Extension
     if Ext then
       print("."..Ext)
       Keys"CtrlLeft Left"
@@ -606,8 +628,9 @@ Macro { -- Move
 
     end
 
-    local Ext = Name:match("%.([^%.]-)$") -- Extension
     Keys"End"
+
+    local Ext = Name:match("%.([^%.]-)$") -- Extension
     if Ext then
       print("."..Ext)
       Keys"CtrlLeft Left"
