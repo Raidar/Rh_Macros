@@ -793,6 +793,10 @@ function unit.FindNumberStr (Info, Line, Pos, Shift, Limit)
 
   --far.Show(Line, Pos, Shift, Limit, Count)
 
+  -- TODO: Сделать счётчик строк по заполненности начал строк пробелами
+  -- при Pos > 0 с учётом возможных отступов и другого оформления.
+  -- Заменить abs(k - Line) <= Limit на счётчик <= Limit соответственно.
+
   -- Просмотр строк выше/ниже:
   local s, PosB, PosE
   local k = Line
@@ -832,7 +836,7 @@ function unit.FindNumberStr (Info, Line, Pos, Shift, Limit)
 
   if not s then return end
 
-  return s:sub(PosB, PosE)
+  return s:sub(PosB, PosE), PosB
 
 end ---- FindNumberStr
 
@@ -1279,12 +1283,12 @@ Macro {
 
     local Info = editor.GetInfo()
     -- Поиск с предпоследней позиции, так исключается ")"!
-    local n = unit.FindNumberStr(Info, Info.CurLine, -2, -1, 100)
+    local s = unit.FindNumberStr(Info, Info.CurLine, -2, -1, 100)
 
     print" ()"
     Keys"Left"
-    if n then
-      print(n)
+    if s then
+      print(s)
 
     end
 
@@ -1371,25 +1375,34 @@ end -- do
 local function AutoSectionNumber ()
 
   local Info = editor.GetInfo()
-  local s = unit.FindNumberStr(Info, Info.CurLine, Info.CurPos, -1, 100)
+  local s, Pos = unit.FindNumberStr(Info, Info.CurLine, Info.CurPos, -1, 100)
   -- TODO: Переделать с использованием только Lua, без Keys/print.
-  if s then
-    local sLen = s:len()
-    local n = tostring(tonumber(s) + 1)
-    local nLen = n:len()
-    --far.Message('"'..s..'"\n"'..n..'"\n')
-    if nLen > sLen then
-      Keys"CtrlS"
+  if not s then
+    return print("1. ")
 
-    elseif nLen < sLen then
-      print("0")
+  end
+
+  local sLen = s:len()
+  local n = tostring(tonumber(s) + 1)
+  local nLen = n:len()
+  --far.Message('"'..s..'"\n"'..n..'"\n')
+  if nLen > sLen then
+    Keys"CtrlS"   -- Сдвиг для выравнивания увеличенного номера по "."
+
+    return print(n..".") -- without space
+
+  else
+    if nLen < sLen then
+      print("0")  -- Добавление "0" для нумерации с нулём в начале
+
+    end
+
+    if (Pos and Pos > 1 and Info.CurPos > Pos) then
+      Keys"BS"    -- BackSpace для выравнивания подобного номера по "."
 
     end
 
     return print(n..". ")
-
-  else
-    return print("1. ")
 
   end
 end ---- AutoSectionNumber
