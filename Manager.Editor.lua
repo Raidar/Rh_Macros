@@ -1397,7 +1397,8 @@ local function AutoSectionNumber ()
 
     end
 
-    if (Pos and Pos > 1 and Info.CurPos > Pos) then
+    --far.Message(Pos.."\n"..Info.CurPos.."\n"..nLen.."\n"..sLen, s)
+    if (Pos and Pos > 0 and Info.CurPos > Pos) then
       Keys"BS"    -- BackSpace для выравнивания подобного номера по "."
 
     end
