@@ -420,7 +420,9 @@ local QuoteMarks = {
   --["h"] = { key = "LCtrlShift.",        note = "<!--|-->", },
   --["l"] = { key = "LCtrlShift,",        note = "--[[ | ]]--", },
 
-  ["v"] = { key = "RCtrlRAltV",         note = "[work_t=]|[/work]", },
+  ["RCtrl,"] = { key = "RCtrl,",                    note = "<>|</>", },
+  ["RCtrlRAlt."] = { key = "RCtrlRAlt.",            note = "[=]|[/]", },
+  ["RCtrlRAltShift."] = { key = "RCtrlRAltShift.",  note = "{=}|{/}", },
 
   -- Markers:
   ["|"] = { key = "LCtrlLAltShift1",    note = "|||", },
