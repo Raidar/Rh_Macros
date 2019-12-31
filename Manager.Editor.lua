@@ -399,7 +399,7 @@ Macro {
 
 } ---
 --]]
----------------------------------------- Move text
+---------------------------------------- Move within text
 -- [[
 Macro {
   area = "Editor",
@@ -503,45 +503,31 @@ Macro {
 
 } ---
 --]]
----------------------------------------- Move block
---[[
-Macro {
-  area = "Editor",
-  key = "LCtrlShiftI",
-  flags = "",
-  description = "Edit: Shift 4fold block right",
-
-  action = function () return Keys"AltI AltI AltI AltI" end, ---
-
-} ---
+---------------------------------------- Edit text
+-- [[
 
 Macro {
   area = "Editor",
-  key = "LCtrlShiftU",
+  key = "LCtrlShiftD",
   flags = "",
-  description = "Edit: Shift 4fold block left",
+  description = "Edit: duplicate line",
 
-  action = function () return Keys"AltU AltU AltU AltU" end, ---
+  condition = function ()
 
-} ---
+    local Info = editor.GetInfo()
 
-Macro {
-  area = "Editor",
-  key = "LAltShiftI",
-  flags = "",
-  description = "Edit: Shift twice block right",
+    return Info.BlockType == BlockNoneType
 
-  action = function () return Keys"AltI AltI" end, ---
+  end, ---
 
-} ---
+  action = function ()
 
-Macro {
-  area = "Editor",
-  key = "LAltShiftU",
-  flags = "",
-  description = "Edit: Shift twice block left",
+    local Info = editor.GetInfo()
 
-  action = function () return Keys"AltU AltU" end, ---
+    Keys"Home ShiftDown CtrlC CtrlV CtrlV Up"
+
+    return editor.SetPosition(Info.EditorID, Info.CurLine + 1, Info.CurPos)
+  end, ---
 
 } ---
 --]]
