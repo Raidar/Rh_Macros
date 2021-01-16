@@ -1290,14 +1290,18 @@ local BulletSep = ". "
 
 local Bullets = {
 
-  ["#"] = { level = "Num",  key = "LAlt1", },
+  ["#"] = { level = "Main", key = "LAlt1", },
   ["*"] = { level = "1",    key = "LAltShift1", },
   ["-"] = { level = "2",    key = "LAlt2", },
-  ["+"] = { level = "2-3",  key = "LAltShift2", },
+  ["+"] = { level = "2–3",  key = "LAltShift2", },
   ["~"] = { level = "3",    key = "LAlt3", },
-  [":"] = { level = "Lib",  key = "LAltShift3", },
+  [":"] = { level = "Note", key = "LAltShift3", },
   ["·"] = { level = "4",    key = "LAlt4", },
-  ["¤"] = { level = "4-5",  key = "LAltShift4", },
+  ["¤"] = { level = "4–5",  key = "LAltShift4", },
+  ["="] = { level = "Same", key = "LAlt5", },
+  ["≈"] = { level = "Like", key = "LAltShift5", },
+  ["?"] = { level = "Link", key = "LAlt6", },
+  ["!"] = { level = "Care", key = "LAltShift6", },
 
 } --- Bullets
 
@@ -1373,9 +1377,11 @@ local function AutoSectionNumber ()
   local nLen = n:len()
   --far.Message('"'..s..'"\n"'..n..'"\n')
   if nLen > sLen then
+    --far.Message(Pos.."\n"..Info.CurPos.."\n"..nLen.."\n"..sLen, s)
     Keys"CtrlS"   -- Сдвиг для выравнивания увеличенного номера по "."
 
-    return print(n..".") -- without space
+    -- Пробел только при нумерации в начале линии
+    return print(n.."."..(Pos and Pos == 1 and " " or ""))
 
   else
     if nLen < sLen then
@@ -1517,6 +1523,19 @@ Macro {
 
   end, ---
 
+} ---
+
+Macro {
+  area = "Editor",
+  key = "RAltZ",
+  flags = "",
+  description = "ReadMe: '1. '",
+
+  action = function ()
+
+    print("1. ")
+
+  end, ---
 } ---
 
 Macro {
