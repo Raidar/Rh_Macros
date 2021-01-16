@@ -73,13 +73,13 @@ Macro {
 
 } ---
 --]]
----------------------------------------- 2 -- Working
+---------------------------------------- 2 -- Uzayro
 -- [[
 Macro {
   area = "Shell",
   key = "LCtrl2",
   flags = "",
-  description = "HList: User folder",
+  description = "HList: Uzayro",
 
   action = function () return Keys"F2 H U" end, ---
 
@@ -89,7 +89,7 @@ Macro {
   area = "Shell",
   key = "LCtrlShift2",
   flags = "",
-  description = "HList: Own works",
+  description = "HList: Uzayro verki",
 
   action = function () return Keys"F2 H U Q" end, ---
 
@@ -99,7 +99,7 @@ Macro {
   area = "Shell",
   key = "LCtrlLAlt2",
   flags = "",
-  description = "HList: Own sites",
+  description = "HList: Uzayro pagi",
 
   action = function () return Keys"F2 H U S" end, ---
 
@@ -109,7 +109,7 @@ Macro {
   area = "Shell",
   key = "LCtrlLAltShift2",
   flags = "",
-  description = "HList: Own media",
+  description = "HList: Uzayro medio",
 
   action = function () return Keys"F2 H U R" end, ---
 
