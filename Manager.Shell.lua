@@ -503,11 +503,11 @@ Macro { -- Full file name
 guids.CopyFile = "FCEF11C4-5490-451D-8B4A-62FA03F52759"
 guids.MoveFile = "431A2F37-AC01-4ECD-BB6F-8CDE584E5A03"
 
-Macro { -- Rename
+Macro { -- Rename 1
   area = "Shell",
   key = "LCtrlT",
   flags = "",
-  description = "Panel: Rename preserving extension",
+  description = "Panel: Rename preserving 1 extension",
 
   condition = IsFilePanel,
 
@@ -527,11 +527,11 @@ Macro { -- Rename
 
 } ---
 
-Macro { -- Recopy
+Macro { -- Recopy 1
   area = "Shell",
   key = "LCtrlShiftT",
   flags = "",
-  description = "Panel: Recopy preserving extension",
+  description = "Panel: Recopy preserving 1 extension",
 
   condition = IsFilePanel,
 
@@ -542,6 +542,54 @@ Macro { -- Recopy
     Keys"ShiftF5"
     if Area.Dialog and Dlg.Id == guids.CopyFile then
       Keys"CtrlLeft Left ShiftHome"
+
+      exit()
+
+    end
+
+  end, ---
+
+} ---
+
+Macro { -- Rename 2
+  area = "Shell",
+  key = "LCtrlLAltT",
+  flags = "",
+  description = "Panel: Rename preserving 2 extensions",
+
+  condition = IsFilePanel,
+
+  action = function ()
+
+    if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
+
+    Keys"ShiftF6"
+    if Area.Dialog and Dlg.Id == guids.MoveFile then
+      Keys"CtrlLeft CtrlLeft Left ShiftHome"
+
+      exit()
+
+    end
+
+  end, ---
+
+} ---
+
+Macro { -- Recopy 2
+  area = "Shell",
+  key = "LCtrlLAltShiftT",
+  flags = "",
+  description = "Panel: Recopy preserving 2 extensions",
+
+  condition = IsFilePanel,
+
+  action = function ()
+
+    if APanel.Bof and not APanel.Root then Keys"CtrlPgUp" end
+
+    Keys"ShiftF5"
+    if Area.Dialog and Dlg.Id == guids.CopyFile then
+      Keys"CtrlLeft CtrlLeft Left ShiftHome"
 
       exit()
 
