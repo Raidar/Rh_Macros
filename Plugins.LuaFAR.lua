@@ -217,6 +217,22 @@ Macro {
 
 Macro {
   --area = "Common",
+  area = "Dialog",
+  key = "RCtrlL",
+  flags = "",
+  description = "LUM: Language code Insert",
+  condition = ExistSpec,
+
+  action = function ()
+
+    if ShowLUM() then return Keys"L" end
+
+  end, ---
+
+} ---
+
+Macro {
+  --area = "Common",
   area = "Shell Editor Dialog",
   --area = "Shell Editor Viewer Dialog",
   key = "LCtrlH",
