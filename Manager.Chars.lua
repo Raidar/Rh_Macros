@@ -81,6 +81,7 @@ local Characters = {
   ["/"] = "LAlt/",      ["?"] = "LAltShift/",       ["&"] = "LCtrlLAltShift/",
  ["\\"] = "LAlt"..BSh,  ["|"] = "LAltShift"..BSh,   ["‾"] = "LCtrlLAltShift"..BSh,
 
+  ["´"] = "RAlt`",      ["∽"] = "RAltShift`",       --["ʼ"] = "LCtrlLAltShift'",
   ["ʻ"] = "RAlt;",      ["ʽ"] = "RAltShift;",       --[""] = "RCtrlRAltShift;",
   ["ʼ"] = "RAlt'",      ['ˮ'] = "RAltShift'",       --[""] = "RCtrlRAltShift'",
   ["°"] = "RAlt"..BSh,  ["¦"] = "RAltShift"..BSh,   ["‖"] = "RCtrlRAltShift"..BSh,
