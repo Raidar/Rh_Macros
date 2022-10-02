@@ -84,6 +84,23 @@ Macro {
   end, ---
 
 } ---
+
+Macro {
+  area = "Shell",
+  key = "RAltShiftF2",
+  flags = "",
+  description = "TmpPanel: Save to file",
+  condition = Exist,
+
+  action = function ()
+
+    Keys"AltShiftF2"
+
+    exit()
+
+  end, ---
+
+} ---
 --]]
 ---------------------------------------- '7' -- ArcLite
 -- [[
